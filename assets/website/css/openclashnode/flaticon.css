@@ -1,0 +1,146 @@
+@font-face {
+	font-family: "flaticon";
+	src: url("/assets/website/fonts/openclashnode/flaticon.ttf?24c6f9aa794daa767eeb5351cb7c8b60")
+			format("truetype"),
+		url("/assets/website/fonts/openclashnode/flaticon.woff?24c6f9aa794daa767eeb5351cb7c8b60")
+			format("woff"),
+		url("/assets/website/fonts/openclashnode/flaticon.woff2?24c6f9aa794daa767eeb5351cb7c8b60")
+			format("woff2"),
+		url("/assets/website/fonts/openclashnode/flaticon.eot?24c6f9aa794daa767eeb5351cb7c8b60#iefix")
+			format("embedded-opentype"),
+		url("/assets/website/fonts/openclashnode/flaticon.svg?24c6f9aa794daa767eeb5351cb7c8b60#flaticon")
+			format("svg");
+}
+
+i[class^="flaticon-"]:before,
+i[class*=" flaticon-"]:before {
+	font-family: flaticon !important;
+	font-style: normal;
+	font-weight: normal !important;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-logistics-delivery-ultrathin-transport:before {
+	content: "\f101";
+}
+.flaticon-box-ultrathin-outline:before {
+	content: "\f102";
+}
+.flaticon-logistics-cube-box-ultrathin-outline:before {
+	content: "\f103";
+}
+.flaticon-global-phone-service-ultrathin-business-sign:before {
+	content: "\f104";
+}
+.flaticon-order:before {
+	content: "\f105";
+}
+.flaticon-location:before {
+	content: "\f106";
+}
+.flaticon-delivery:before {
+	content: "\f107";
+}
+.flaticon-24-hours-support:before {
+	content: "\f108";
+}
+.flaticon-support:before {
+	content: "\f109";
+}
+.flaticon-24-hours-support-1:before {
+	content: "\f10a";
+}
+.flaticon-chronometer:before {
+	content: "\f10b";
+}
+.flaticon-stopwatch:before {
+	content: "\f10c";
+}
+.flaticon-envelope:before {
+	content: "\f10d";
+}
+.flaticon-email:before {
+	content: "\f10e";
+}
+.flaticon-email-1:before {
+	content: "\f10f";
+}
+.flaticon-quotation-marks:before {
+	content: "\f110";
+}
+.flaticon-quote:before {
+	content: "\f111";
+}
+.flaticon-quotation-mark:before {
+	content: "\f112";
+}
+.flaticon-worldwide:before {
+	content: "\f113";
+}
+.flaticon-location-1:before {
+	content: "\f114";
+}
+.flaticon-planet-earth:before {
+	content: "\f115";
+}
+.flaticon-shopping-list:before {
+	content: "\f116";
+}
+.flaticon-document:before {
+	content: "\f117";
+}
+.flaticon-international:before {
+	content: "\f118";
+}
+.flaticon-moving-truck:before {
+	content: "\f119";
+}
+.flaticon-distributed:before {
+	content: "\f11a";
+}
+.flaticon-distribution:before {
+	content: "\f11b";
+}
+.flaticon-growth:before {
+	content: "\f11c";
+}
+.flaticon-truck:before {
+	content: "\f11d";
+}
+.flaticon-pyramid:before {
+	content: "\f11e";
+}
+.flaticon-pyramid-1:before {
+	content: "\f11f";
+}
+.flaticon-pyramid-chart:before {
+	content: "\f120";
+}
+.flaticon-parcel:before {
+	content: "\f121";
+}
+.flaticon-deliver:before {
+	content: "\f122";
+}
+.flaticon-airplane:before {
+	content: "\f123";
+}
+.flaticon-map:before {
+	content: "\f124";
+}
+.flaticon-location-2:before {
+	content: "\f125";
+}
+.flaticon-call:before {
+	content: "\f126";
+}
+.flaticon-phone-call:before {
+	content: "\f127";
+}
+.flaticon-email-2:before {
+	content: "\f128";
+}
