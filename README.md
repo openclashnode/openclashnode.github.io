@@ -1,4 +1,4 @@
-# 10月26日→21.3M/S|2024年最新免费节点Open Clash Node订阅链接地址  更新时间 2024-10-26 00:04:32
+# 10月26日→20.8M/S|2024年最新免费节点Open Clash Node订阅链接地址  更新时间 2024-10-26 00:11:11
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://openclashnode.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
