@@ -2,11 +2,11 @@
 <html class="no-js" lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://openclashnode.github.io/news/article-25346.htm" />
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-26739.htm" />
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>如何解决服务器网站高并发问题,大型网站如何解决高并发带来的问题</title>
-        <meta name="description" content="描述 大型网站，比如门户网站，在面对大量用户访问、高并发请求方面带来的问题 1.大并发：在同一个时间点，有大量的客户来访问我们的网站，如果访问量过大，就可能造成网站瘫痪。 2.大流量：当网站大后，有大" />
+    <title>Qt的.pro文件格式解析</title>
+        <meta name="description" content="在Qt中用qmake生成makefile文件，它是由.pro文件生成而来的，.pro文件的具体格式语法如下： 1.注释 .pro文件中注释采用#号，从“#”号开始，到该行的结束，例如： 2.模板TEM" />
         <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -136,7 +136,7 @@
                 <div class="row align-items-center pt-60">
                     <div class="col-md-7 wow slideInLeft">
                         <div class="page-title-content">
-                            <h1>如何解决服务器网站高并发问题,大型网站如何解决高并发带来的问题</h1>
+                            <h1>Qt的.pro文件格式解析</h1>
                         </div>
                     </div>
                     <div class="col-md-5 wow slideInRight">
@@ -153,10 +153,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                                          				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <p>描述</p> <p>大型网站，比如门户网站，在面对大量用户访问、高并发请求方面带来的问题</p> <p>1.大并发：在同一个时间点，有大量的客户来访问我们的网站，如果访问量过大，就可能造成网站瘫痪。</p> <p>2.大流量：当网站大后，有大量的图片，视频, 这样就会对流量要求高，需要更多更大的带宽。</p> <p>3.大存储：你的数据量会成海量的数据，如果我们的数据放入一张表，是无法应对的。可能对数据保存和查询出现问题。</p> <p>基本的解决方案集中在这样几个环节：使用高性能的服务器、高性能的数据库、高效率的编程语言、还有高性能的Web容器，(对架构分层+负载均衡+集群)这几个解决思路在一定程度上意味着更大的投入。</p> <p>解决方案：</p> <p>一、提高硬件能力、增加系统服务器。(当服务器增加到某个程度的时候系统所能提供的并发访问量几乎不变，所以不能根本解决问题)</p> <p align="center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/777d83388bd626c5d26b210aa6f1fb28.jpg" alt="如何解决服务器网站高并发问题,大型网站如何解决高并发带来的问题"></p> <p>二、使用缓存(本地缓存：本地可以使用JDK自带的 Map、Guava Cache.分布式缓存：Redis、Memcache.本地缓存不适用于提高系统并发量，一般是用处用在程序中。比如Spring是如何实现单例的呢？大家如果看过源码的话，应该知道，Spiring把已经初始过的变量放在一个Map中，下次再要使用这个变量的时候，先判断Map中有没有，这也就是系统中常见的单例模式的实现。)</p> <p>分布式缓存利器Redis集群，Redis集群的搭建至少需要三主三从。</p> <p>1. 所有的redis节点彼此互联(PING-PONG机制),内部使用二进制协议优化传输速度和带宽。</p> <p>2. 节点的fail是通过集群中超过半数的节点检测失效时才生效(所以一个集群中至少要有三个节点)。</p> <p>3. 客户端与redis节点直连,不需要中间proxy层.客户端不需要连接集群所有节点,连接集群中任何一个可用节点即可。</p> <p>4. 集群中每一个节点都存放不同的内容，每一个节点都应有备份机。</p> <p>5. redis-cluster把所有的物理节点映射到[0-16383]slot上,cluster 负责维护nodeslotvalue</p> <p>Redis 集群中内置了16384 个哈希槽，当需要在Redis 集群中放置一个key-value 时，redis先对 key 使用 crc16 算法算出一个结果，然后把结果对16384 求余数，这样每个key 都会对应一个编号在0-16383 之间的哈希槽，redis会根据节点数量大致均等的将哈希槽映射到不同的节点。</p> <p>三 、消息队列 (解耦+削峰+异步)通过异步处理提高系统性能，降低系统耦合性</p> <p>在不使用消息队列服务器的时候，用户的请求数据直接写入数据库，在高并发的情况下数据库压力剧增，使得响应速度变慢。但是在使用消息队列之后，用户的请求数据发送给消息队列之后立即 返回，再由消息队列的消费者进程从消息队列中获取数据，异步写入数据库。由于消息队列服务器处理速度快于数据库(消息队列也比数据库有更好的伸缩性)，因此响应速度得到大幅改善。</p> <p>通过使用消息中间件对Dubbo服务间的调用进行解耦, 消息中间件可利用高效可靠的消息传递机制进行平台无关的数据交流，并基于数据通信来进行分布式系统的集成。通过提供消息传递和消息排队模型，可以在分布式环境下扩展进程间的通信。通过消息中间件，应用程序或组件之间可以进行可靠的异步通讯，从而降低系统之间的耦合度，提高系统的可扩展性和可用性。</p> <p>四 、采用分布式开发 (不同的服务部署在不同的机器节点上，并且一个服务也可以部署在多台机器上，然后利用 Nginx 负载均衡访问。这样就解决了单点部署(All In)的缺点，大大提高的系统并发量)</p> <p>五 、数据库分库(读写分离)、分表(水平分表、垂直分表)</p> <p>这种的集群在遇到单表数据量超过2000万的时候，mysql性能会受损，所以一个集群还不够，我们需要把数据分到另一个集群，这个称为“切片”，就是把大量的数据拆分到不同的集群中，每个集群的数据都是不一样的，通过MyCat这个阿里巴巴的开源中间件，可以把sql分到不同的集群里面去。</p> <p>PXC集群方案所有节点都是可读可写的，Replication从节点不能写入，因为主从同步是单向的，无法从slave节点向master点同步。PXC同步机制是同步进行的，这也是它能保证数据强一致性的根本原因，Replication同步机制是异步进行的，它如果从节点停止同步，依然可以向主节点插入数据，正确返回，造成数据主从数据的不一致性。</p> <p>PXC是用牺牲性能保证数据的一致性，Replication在性能上是高于PXC的。所以两者用途也不一致。PXC是用于重要信息的存储，例如：订单、用户信息等。Replication用于一般信息的存储，能够容忍数据丢失，例如：购物车，用户行为日志等。</p> <p align="center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/59dffe4b316d603ad8f9e1b6315bd8a1.jpg" alt="如何解决服务器网站高并发问题,大型网站如何解决高并发带来的问题"></p> <p>六、 采用集群 (多台机器提供相同的服务)系统架构方案</p> <p>七、CDN 加速 (将一些静态资源比如图片、视频等等缓存到离用户最近的网络节点)</p> <p>八、浏览器缓存 页面静态化(使用php自己的ob缓存技术实现， 主流的mvc框架(tp,yii,laravel)模板引擎一般都自带页面静态化 )</p> <p>九、使用合适的连接池(数据库连接池、线程池等等)</p> <p>十、适当使用多线程进行开发。</p> <p>十一、使用镜像</p> <p>镜像是大型网站常采用的提高性能和数据安全性的方式，镜像的技术可以解决不同网络接入商和地域带来的用户访问速度差异，比如ChinaNet和EduNet之间的差异就促使了很多网站在教育网内搭建镜像站点，数据进行定时更新或者实时更新。有很多专业的现成的解决架构和产品可选。也有廉价的通过软件实现的思路，比如Linux上的rsync等工具。</p> <p>十二、图片服务器分离</p> <p>大家知道，对于Web服务器来说，不管是Apache、IIS还是其他容器，图片是最消耗资源的，于是我们有必要将图片与页面进行分离，这是基本上大型网站都会采用的策略，他们都有独立的、甚至很多台的图片服务器。这样的架构可以降低提供页面访问请求的服务器系统压力，并且可以保证系统不会因为图片问题而崩溃。在应用服务器和图片服务器上，可以进行不同的配置优化，比如apache在配置ContentType的时候可以尽量少支持、尽可能少的LoadModule，保证更高的系统消耗和执行效率。</p> <p>打开APP阅读更多精彩内容</p> <p>点击阅读全文</p> </div></div> 			                <div class="clearfix"></div>
+                                          				  				  				</h1> <p>在Qt中用qmake生成makefile文件，它是由.pro文件生成而来的，.pro文件的具体格式语法如下：</p> <h2 id="1注释">1.注释</h2> <p>.pro文件中注释采用#号，从“#”号开始，到该行的结束，例如：</p> <h2 id="2模板template">2.模板TEMPLATE</h2> <p>模板变量告诉qmake为这个应用程序生成那种makefile文件。下面是可提供使用的选择：</p> <pre><code class="language-makefile">TEMPLATE=app</code></pre> <ol> <li>app-建立一个应用程序的makefile。这是个默认值，所以如果模板没有被指定，该模板将会被使用。</li> <li>lib  -建立一个库的makefile。</li> <li>vcapp -建立一个应用程序的Visual Studio项目文件。</li> <li>vclib -建立一个库的VisualStudio项目文件。</li> <li>subdirs -这是一个特殊的模板，它可以创建一个能够进入特定目录并且为一个项目文件生成makefile，并且为它调用make的makefile。</li> </ol> <h2 id="3添加文件路径">3.添加文件路径</h2> <ol> <li> <p><code>HEADERS +=</code> 用来添加头文件</p> </li> <li> <p><code>SOURCES +=</code> 用来添加源文件</p> </li> <li> <p><code>FORMS +=</code> 用来添加 ui 文件</p> </li> <li> <p><code>RESOURCES +=</code> 用来添加资源文件</p> </li> <li> <p><code>INCLUDEPATH +=</code> 用来存放添加头文件的路径</p> </li> <li> <p><code>DEPENDPATH +=</code> 用来添加依赖相关路径</p> </li> <li> <p><code>LIBS +=</code> 用来添加库文件</p> </li> </ol> <p><strong>注意：</strong></p> <pre><code> INCLUDEPATH一般用在添加第三方 .dll 的时候所需的头文件路径；  HEADERS用来添加当前项目的路径；  LIBS += -LC:/Windows/System32/ -luser32  格式为：-L 路径 -l 库名  库比较多的时候可以用 \来达到换行目的  引用相对路径的库文件的时候，$$PWD 指的是项目 .pro 文件所在的路径，`$$OUT_PWD` 指的是编译的目标所在的路径。如果不清楚路径，可以使用 message($$PWD) 打印路径查看绝对路径。</code></pre> <ul> <li><code>DESTDIR +=</code> 指定生成的应用程序的存放目录。</li> <li><code>TARGET =</code> 指定生成的应用程序的名字。</li> <li><code>UI_DIR +=</code> 用来存放编译的时候 ui 生成的 ui_*.h 文件。</li> <li><code>RCC_DIR +=</code> 存放 .qrc 生成的 qrc_*.h 文件。</li> <li><code>MOC_DIR +=</code> 用来存放 moc 命令转换添加的<code>Q_OBJECT</code> 的 .h 文件为标准 .h 文件的存放路径。</li> <li><code>OBJECTS_DIR +=</code> 用来存放目标文件 .obj 存放的路径。</li> </ul> <p><strong>注：</strong></p> <p><code>UI_DIR</code> 、<code>RCC_DIR</code> 、<code>MOC_DIR</code> 、<code>OBJECTS_DIR</code> 可以认为都是用来存放中间文件，只是存放的中间文件有所不同，不指定的话默认会存放在 .pro 文件所在的路径，显得工程看起来比较乱</p> <h2 id="4添加配置信息">4.添加配置信息</h2> <ul> <li><code>CONFIG +=</code> 用来指的应用程序的配置信息。</li> </ul> <table> <thead> <tr> <th>参数</th> <th style="text-align: center">说明</th> </tr> </thead> <tbody> <tr> <td>release</td> <td style="text-align: center">项目被联编为一个发布的应用程序</td> </tr> <tr> <td>debug</td> <td style="text-align: center">项目被联编为一个debug的应用程序，debug 和 release 同时设置的时候，最后面的一个生效</td> </tr> <tr> <td>debug_and_release</td> <td style="text-align: center">项目被联编为 debug 和 release</td> </tr> <tr> <td>warn_on</td> <td style="text-align: center">编译器输出尽可能多的警告信息</td> </tr> <tr> <td>c++11</td> <td style="text-align: center">支持 c++11 的标准</td> </tr> <tr> <td>thread</td> <td style="text-align: center">支持线程，当 CONFIG 参数包含 qt 的时候，这个是默认支持的</td> </tr> </tbody> </table> <h2 id="5实例">5.实例</h2> <pre><code class="language-makefile">TEMPLATE	= app LANGUAGE	= C++  QT += widgets xml sql network opengl CONFIG	+= qt warn_on release  HEADERS	+= *.h SOURCES	+= *.cpp FORMS  += *.ui  RESOURCES += \     DiffusionFilter.qrc</code></pre> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-24884.htm">宠物领养协议书电子版怎么弄的 宠物领养协议书电子版怎么弄的啊</a></p>
-                                        <p>下一个：<a href="/news/article-25347.htm">动物疫苗要打几针才有效（动物疫苗一针多少钱）</a></p>
+                                        <p>上一个：<a href="/news/article-26738.htm">C语言与java中函数传参比较</a></p>
                                     </div>
                                     </div>
                     <div class="col-md-3">
@@ -166,16 +165,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-21-node-share-links.htm" title="11月21日→22.5M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月21日→22.5M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-1-node-share-links.htm" title="11月1日→21.9M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月1日→21.9M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-18907.htm" title="教你用jquery实现网页的楼梯效果">教你用jquery实现网页的楼梯效果</a></li>
-                        <li class="py-2"><a href="/news/article-26290.htm" title="func-spring-boot-starter 匿名函数托管">func-spring-boot-starter 匿名函数托管</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-high-speed-nodes.htm" title="11月20日→21.4M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月20日→21.4M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-25347.htm" title="动物疫苗要打几针才有效（动物疫苗一针多少钱）">动物疫苗要打几针才有效（动物疫苗一针多少钱）</a></li>
-                        <li class="py-2"><a href="/news/article-25808.htm" title="宠物医院坑人怎么投诉（宠物医院该向哪里投诉）">宠物医院坑人怎么投诉（宠物医院该向哪里投诉）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-25-node-share-links.htm" title="11月25日→18.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月25日→18.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-node-subscribe.htm" title="11月13日→20.2M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月13日→20.2M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-27-node-share.htm" title="11月27日→19.5M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月27日→19.5M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-node-share-links.htm" title="11月14日→22M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月14日→22M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-22571.htm" title="建议穷人养的10种猫母猫图片（穷人养猫还是富人养猫）">建议穷人养的10种猫母猫图片（穷人养猫还是富人养猫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-free-node-subscribe.htm" title="11月22日→20.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月22日→20.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-node-subscribe.htm" title="11月2日→23M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月2日→23M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24377.htm" title="动物疫苗销售好做吗知乎 动物疫苗销售好做吗知乎">动物疫苗销售好做吗知乎 动物疫苗销售好做吗知乎</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-high-speed-nodes.htm" title="11月24日→20.5M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月24日→20.5M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21740.htm" title="mysql 数据库密码问题">mysql 数据库密码问题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-node-share-links.htm" title="10月31日→19.6M/S|2024年最新免费节点Open Clash Node订阅链接地址">10月31日→19.6M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21197.htm" title="中国宠物粮食品牌有哪些名字（中国宠物粮食品牌有哪些名字呢）">中国宠物粮食品牌有哪些名字（中国宠物粮食品牌有哪些名字呢）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-node-subscribe.htm" title="11月9日→20.1M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月9日→20.1M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -187,7 +186,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
