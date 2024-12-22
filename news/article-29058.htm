@@ -1,0 +1,263 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-29058.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>极品vue3中setup的细节,以及定义多个响应式reactive</title>
+        <meta name="description" content="vue3 setup reactive作用: 定义多个数据的响应式 const proxy = reactive(obj): 接收一个普通对象然后返回该普通对象的响应式代理器对象 响应式转换是“深层的" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                                                        <a href="/">
+                                        <span>Open Clash Node</span>
+                                    </a>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                <li><a href="#">关于</a></li>
+                                        <li><a href="#">联系</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>极品vue3中setup的细节,以及定义多个响应式reactive</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p><strong>vue3 setup reactive</strong><br /><em>作用: 定义多个数据的响应式<br /> const proxy = reactive(obj): 接收一个普通对象然后返回该普通对象的响应式代理器对象<br /> 响应式转换是“深层的”：会影响对象内部所有嵌套的属性<br /> 内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据都是响应式的</em></p> <pre><code class="prism language-javascript"><span class="token operator">&lt;</span>script lang<span class="token operator">=</span><span class="token string">"ts"</span><span class="token operator">&gt;</span><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> defineComponent<span class="token punctuation">,</span> reactive<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">"vue"</span><span class="token punctuation">;</span><span class="token keyword">export</span><span class="token keyword">default</span><span class="token function">defineComponent</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>   name<span class="token punctuation">:</span><span class="token string">"App"</span><span class="token punctuation">,</span>   components<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">const</span> obj<span class="token operator">=</span><span class="token punctuation">{<!-- --></span>       name<span class="token punctuation">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>       age<span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">,</span>       wiff<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span>         name<span class="token punctuation">:</span><span class="token string">"小红"</span><span class="token punctuation">,</span>         age<span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">,</span>         car<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">"汽车"</span><span class="token punctuation">,</span><span class="token string">"房车"</span><span class="token punctuation">,</span><span class="token string">"游轮"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment">// 作用: 定义多个数据的响应式</span><span class="token comment">// const proxy = reactive(obj): 接收一个普通对象然后返回该普通对象的响应式代理器对象</span><span class="token comment">// 响应式转换是“深层的”：会影响对象内部所有嵌套的属性</span><span class="token comment">// 内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据都是响应式的</span><span class="token comment">// 把数据变成响应式对象</span><span class="token comment">// 返回一个proxy的代理对象,被代理的目标对象就是obj对象</span><span class="token comment">// sum代理对象          obj是目标对象</span><span class="token comment">// 代理对象是响应式的,删除或更新或添加,操作代理对象就ok,目标对象中的数据也会随着发生变化,界面渲染,也需要代理对象</span><span class="token keyword">const</span> sum<span class="token operator">=</span><span class="token function">reactive</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">let</span><span class="token function-variable function">dian</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>       sum<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">"小红"</span><span class="token punctuation">;</span>       sum<span class="token punctuation">.</span>age<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token punctuation">{<!-- --></span>       sum<span class="token punctuation">,</span>       dian<span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span></code></pre> <h2><a id="vue3vue2_48" rel="nofollow"></a>vue3响应式与vue2响应式的区别</h2> <p><strong>vue2的响应式</strong><br /> 核心:<br /> 对象: 通过defineProperty对对象的已有属性值的读取和修改进行劫持(监视/拦截)<br /> 数组: 通过重写数组更新数组一系列更新元素的方法来实现元素修改的劫持</p> <pre><code class="prism language-javascript">Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span><span class="token string">'count'</span><span class="token punctuation">,</span><span class="token punctuation">{<!-- --></span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre> <p><strong>vue3的响应式主要通过proxy与调用reflect</strong><br /> 核心:<br /> 通过Proxy(代理): 拦截对data任意属性的任意(13种)操作, 包括属性值的读写, 属性的添加, 属性的删除等…<br /> 通过 Reflect(反射): 动态对被代理对象的相应属性进行特定的操作</p> <pre><code class="prism language-javascript"><span class="token comment">/*      proxyUser是代理对象, user是被代理对象     后面所有的操作都是通过代理对象来操作被代理对象内部属性     */</span><span class="token keyword">const</span> proxyUser<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">Proxy</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span><span class="token punctuation">{<!-- --></span><span class="token keyword">get</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'劫持get()'</span><span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token keyword">return</span> Reflect<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token keyword">set</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> prop<span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'劫持set()'</span><span class="token punctuation">,</span> prop<span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token keyword">return</span> Reflect<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> prop<span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// (2)</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">deleteProperty</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'劫持delete属性'</span><span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token keyword">return</span> Reflect<span class="token punctuation">.</span><span class="token function">deleteProperty</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <h2><a id="vue3setup_90" rel="nofollow"></a>vue3中setup的细节</h2> <p><strong>一.setup执行的时机</strong><br /> 在beforeCreate之前执行(一次), 此时组件对象还没有创建<br /> this是undefined, 不能通过this来访问data/computed/methods / props<br /> 其实所有的composition API相关回调函数中也都不可以<br /><strong>二.setup的返回值</strong><br /> 一般都返回一个对象: 为模板提供数据, 也就是模板中可以直接使用此对象中的所有属性/方法<br /> 返回对象中的属性会与data函数返回对象的属性合并成为组件对象的属性<br /> 返回对象中的方法会与methods中的方法合并成功组件对象的方法<br /> 如果有重名, setup优先<br /> 注意:<br /> 一般不要混合使用: methods中可以访问setup提供的属性和方法, 但在setup方法中不能访问data和methods<br /> setup不能是一个async函数: 因为返回值不再是return的对象, 而是promise, 模板看不到return对象中的属性数据</p> <p><strong>三.setup的参数</strong><br /> setup(props, context) / setup(props, {attrs, slots, emit})<br /> props: 包含props配置声明且传入了的所有属性的对象<br /> attrs: 包含没有在props配置中声明的属性的对象, 相当于 this.<span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>        a</p> <p>        t</p> <p>        t</p> <p>        r</p> <p>        s</p> <p>        s</p> <p>        l</p> <p>        o</p> <p>        t</p> <p>        s</p> <p>        :</p> <p>        包</p> <p>        含</p> <p>        所</p> <p>        有</p> <p>        传</p> <p>        入</p> <p>        的</p> <p>        插</p> <p>        槽</p> <p>        内</p> <p>        容</p> <p>        的</p> <p>        对</p> <p>        象</p> <p>        ,</p> <p>        相</p> <p>        当</p> <p>        于</p> <p>        t</p> <p>        h</p> <p>        i</p> <p>        s</p> <p>        .</p> <p>       attrs slots: 包含所有传入的插槽内容的对象, 相当于 this.</span><span class="katex-html"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right: 0.02778em;">r</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right: 0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord cjk_fallback">包</span><span class="mord cjk_fallback">含</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">入</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">插</span><span class="mord cjk_fallback">槽</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">容</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">象</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord cjk_fallback">相</span><span class="mord cjk_fallback">当</span><span class="mord cjk_fallback">于</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord">.</span></span></span></span></span>slots<br /> emit: 用来分发自定义事件的函数, 相当于 this.$emit</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-28593.htm">在动物医院上班怎么样（动物医院职位）</a></p>
+                                        <p>下一个：<a href="/news/article-29059.htm">免费宠物领养协议书范本（免费宠物领养协议书范本下载）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-node-share-links.htm" title="11月15日→19.7M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月15日→19.7M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-27-free-high-speed-nodes.htm" title="10月27日→20M/S|2024年最新免费节点Open Clash Node订阅链接地址">10月27日→20M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26290.htm" title="func-spring-boot-starter 匿名函数托管">func-spring-boot-starter 匿名函数托管</a></li>
+                        <li class="py-2"><a href="/news/article-21196.htm" title="动物疫苗的使用方法及注意事项视频教程全集（动物疫苗注射器视频）">动物疫苗的使用方法及注意事项视频教程全集（动物疫苗注射器视频）</a></li>
+                        <li class="py-2"><a href="/news/article-19825.htm" title="springboot整合XXL-JOB实行动态定时任务">springboot整合XXL-JOB实行动态定时任务</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-node-share-links.htm" title="11月26日→19M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月26日→19M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23028.htm" title="SpringBoot 转发请求至指定页面">SpringBoot 转发请求至指定页面</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-node-subscribe.htm" title="12月17日→22.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月17日→22.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-node-subscribe.htm" title="11月5日→20.5M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月5日→20.5M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-node-subscribe.htm" title="11月23日→20.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月23日→20.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
