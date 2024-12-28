@@ -1,0 +1,263 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-31909.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>C#多态性02</title>
+        <meta name="description" content="首先理解一下什么叫多态。同一操作作用于不同的对象，可以有不同的解释，产生不同的执行结果，这就是多态性。 多态性通过派生类覆写基类中的虚函数型方法来实现。 &nbsp; 多态性分为两种，一种是编译时的多" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                                                        <a href="/">
+                                        <span>Open Clash Node</span>
+                                    </a>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                <li><a href="#">关于</a></li>
+                                        <li><a href="#">联系</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>C#多态性02</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div id="cnblogs_post_body" class="blogpost-body"> <p><font face="Arial">首先理解一下什么叫多态。同一操作作用于不同的对象，可以有不同的解释，产生不同的执行结果，这就是<span class="hilite1">多态性</span>。</font></p> <p><font face="Arial"><span class="hilite1">多态性</span>通过派生类覆写基类中的虚函数型方法来实现。</font></p> <p><font face="Arial">&nbsp;</font></p> <p><font face="Arial"><span class="hilite1">多态性</span>分为两种，一种是编译时的<span class="hilite1">多态性</span>，一种是运行时的<span class="hilite1">多态性</span>。</font></p> <p><font face="Arial">编译时的<span class="hilite1">多态性</span>：编译时的<span class="hilite1">多态性</span>是通过重载来实现的。对于非虚的成员来说，系统在编译时，根据传递的参数、返回的类型等信息决定实现何种操作。</font></p> <p><font face="Arial">运行时的<span class="hilite1">多态性</span>：运行时的<span class="hilite1">多态性</span>就是指直到系统运行时，才根据实际情况决定实现何种操作。C#中运行时的<span class="hilite1">多态性</span>是通过覆写虚成员实现。</font></p> <p><font face="Arial">&nbsp;</font></p> <p><font face="Arial">下面我们来分别说明一下多态中涉及到的四个概念：重载，覆写，虚方法和抽象方法。</font></p> <p><font face="Arial"><strong>重载和覆写的区别：</strong></font></p> <p><font face="Arial"><strong style="color:#FF0000;"><u>重载</u></strong></font></p> <p><font face="Arial">类中定义的方法的不同版本</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public int Calculate(int x, int y)</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public double Calculate(double x, double y)</font></p> <p><font face="Arial">特点（两必须一可以）</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 方法名必须相同</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 参数列表必须不相同</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 返回值类型可以不相同</font></p> <p><font face="Arial"><strong style="color:#FF0000;"><u>覆写</u></strong></font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 子类中为满足自己的需要来重复定义某个方法的不同实现。</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 通过使用override关键字来实现覆写。</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 只有虚方法和抽象方法才能被覆写。</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 要求（三相同）</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 相同的方法名称</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 相同的参数列表</font></p> <p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 相同的返回值类型</font></p> <p><font face="Arial">最后再来介绍一下虚方法和抽象方法</font></p> <p><font face="Arial">虚方法:</font></p> <p><font face="Arial">声明使用virtual关键字。</font></p> <p><font face="Arial">调用虚方法，运行时将确定调用对象是什么类的实例，并调用适当的覆写的方法。</font></p> <p><font face="Arial">虚方法可以有实现体。</font></p> <p> <font face="Arial"> </font></p> <p>抽象方法:</p> <p>必须被派生类覆写的方法。</p> <p>可以看成是没有实现体的虚方法。</p> <p>如果类中包含抽象方法，那么类就必须定义为抽象类，不论是否还包含其他一般方法。</p> <p>注意：</p> <p>昨天突然发现c＃，和c＋＋俩种语言在<span class="hilite1">多态性</span>的 实现机制 上面的细微差别。<br />&nbsp;&nbsp;&nbsp; <br />如果是C＋＋，在基类的构造函数里面调用虚函数的话，会调用本类的不会调用派生类的，原因是基类构造的时候，虚表还没有被派生类继承和修改。</p> <p>&nbsp;&nbsp;&nbsp; 但如果是C＃，那就不同了，在基类的构造函数里面照样调用派生类的。不知道有谁知道c＃它的这种底层机制是怎样的？<br />-------是这样的，C++会先初始化基类，然后逐级初始化派生类型。C#则是一开始就把对象创建好了，然后逐个调用构造函数。本质区别在于C++的构造函数的任务是初始化，C#则不然，C#的类型的任何字段不必初始化，均有默认值，所以C#在调用构造函数之前就已经将对象初始化完毕了。</p> <p>通过继承，一个类可以用作多种类型：可以用作它自己的类型、任何基类型，或者在实现接口时用作任何接口类型。这称为<span class="hilite1">多态性</span>。C#中的每种类型都是多态的。类型可用作它们自己的类型或用作Object实例，因为任何类型都自动将Object当作基类型。&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <br />&nbsp; <span class="hilite1">多态性</span>不仅对派生类很重要，对基类也很重要。任何情况下，使用基类实际上都可能是在使用已强制转换为基类类型的派生类对象。基类的设计者可以预测到其基类中可能会在派生类中发生更改的方面。例如，表示汽车的基类可能包含这样的行为：当考虑的汽车为小型货车或敞篷汽车时，这些行为将会改变。基类可以将这些类成员标记为虚拟的，从而允许表示敞篷汽车和小型货车的派生类重写该行为。</p> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-31326.htm">动物疫苗包括哪些（动物疫苗是什么）</a></p>
+                                        <p>下一个：<a href="/news/article-31911.htm">动物防疫预防针是什么（动物防疫预防针是什么意思）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-19364.htm" title="猫咪回收平台 猫咪回收平台有哪些">猫咪回收平台 猫咪回收平台有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-29531.htm" title="动物疫苗多长时间内打有效 动物疫苗多长时间内打有效果">动物疫苗多长时间内打有效 动物疫苗多长时间内打有效果</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-node-share-links.htm" title="12月15日→20M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月15日→20M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-31911.htm" title="动物防疫预防针是什么（动物防疫预防针是什么意思）">动物防疫预防针是什么（动物防疫预防针是什么意思）</a></li>
+                        <li class="py-2"><a href="/news/article-22574.htm" title="猫三联三针间隔多久打一次疫苗（猫三联三针多久打完）">猫三联三针间隔多久打一次疫苗（猫三联三针多久打完）</a></li>
+                        <li class="py-2"><a href="/news/article-25346.htm" title="如何解决服务器网站高并发问题,大型网站如何解决高并发带来的问题">如何解决服务器网站高并发问题,大型网站如何解决高并发带来的问题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-node-subscribe-links.htm" title="10月26日→19.1M/S|2024年最新免费节点Open Clash Node订阅链接地址">10月26日→19.1M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-node-subscribe.htm" title="11月5日→20.5M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月5日→20.5M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-node-share-links.htm" title="12月11日→19.3M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月11日→19.3M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-free-subscribe-node.htm" title="10月30日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址">10月30日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
