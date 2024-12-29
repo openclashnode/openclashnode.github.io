@@ -1,0 +1,263 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-32871.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>nginx反向代理原理简介</title>
+        <meta name="description" content="From：http://zcnick.blog.51cto.com/1992444/774662 &nbsp; 1、反向代理的概念 &nbsp;&nbsp;反向代理（Reverse&nbsp;Prox" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                                                        <a href="/">
+                                        <span>Open Clash Node</span>
+                                    </a>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                <li><a href="#">关于</a></li>
+                                        <li><a href="#">联系</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>nginx反向代理原理简介</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div class="artical-content-bak main-content editor-side-new"> <div class="con editor-preview-side" id="result"> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">From：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://zcnick.blog.51cto.com/1992444/774662"  style="color:rgb(63,167,203);" rel="nofollow">http://zcnick.blog.51cto.com/1992444/774662</a></p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">1、反向代理的概念</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;反向代理（Reverse&nbsp;Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">通常的代理服务器，只用于代理内部网络对Internet外部网络的连接请求，客户机必须指定代理服务器，并将本来要直接发送到Web服务器上的http请求发送到代理服务器中。不支持外部网络对内部网络的连接请求，因为内部网络对外部网络是不可见的。当一个代理服务器能够代理外部网络上的主机，访问内部网络时，这种代理服务的方式称为反向代理服务。此时代理服务器对外就表现为一个Web服务器，外部网络就可以简单把它当作一个标准的Web服务器而不需要特定的配置。不同之处在于，这个服务器没有保存任何网页的真实数据，所有的静态网页或者CGI程序，都保存在内部的Web服务器上。因此对反向代理服务器的***并不会使得网页信息遭到破坏，这样就增强了Web服务器的安全性。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和外部网络之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载的一种技术。反向代理是针对web服务器提高加速功能，作为代理缓存，它并不是针对浏览器用户，而针对一台或多台特定的web服务器，它可以代理外部网络对内部网络的访问请求。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">方向代理服务器会强制将外部网络对要代理的服务器的访问经过它，这样反向代理服务器负责接收客户端的请求，然后到源服务器上获取内容，把内容返回给用户，并把内容保存到本地，以便日后再收到同样的信息请求时，它会把本地缓存里的内容直接发给用户，以减少后端web服务器的压力，提高响应速度。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">2、反向代理服务器与内容服务器</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;代理服务器充当服务器的替身，如果您的内容服务器具有必须保持安全的敏感信息，如信用卡号数据库，可在防火墙外部设置一个代理服务器作为内容服务器的替身。当外部客户机尝试访问内容服务器时，会将其送到代理服务器。实际内容位于内容服务器上，在防火墙内部受到安全保护。代理服务器位于防火墙外部，在客户机看来就像是内容服务器。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">当客户机向站点提出请求时，请求将转到代理服务器。然后，代理服务器通过防火墙中的特定通路，将客户机的请求发送到内容服务器。内容服务器再通过该通道将结果回传给代理服务器。代理服务器将检索到的信息发送给客户机，好像代理服务器就是实际的内容服务器。如果内容服务器返回错误消息，代理服务器会先行截取该消息并更改标头中列出的任何URL，然后再将消息发送给客户机。如此可防止外部客户机获取内部内容服务器的重定向URL。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">这样，代理服务器就在安全数据库和可能的恶意***之间提供了又一道屏障。与有权访问整个数据库的情况相对比，就算是侥幸***成功，作恶者充其量也仅限于访问单个事务中所涉及的信息。未经授权的用户无法访问到真正的内容服务器，因为防火墙通路只允许代理服务器有权进行访问。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">3、反向代理服务器的工作流程</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">1）&nbsp;用户通过域名发出访问web服务器的请求，该域名被DNS服务器解析为反向代理服务器的IP地址；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">2）&nbsp;反向代理服务器接受用户的请求；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">3）&nbsp;反向代理服务器在本地缓存中查找请求的内容，找到后直接把内容发送给用户；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">4）&nbsp;如果本地缓存里没有用户所请求的信息内容，反向代理服务器会代替用户向源服务器请求同样的信息内容，并把信息内容发给用户，如果信息内容是缓存的还会把它保存到缓存中。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">4、反向代理的好处</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">1）&nbsp;解决了网站服务器对外可见的问题；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">2）&nbsp;节约了有限的IP地址资源，企业内所有的网站共享一个在internet中注册的IP地址，这些服务器分配私有地址，采用虚拟主机的方式对外提供服务；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">3）&nbsp;保护了真实的web服务器，web服务器对外不可见，外网只能看到反向代理服务器，而反向代理服务器上并没有真实数据，因此，保证了web服务器的资源安全；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">4）&nbsp;加速了对网站访问速度，减轻web服务器的负担，反向代理具有缓存网页的功能，如果用户需要的内容在缓存中，则可以直接从代理服务其中获取，减轻了web服务器的负荷，同时也加快了用户的访问速度。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">5、Nginx作为反向代理实现负载均衡的示例</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">我们介绍了nginx这个轻量级的高性能server主要可以干的两件事情：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">直接作为http&nbsp;server(代替apache，对PHP需要FastCGI处理器支持，这个我们之后介绍)；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">另外一个功能就是作为反向代理服务器实现负载均衡(如下我们就来举例说明实际中如何使用nginx实现负载均衡)。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">因为nginx在处理并发方面的优势，现在这个应用非常常见。当然了Apache的mod_proxy和mod_cache结合使用也可以实现对多台app&nbsp;server的反向代理和负载均衡，但是在并发处理方面apache还是没有nginx擅长。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">1)环境：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">a.&nbsp;我们本地是Windows系统，然后使用VirutalBox安装一个虚拟的Linux系统。在本地的Windows系统上分别安装nginx(侦听8080端口)和apache(侦听80端口)。在虚拟的Linux系统上安装apache(侦听80端口)。这样我们相当于拥有了1台nginx在前端作为反向代理服务器；后面有2台apache作为应用程序服务器(可以看作是小型的server&nbsp;cluster。;-)&nbsp;)；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">b.&nbsp;nginx用来作为反向代理服务器，放置到两台apache之前，作为用户访问的入口；nginx仅</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">仅处理静态页面，动态的页面(php请求)统统都交付给后台的两台apache来处理。也就是说，可以把我们网站的静态页面或者文件放置到nginx的目录下；动态的页面和数据库访问都保留到后台的apache服务器上。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">c.&nbsp;如下介绍两种方法实现server&nbsp;cluster的负载均衡。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">我们假设前端nginx(为127.0.0.1:80)仅仅包含一个静态页面index.html；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">后台的两个apache服务器(分别为localhost:80和158.37.70.143:80)，一台根目录放置phpMyAdmin文件夹和test.php(里面测试代码为print&nbsp;"server1";)，另一台根目录仅仅放置一个test.php(里面测试代码为print&nbsp;"server2";)。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">2)针对不同请求的负载均衡：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">a.&nbsp;在最简单地构建反向代理的时候(nginx仅仅处理静态不处理动态内容，动态内容交给后台的apache&nbsp;server来处理)，我们具体的设置为：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">在nginx.conf中修改：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">location&nbsp;~&nbsp;\.php$&nbsp;{<!-- --></p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass&nbsp;158.37.70.143:80&nbsp;;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">}</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">这样当客户端访问localhost:8080/index.html的时候，前端的nginx会自动进行响应；&nbsp;&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">当用户访问localhost:8080/test.php的时候(这个时候nginx目录下根本就没有该文件)，但是通过上面的设置location&nbsp;~&nbsp;\.php$(表示正则表达式匹配以.php结尾的文件，详情参看location是如何定义和匹配的http://wiki.nginx.org/NginxHttpCoreModule)&nbsp;，nginx服务器会自动pass给158.37.70.143的apache服务器了。该服务器下的test.php就会被自动解析，然后将html的结果页面返回给nginx，然后nginx进行显示(如果nginx使用memcached模块或者squid还可以支持缓存)，输出结果为打印server2。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">如上是最为简单的使用nginx做为反向代理服务器的例子；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">b.&nbsp;我们现在对如上例子进行扩展，使其支持如上的两台服务器。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">我们设置nginx.conf的server模块部分，将对应部分修改为：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">location&nbsp;~^&nbsp;/nagios/&nbsp;{<!-- --></p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass&nbsp;127.0.0.1:80&nbsp;;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">}</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">location&nbsp;~&nbsp;\.php$&nbsp;{<!-- --></p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass&nbsp;158.37.70.143:80&nbsp;;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">}</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">上面第一个部分location&nbsp;^~&nbsp;/phpMyAdmin/，表示不使用正则表达式匹配(^~)，而是直接匹配，也就是如果客户端访问的URL是以http://localhost:8080/phpMyAdmin/&nbsp;开头的话(本地的nginx目录下根本没有phpMyAdmin目录)，nginx会自动pass到127.0.0.1:80&nbsp;的Apache服务器，该服务器对phpMyAdmin目录下的页面进行解析，然后将结果发送给nginx，后者显示；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">如果客户端访问URL是http://localhost/test.php&nbsp;的话，则会被pass到158.37.70.143:80&nbsp;的</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">apache进行处理。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">因此综上，我们实现了针对不同请求的负载均衡。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">如果用户访问静态页面index.html，最前端的nginx直接进行响应；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">如果用户访问test.php页面的话，158.37.70.143:80&nbsp;的Apache进行响应；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">如果用户访问目录phpMyAdmin下的页面的话，127.0.0.1:80&nbsp;的Apache进行响应；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">3)访问同一页面的负载均衡：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">即用户访问http://localhost:8080/test.php&nbsp;这个同一页面的时候，我们实现两台服务器的负载均衡(实际情况中，这两个服务器上的数据要求同步一致，这里我们分别定义了打印server1和server2是为了进行辨认区别)。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">a.&nbsp;现在我们的情况是在windows下nginx是localhost侦听8080端口；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">两台apache，一台是127.0.0.1:80(包含test.php页面但是打印server1)，另一台是虚拟机的158.37.70.143:80(包含test.php页面但是打印server2)。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">b.&nbsp;因此重新配置nginx.conf为：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">首先在nginx的配置文件nginx.conf的http模块中添加，服务器集群server&nbsp;cluster(我们这里是两台)的定义：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">upstream&nbsp;myCluster&nbsp;{<!-- --></p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server&nbsp;127.0.0.1:80&nbsp;;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server&nbsp;158.37.70.143:80&nbsp;;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">}</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">表示这个server&nbsp;cluster包含2台服务器&gt;然后在server模块中定义，负载均衡：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">location&nbsp;~&nbsp;\.php$&nbsp;{<!-- --></p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;proxy_pass&nbsp;http://myCluster&nbsp;;&nbsp;#这里的名字和上面的cluster的名字相同</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;proxy_redirect&nbsp;off;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;proxy_set_header&nbsp;Host&nbsp;$host;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;proxy_set_header&nbsp;X-Real-IP&nbsp;$remote_addr;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;proxy_set_header&nbsp;X-Forwarded-For&nbsp;$proxy_add_x_forwarded_for;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">}</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">这样的话，如果访问http://localhost:8080/test.php&nbsp;页面的话，nginx目录下根本没有该文件，但是它会自动将其pass到myCluster定义的服务区机群中，分别由127.0.0.1:80;或者158.37.70.143:80;来做处理。上面在定义upstream的时候每个server之后没有定义权重，表示两者均衡；如果希望某个更多响应的话例如：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">upstream&nbsp;myCluster&nbsp;{<!-- --></p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;server&nbsp;127.0.0.1:80&nbsp;weight=5;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;&nbsp;&nbsp;server&nbsp;158.37.70.143:80&nbsp;;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">}</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">这样表示5/6的几率访问第一个server,1/6访问第二个。另外还可以定义max_fails和fail_timeout等参数。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">综上，我们使用nginx的反向代理服务器reverse&nbsp;proxy&nbsp;server的功能，将其布置到多台apache&nbsp;server的前端。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">nginx仅仅用来处理静态页面响应和动态请求的代理pass，后台的apache&nbsp;server作为app&nbsp;server来对前台pass过来的动态页面进行处理并返回给nginx。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">&nbsp;</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">通过以上的架构，我们可以实现nginx和多台apache构成的机群cluster的负载均衡。两种均衡：</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">1)可以在nginx中定义访问不同的内容，代理到不同的后台server；如上例子中的访问phpMyAdmin目录代理到第一台server上；访问test.php代理到第二台server上；</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">2)可以在nginx中定义访问同一页面，均衡(当然如果服务器性能不同可以定义权重来均衡)地代理到不同的后台server上。如上的例子访问test.php页面，会均衡地代理到server1或者server2上。</p> <p style="color:rgb(69,69,69);font-family:tahoma, helvetica, arial;font-size:14px;line-height:21px;">实际应用中，server1和server2上分别保留相同的app程序和数据，需要考虑两者的数据同步。</p> <p></p> </p></div> </div> <p>转载于:https://blog.51cto.com/wameide/1607264</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-32386.htm">MySQL日期和时间数据类型（DATE、TIME、 DATETIME、 TIMESTAMP和YEAR）</a></p>
+                                        <p>下一个：<a href="/news/article-32872.htm">猫咪驱虫大概多少钱一只（猫咪驱虫多少钱一次?）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-node-share-links.htm" title="12月5日→19M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月5日→19M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-free-high-speed-nodes.htm" title="11月18日→21.6M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月18日→21.6M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-28593.htm" title="在动物医院上班怎么样（动物医院职位）">在动物医院上班怎么样（动物医院职位）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-free-high-speed-nodes.htm" title="12月18日→22.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月18日→22.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24883.htm" title="Redis的高并发是如何支持的">Redis的高并发是如何支持的</a></li>
+                        <li class="py-2"><a href="/news/article-20282.htm" title="专门卖宠物用品的app（专门卖宠物用品的软件叫什么）">专门卖宠物用品的app（专门卖宠物用品的软件叫什么）</a></li>
+                        <li class="py-2"><a href="/news/article-21196.htm" title="动物疫苗的使用方法及注意事项视频教程全集（动物疫苗注射器视频）">动物疫苗的使用方法及注意事项视频教程全集（动物疫苗注射器视频）</a></li>
+                        <li class="py-2"><a href="/news/article-30488.htm" title="长春宠物医院排名（长春良心的宠物医院）">长春宠物医院排名（长春良心的宠物医院）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-free-subscribe-node.htm" title="12月16日→20.7M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月16日→20.7M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29987.htm" title="孕妇让猫咪抓伤有一点血（怀孕让猫挠了出血了没有事吧）">孕妇让猫咪抓伤有一点血（怀孕让猫挠了出血了没有事吧）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
