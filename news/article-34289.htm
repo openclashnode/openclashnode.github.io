@@ -1,0 +1,266 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-34289.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Go语学习笔记 &#8211; gorm使用 &#8211; 表增删改查 | Web框架Gin（八）</title>
+        <meta name="description" content="目录 新增修改接口 查询所有未逻辑删除接口 根据ID删除接口 时间字段序列化问题处理 接口验证 小结  学习笔记，写到哪是哪。 接着上一篇文章：Go语学习笔记 - gorm使用 - 数据库配置、表新增" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                                                        <a href="/">
+                                        <span>Open Clash Node</span>
+                                    </a>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                <li><a href="#">关于</a></li>
+                                        <li><a href="#">联系</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>Go语学习笔记 &#8211; gorm使用 &#8211; 表增删改查 | Web框架Gin（八）</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p id="main-toc"><strong>目录</strong></p> <p id="%E6%96%B0%E5%A2%9E%E4%BF%AE%E6%94%B9%E6%8E%A5%E5%8F%A3-toc" style="margin-left:0px;"><a href="#%E6%96%B0%E5%A2%9E%E4%BF%AE%E6%94%B9%E6%8E%A5%E5%8F%A3" rel="nofollow">新增修改接口</a></p> <p id="%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E6%9C%AA%E9%80%BB%E8%BE%91%E5%88%A0%E9%99%A4%E6%8E%A5%E5%8F%A3-toc" style="margin-left:0px;"><a href="#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E6%9C%AA%E9%80%BB%E8%BE%91%E5%88%A0%E9%99%A4%E6%8E%A5%E5%8F%A3" rel="nofollow">查询所有未逻辑删除接口</a></p> <p id="%E6%A0%B9%E6%8D%AEID%E5%88%A0%E9%99%A4%E6%8E%A5%E5%8F%A3-toc" style="margin-left:0px;"><a href="#%E6%A0%B9%E6%8D%AEID%E5%88%A0%E9%99%A4%E6%8E%A5%E5%8F%A3" rel="nofollow">根据ID删除接口</a></p> <p id="%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5%E5%BA%8F%E5%88%97%E5%8C%96%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86-toc" style="margin-left:0px;"><a href="#%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5%E5%BA%8F%E5%88%97%E5%8C%96%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86" rel="nofollow">时间字段序列化问题处理</a></p> <p id="%E6%8E%A5%E5%8F%A3%E9%AA%8C%E8%AF%81-toc" style="margin-left:0px;"><a href="#%E6%8E%A5%E5%8F%A3%E9%AA%8C%E8%AF%81" rel="nofollow">接口验证</a></p> <p id="%E5%B0%8F%E7%BB%93-toc" style="margin-left:0px;"><a href="#%E5%B0%8F%E7%BB%93" rel="nofollow">小结</a></p> <hr id="hr-toc"/> <p>学习笔记，写到哪是哪。</p> <p>接着上一篇文章：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/zhiweihongyan1/article/details/125482418"  title="Go语学习笔记 - gorm使用 - 数据库配置、表新增 | Web框架Gin（七）_剑客阿良_ALiang的博客-CSDN博客" rel="nofollow">Go语学习笔记 - gorm使用 - 数据库配置、表新增 | Web框架Gin（七）_剑客阿良_ALiang的博客-CSDN博客</a></p> <p>数据库初始化配置已经弄好了，上一篇文章中简单的写了一个demo接口。</p> <p>本篇文章接着上一篇，对表进行增删改查，同时对时间字段进行特殊处理。</p> <p>项目地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/Hy-1990/learn-gin"  title="github地址" rel="nofollow">github地址</a></p> </h1> <p>一般我们在实际项目中，会把新增接口和更新修改接口合并，也就是传递参数中带ID的话则为修改，不带ID的话为新增。</p> <p>按照项目结构的编写方式，在student_service下新增AddOrUpdateStudent方法。</p> <p><strong><span style="color:#fe2c24;">方法代码如下：</span></strong></p> <pre><code class="language-Go">//新增或者更新学生 func (t StudentImpl) AddOrUpdateStudent(student *db_entity.Student) rsp.ResponseMsg { 	log.Logger.Info("新增或者更新学生参数:", log.Any("Student", student)) 	_db := mysql.GetDB() 	if student.Id != 0 { 		_db.Model(&amp;student).Updates(student) 	} else { 		_db.Create(&amp;student) 	} 	return *rsp.SuccessMsg("操作成功") }</code></pre> <p><strong><span style="color:#fe2c24;">注意：在接口测试中你会发现传递update_time时间字段解析错误，在下面的小结里面会讲到自定义事件结构体来解决json时间字段序列化问题。</span></strong></p> </h1> <p>在student_service下新增SelectAll方法，对del_flag为0的用户进行查询。</p> <p><strong><span style="color:#fe2c24;">方法代码如下：</span></strong></p> <pre><code class="language-Go">//查询所有学生 func (t StudentImpl) SelectAll() rsp.ResponseMsg { 	log.Logger.Info("查询所有学生") 	_db := mysql.GetDB() 	var _result []db_entity.Student 	_db.Where("del_flag = ?", 0).Find(&amp;_result) 	return *rsp.SuccessMsg(_result) }</code></pre> </h1> <p>在student_service下新增根据ID删除数据接口。</p> <p><strong><span style="color:#fe2c24;">方法代码如下：</span></strong></p> <pre><code class="language-Go">//根据id删除学生 func (t StudentImpl) DeleteById(id int32) rsp.ResponseMsg { 	log.Logger.Info("根据id删除学生") 	_db := mysql.GetDB() 	_db.Delete(&amp;db_entity.Student{}, id) 	return *rsp.SuccessMsg("删除成功") }</code></pre> </h1> <p>由于json不能直接序列化time.Time类型，网上有多种解决方法，我这边主要采用自定义时间类型重写序列化方法的方法来解决。</p> <p>在constants目录下，创建common.go文件。</p> <p><span style="color:#fe2c24;"><strong>common.go代码如下：</strong></span></p> <pre><code class="language-Go">package constants  import ( 	"database/sql/driver" 	"fmt" 	"time" )  type HTime struct { 	time.Time }  var ( 	formatTime = "2006-01-02 15:04:05" )  func (t HTime) MarshalJSON() ([]byte, error) { 	formatted := fmt.Sprintf("\"%s\"", t.Format(formatTime)) 	return []byte(formatted), nil }  func (t *HTime) UnmarshalJSON(data []byte) (err error) { 	now, err := time.ParseInLocation(`"`+formatTime+`"`, string(data), time.Local) 	*t = HTime{Time: now} 	return }  func (t HTime) Value() (driver.Value, error) { 	var zeroTime time.Time 	if t.Time.UnixNano() == zeroTime.UnixNano() { 		return nil, nil 	} 	return t.Time, nil }  func (t *HTime) Scan(v interface{}) error { 	value, ok := v.(time.Time) 	if ok { 		*t = HTime{Time: value} 		return nil 	} 	return fmt.Errorf("can not convert %v to timestamp", v) } </code></pre> <p><strong><span style="color:#fe2c24;">注意：</span></strong></p> <p>1、重新定义HTime结构体，对序列化方法进行调整。</p> <p>2、Student结构体中UpdateTime字段数据类型调整为HTime，调整后如下。</p> <pre><code class="language-Go">type Student struct { 	Id         int32           `json:"id" gorm:"column:id;primary_key;AUTO_INCREMENT;comment:'id'"` 	Name       string          `json:"name" gorm:"column:name;type:varchar(255);comment:'名字'"` 	Age        int64           `json:"age" gorm:"column:age;comment:'年龄'"` 	Content    string          `json:"content" gorm:"column:content;type:varchar(255);comment:'描述'"` 	UpdateTime constants.HTime `json:"update_time" time_format:"unix" gorm:"column:update_time"` 	DelFlag    int64           `json:"del_flag" gorm:"column:del_flag;comment:'删除标识'"` }</code></pre> </h1> <p><strong><span style="color:#fe2c24;">controller层增加接口代码，如下：</span></strong></p> <pre><code class="language-Go">//新增或者修改一个学生信息 func (s StudentController) AddOrUpdateStudent(context *gin.Context) { 	var addOrUpdateStudent db_entity.Student 	log.Logger.Info("AddOrUpdateStudent接口") 	if err := context.ShouldBindJSON(&amp;addOrUpdateStudent); err != nil { 		log.Logger.Panic("参数异常") 	}  	if _, err := json.Marshal(addOrUpdateStudent); err != nil { 		log.Logger.Panic("参数解析异常") 	} 	_rsp := services.StudentServ.AddOrUpdateStudent(&amp;addOrUpdateStudent) 	context.JSON(http.StatusOK, _rsp) }  //查询所有学生 func (s StudentController) SelectAll(context *gin.Context) { 	log.Logger.Info("SelectAll接口") 	_rsp := services.StudentServ.SelectAll() 	context.JSON(http.StatusOK, _rsp) }  //根据id删除学生 func (s StudentController) DeleteById(context *gin.Context) { 	log.Logger.Info("DeleteById接口") 	_id := context.Query("id") 	_a, _ := strconv.ParseInt(_id, 10, 64) 	_rsp := services.StudentServ.DeleteById(int32(_a)) 	context.JSON(http.StatusOK, _rsp) }</code></pre> <p><strong><span style="color:#fe2c24;">router增加路由路径，如下：</span></strong></p> <pre><code class="language-Go">func StudentRouter(r *gin.Engine) { 	r.POST("/student/addOne", controllers.StudentCtrl.StudentAddOne) 	r.POST("/student/addOrUpdateStudent", controllers.StudentCtrl.AddOrUpdateStudent) 	r.GET("/student/selectAll", controllers.StudentCtrl.SelectAll) 	r.DELETE("/student/deleteById", controllers.StudentCtrl.DeleteById) } </code></pre> <p>分别验证一下3个接口。</p> <p><strong><span style="color:#4da8ee;">新增修改接口</span></strong></p> <p><img fetchpriority="high" decoding="async" alt="" height="445" src="http://img.555519.xyz/uploads/20221231/4581787ca0584efc68c58febe359675d.jpg"></p> <p><img decoding="async" alt="" height="25" src="http://img.555519.xyz/uploads/20221231/348af0dbb2093232a805ad4020a6ca1d.jpg"></p> <p><strong><span style="color:#4da8ee;">查询接口</span></strong></p> <p><img decoding="async" alt="" height="834" src="http://img.555519.xyz/uploads/20221231/ae4ea381fc5be491655732926abc198d.jpg"></p> <p><strong><span style="color:#4da8ee;">删除接口</span></strong></p> <p><img loading="lazy" decoding="async" alt="" height="477" src="http://img.555519.xyz/uploads/20221231/5fde0d5432cfdc9b30e756cb32cf23ab.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="115" src="http://img.555519.xyz/uploads/20221231/5353bd990eb5845657564ac6ffad8153.jpg"></p> </h1> <p>最近说实话有点忙了，在忙也要抽时间学习啊。后面继续操作一些复杂的查询操作。</p> <p>参考链接：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_26372385/article/details/107110173"  title="gorm time.Time 使用钩子函数解决反序列化问题_qq_26372385的博客-CSDN博客" rel="nofollow">gorm time.Time 使用钩子函数解决反序列化问题_qq_26372385的博客-CSDN博客</a></p> <p style="text-align:center;"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-33821.htm">被流浪猫咬伤轻微出血怎么办（被流浪猫咬流血了怎么办）</a></p>
+                                        <p>下一个：<a href="/news/article-34291.htm">同城宠物领养赠送（有没有同城领养宠物的小程序）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-19826.htm" title="广州领养宠物中心地址查询电话（广州市宠物领养）">广州领养宠物中心地址查询电话（广州市宠物领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-node-share-links.htm" title="12月11日→19.3M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月11日→19.3M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-32386.htm" title="MySQL日期和时间数据类型（DATE、TIME、 DATETIME、 TIMESTAMP和YEAR）">MySQL日期和时间数据类型（DATE、TIME、 DATETIME、 TIMESTAMP和YEAR）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-node-share.htm" title="11月12日→18.1M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月12日→18.1M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-27-free-high-speed-nodes.htm" title="10月27日→20M/S|2024年最新免费节点Open Clash Node订阅链接地址">10月27日→20M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27204.htm" title="JavaScript-页面布局-div布局-盒子模型">JavaScript-页面布局-div布局-盒子模型</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-node-subscribe.htm" title="12月17日→22.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月17日→22.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-node-subscribe.htm" title="11月5日→20.5M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月5日→20.5M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-node-subscribe-links.htm" title="11月7日→20.3M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月7日→20.3M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27205.htm" title="Typora + EasyBlogImageForTypora直接上传图片到博客园_在线工具">Typora + EasyBlogImageForTypora直接上传图片到博客园_在线工具</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
