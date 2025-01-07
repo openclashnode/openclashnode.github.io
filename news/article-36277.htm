@@ -1,0 +1,266 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-36277.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>前后端分离跨域问题解决</title>
+        <meta name="description" content="前言 最近在写前后端分离项目的时候，遇到了前后端分离必须解决的跨域问题，而我起初只是在 Controller 层加上了注解@CrossOrigin(allowCredentials = "true")" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                                                        <a href="/">
+                                        <span>Open Clash Node</span>
+                                    </a>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                <li><a href="#">关于</a></li>
+                                        <li><a href="#">联系</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>前后端分离跨域问题解决</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2><a id="_0" rel="nofollow"></a>前言</h2> <p>最近在写前后端分离项目的时候，遇到了前后端分离必须解决的跨域问题，而我起初只是在 Controller 层加上了注解<code>@CrossOrigin(allowCredentials = "true")</code>，暂时解决了跨域问题。但是在开发验证码的时候，始终获取不到session中的验证码字符，获取到的验证码字符始终为null，调试之后发现放入验证码字符的session与从session中获取验证码字符的session不是同一个session，这就又遇到了跨域问题，也就是说之前处理的跨域并不生效了，或者说之前并没有完全解决前后端分离跨域问题。</p> <h2><a id="CORS_3" rel="nofollow"></a>一、什么是CORS</h2> <p>CORS 是一个W3C标准，全称是”跨域资源共享”（Cross-origin resource sharing），允许浏览器向跨源服务器，发出 XMLHttpRequest 请求，从而克服了AJAX只能同源使用的限制。</p> <p>它通过服务器增加一个特殊的Header[Access-Control-Allow-Origin]来告诉客户端跨域的限制，如果浏览器支持CORS、并且判断Origin通过的话，就会允许XMLHttpRequest发起跨域请求。</p> <h2><a id="CORS_Header_8" rel="nofollow"></a>二、CORS Header</h2> <table> <thead> <tr> <th>属性</th> <th>名词解释</th> </tr> </thead> <tbody> <tr> <td>Access-Control-Allow-Origin</td> <td>允许哪个域发起跨域请求</td> </tr> <tr> <td>Access-Control-Allow-Methods</td> <td>设置允许跨域请求的方法</td> </tr> <tr> <td>Access-Control-Max-Age</td> <td>设置在多少秒内无需再发送预校验请求</td> </tr> <tr> <td>Access-Control-Allow-Headers</td> <td>允许跨域请求包含content-type</td> </tr> <tr> <td>Access-Control-Allow-Credentials</td> <td>设置允许Cookie</td> </tr> </tbody> </table> <h2><a id="_17" rel="nofollow"></a>三、跨域错误信息</h2> <p><strong>错误一：前、后端均无跨域处理</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/37253896f101d40c3dcec438448304e1.jpg" alt="前后端分离跨域问题解决"></p> <p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-2fVp6pRd-1592127844241)(https://imgkr.cn-bj.ufileos.com/b5c15ac9-236b-48fd-b11b-b3d60ecdd88e.png)]</p> <p><strong>错误二：前端跨域处理，后端无跨域处理</strong></p> <p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-7PQmloNe-1592127844244)(https://imgkr.cn-bj.ufileos.com/3a405185-f9fe-4359-be74-9a27fce4535c.png)]</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/88e622cc50995398a6de1a8543fcfd1a.jpg" alt="前后端分离跨域问题解决"></p> <p><strong>错误三：前端无跨域处理，后端跨域处理</strong></p> <p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-SaIEnLLY-1592127844252)(https://imgkr.cn-bj.ufileos.com/3aee8e7e-b710-4111-8d78-92a710b5cade.png)]</p> <p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-O3YOB0jG-1592127844256)(https://imgkr.cn-bj.ufileos.com/5205eb41-90eb-4eef-a16d-f4bc115e0129.png)]</p> <h2><a id="_48" rel="nofollow"></a>四、跨域处理方法</h2> <p>前端处理方法<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/1bf19d180285c488c06ef58bea454e18.jpg" alt="前后端分离跨域问题解决"></p> <p>后端处理方法</p> <p>1.在controller层加上<code>@CrossOrigin</code>注解</p> <p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-3OArBbZB-1592127844259)(https://imgkr.cn-bj.ufileos.com/7db15168-147e-46ff-9e4b-e9ad2a05313c.png)]</p> <p>2.加一个全局跨域处理配置类</p> <pre><code class="prism language-java"><span class="token comment">/**  * @description 全局跨域配置类  * @date: 2020/6/14  * @author: PeiChen  */</span><span class="token annotation punctuation">@Configuration</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">GlobalCorsConfig</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Bean</span><span class="token keyword">public</span><span class="token class-name">WebMvcConfigurer</span><span class="token function">corsConfigurer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">WebMvcConfigurerAdapter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">addCorsMappings</span><span class="token punctuation">(</span><span class="token class-name">CorsRegistry</span> registry<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>                 registry<span class="token punctuation">.</span><span class="token function">addMapping</span><span class="token punctuation">(</span><span class="token string">"/**"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">allowedOrigins</span><span class="token punctuation">(</span><span class="token string">"*"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">allowedMethods</span><span class="token punctuation">(</span><span class="token string">"PUT"</span><span class="token punctuation">,</span><span class="token string">"DELETE"</span><span class="token punctuation">,</span><span class="token string">"GET"</span><span class="token punctuation">,</span><span class="token string">"POST"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">allowedHeaders</span><span class="token punctuation">(</span><span class="token string">"*"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exposedHeaders</span><span class="token punctuation">(</span><span class="token string">"access-control-allow-headers"</span><span class="token punctuation">,</span><span class="token string">"access-control-allow-methods"</span><span class="token punctuation">,</span><span class="token string">"access-control-allow-origin"</span><span class="token punctuation">,</span><span class="token string">"access-control-max-age"</span><span class="token punctuation">,</span><span class="token string">"X-Frame-Options"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">allowCredentials</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">maxAge</span><span class="token punctuation">(</span><span class="token number">3600</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <h2><a id="_89" rel="nofollow"></a>五、前后端分离成功跨域</h2> <p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-hAXQlTgY-1592127844261)(https://imgkr.cn-bj.ufileos.com/cd03bb8e-3327-44ed-9be0-bb466b9a0b1c.png)]</p> <p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-GHkwLZs9-1592127844269)(https://imgkr.cn-bj.ufileos.com/e7d01b91-f109-4321-88ea-12da8911adfa.png)]</p> <blockquote> <p>前后端分离项目，就必须要克服跨域问题，至此，本篇文章介绍的跨域问题就先告一段落了。</p> </blockquote> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-35743.htm">动物疫苗代理公司如何开展业务（动物疫苗代理公司如何开展业务）</a></p>
+                                        <p>下一个：<a href="/news/article-36278.htm">质量好的宠物服装（质量好的宠物服装品牌）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-36685.htm" title="猫挠出血不打针有事吗（猫挠出血不打针有事吗科普）">猫挠出血不打针有事吗（猫挠出血不打针有事吗科普）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-node-share.htm" title="12月8日→22.6M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月8日→22.6M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25347.htm" title="动物疫苗要打几针才有效（动物疫苗一针多少钱）">动物疫苗要打几针才有效（动物疫苗一针多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-node-share.htm" title="11月27日→19.5M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月27日→19.5M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-32871.htm" title="nginx反向代理原理简介">nginx反向代理原理简介</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-node-share.htm" title="11月19日→21.4M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月19日→21.4M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-node-share-links.htm" title="10月31日→19.6M/S|2024年最新免费节点Open Clash Node订阅链接地址">10月31日→19.6M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-22574.htm" title="猫三联三针间隔多久打一次疫苗（猫三联三针多久打完）">猫三联三针间隔多久打一次疫苗（猫三联三针多久打完）</a></li>
+                        <li class="py-2"><a href="/news/article-29987.htm" title="孕妇让猫咪抓伤有一点血（怀孕让猫挠了出血了没有事吧）">孕妇让猫咪抓伤有一点血（怀孕让猫挠了出血了没有事吧）</a></li>
+                        <li class="py-2"><a href="/news/article-33820.htm" title="兽医疫苗批号怎么查（兽医疫苗批号怎么查询）">兽医疫苗批号怎么查（兽医疫苗批号怎么查询）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
