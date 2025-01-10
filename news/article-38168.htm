@@ -1,0 +1,266 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-38168.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JAVA基础小细节——equals()与hashCode()</title>
+        <meta name="description" content="Java中的equals方法和hashCode方法是Object中的，所以每个对象都是有这两个方法的，有时候我们需要实现特定需求，可能要重写这两个方法，今天就来介绍一些这两个方法的作用。 equals" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                                                        <a href="/">
+                                        <span>Open Clash Node</span>
+                                    </a>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                <li><a href="#">关于</a></li>
+                                        <li><a href="#">联系</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>JAVA基础小细节——equals()与hashCode()</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>Java中的equals方法和hashCode方法是Object中的，所以每个对象都是有这两个方法的，有时候我们需要实现特定需求，可能要重写这两个方法，今天就来介绍一些这两个方法的作用。</p> <p>equals()和hashCode()方法是用来在同一类中做比较用的，尤其是在容器里如set存放同一类对象时用来判断放入的对象是否重复。</p> <p>这里我们首先要明白一个问题：</p> <p>equals()相等的两个对象，hashcode()一定相等，equals()不相等的两个对象，却并不能证明他们的hashcode()不相等。换句话说，equals()方法不相等的两个对象，hashCode()有可能相等。（我的理解是由于哈希码在生成的时候产生冲突造成的）</p> <p>在这里hashCode就好比字典里每个字的索引，equals()好比比较的是字典里同一个字下的不同词语。就好像在字典里查“自”这个字下的两个词语“自己”、“自发”，如果用equals()判断查询的词语相等那么就是同一个词语，比如equals()比较的两个词语都是“自己”，那么此时hashCode()方法得到的值也肯定相等；如果用equals()方法比较的是“自己”和“自发”这两个词语，那么得到结果是不想等，但是这两个词都属于“自”这个字下的词语所以在查索引时相同，即：hashCode()相同。如果用equals()比较的是“自己”和“他们”这两个词语的话那么得到的结果也是不同的，此时hashCode() 得到也是不同的。</p> <p>反过来：hashcode()不等，一定能推出equals()也不等；hashcode()相等，equals()可能相等，也可能不等。在object类中，hashcode()方法是本地方法，返回的是对象的地址值：</p> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-keyword">public</span><span class="hljs-keyword">native</span><span class="hljs-keyword">int</span><span class="hljs-title">hashCode</span>();</code></pre> <p>而object类中的equals()方法比较的也是两个对象的地址值，如果equals()相等，说明两个对象地址值也相等，当然hashcode()也就相等了。</p> <h2 id="equals与">equals()与==</h2> <p>1）对于==</p> <ul> <li>如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等</li> <li>如果作用于引用类型的变量，则比较的是所指向的对象的地址</li> </ul> <p>2）对于equals方法（注意：equals方法不能作用于基本数据类型的变量）</p> <ul> <li>如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址，诸如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容</li> </ul> <p>其主要的不同是一个是操作符一个是方法，==用于对比原生类型而equals()方法比较对象的相等性。</p> <h2 id="hashcode函数">hashCode()函数</h2> <p>Java 里面当你重写 equals 的时候需要同时重写 hashCode。但是如何实现一个 hashCode?</p> <ul> <li>返回一个固定值。</li> </ul> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-annotation">@Override</span><span class="hljs-keyword">public</span><span class="hljs-keyword">int</span><span class="hljs-title">hashCode</span>() {<span class="hljs-keyword">return</span><span class="hljs-number">42</span>; }</code></pre> <p>42 可是生命、宇宙以及任何事情的终极答案。 来当一个对象的hashCode 是绰绰有余了。不过虽然返回固定值是合法的行为。但是是最不推荐的一种的做法，<strong>因为这样会导致当该对象被用作 HashMap 的 Key 的时候不断的冲突</strong>。<strong>get 的复杂度会退化为 O(n)</strong>.所以 42 虽然是生命、宇宙以及任何事情的终极答案, 但是计算42的真实含义需要地球运算数万年才能得出。普通的电脑还是不能这样随便用的。</p> <h3 id="传统的实现方式">传统的实现方式</h3> <p>传统实现一个hashCode 需要三步</p> <ul> <li>取一个非0的 int 作为初始值，比如 42，保存在 result 中</li> <li>计算你所关心的域（在equals起作用的）的 hashCode。如何生成属性的 hashCode 我们等一下再说，先假设生成的 hashCode 为 c</li> <li>组合所有的域，result = 31 * result + c</li> </ul> <h3 id="java-7-实现风格">Java 7+ 实现风格</h3> <p>Objects 是 Java 7 新加的一个类。其中有一个计算<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://docs.oracle.com/javase/8/docs/api/java/util/Objects.html#hash-java.lang.Object...-"  rel="nofollow">hash</a> 的方法：</p> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">int</span><span class="hljs-title">hash</span>(Object... values)</code></pre> <p>所以计算 HashCode 只需要用下面的代码：</p> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-annotation">@Override</span><span class="hljs-keyword">public</span><span class="hljs-keyword">int</span><span class="hljs-title">hashCode</span>() {     reutrn Objects.hash(p1, p2, p3, p4); }</code></pre> <h3 id="如何计算各个属性的-hash-值">如何计算各个属性的 hash 值</h3> <p>这一部分我觉得用代码来说明是最简单的，代码由 IntelliJ 自动生成。主要是各个原始类型的生成规则。</p> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-keyword">public</span><span class="hljs-class"><span class="hljs-keyword">class</span><span class="hljs-title">TestClass</span> {<!-- --></span><span class="hljs-keyword">byte</span> b;<span class="hljs-keyword">char</span> c;<span class="hljs-keyword">short</span> s;<span class="hljs-keyword">int</span> i;<span class="hljs-keyword">long</span> l;<span class="hljs-keyword">float</span> f;<span class="hljs-keyword">double</span> d;     String string;<span class="hljs-annotation">@Override</span><span class="hljs-keyword">public</span><span class="hljs-keyword">boolean</span><span class="hljs-title">equals</span>(Object o) {<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> == o)<span class="hljs-keyword">return</span><span class="hljs-keyword">true</span>;<span class="hljs-keyword">if</span> (o ==<span class="hljs-keyword">null</span> || getClass() != o.getClass())<span class="hljs-keyword">return</span><span class="hljs-keyword">false</span>;          TestClass testClass = (TestClass) o;<span class="hljs-keyword">if</span> (b != testClass.b)<span class="hljs-keyword">return</span><span class="hljs-keyword">false</span>;<span class="hljs-keyword">if</span> (c != testClass.c)<span class="hljs-keyword">return</span><span class="hljs-keyword">false</span>;<span class="hljs-keyword">if</span> (s != testClass.s)<span class="hljs-keyword">return</span><span class="hljs-keyword">false</span>;<span class="hljs-keyword">if</span> (i != testClass.i)<span class="hljs-keyword">return</span><span class="hljs-keyword">false</span>;<span class="hljs-keyword">if</span> (l != testClass.l)<span class="hljs-keyword">return</span><span class="hljs-keyword">false</span>;<span class="hljs-keyword">if</span> (Float.compare(testClass.f, f) !=<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span><span class="hljs-keyword">false</span>;<span class="hljs-keyword">if</span> (Double.compare(testClass.d, d) !=<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span><span class="hljs-keyword">false</span>;<span class="hljs-keyword">return</span> string !=<span class="hljs-keyword">null</span> ? string.equals(testClass.string) : testClass.string ==<span class="hljs-keyword">null</span>;      }<span class="hljs-annotation">@Override</span><span class="hljs-keyword">public</span><span class="hljs-keyword">int</span><span class="hljs-title">hashCode</span>() {<span class="hljs-keyword">int</span> result;<span class="hljs-keyword">long</span> temp;         result = (<span class="hljs-keyword">int</span>) b;         result =<span class="hljs-number">31</span> * result + (<span class="hljs-keyword">int</span>) c;         result =<span class="hljs-number">31</span> * result + (<span class="hljs-keyword">int</span>) s;         result =<span class="hljs-number">31</span> * result + i;         result =<span class="hljs-number">31</span> * result + (<span class="hljs-keyword">int</span>) (l ^ (l &gt;&gt;&gt;<span class="hljs-number">32</span>));         result =<span class="hljs-number">31</span> * result + (f != +<span class="hljs-number">0.0</span>f ? Float.floatToIntBits(f) :<span class="hljs-number">0</span>);         temp = Double.doubleToLongBits(d);         result =<span class="hljs-number">31</span> * result + (<span class="hljs-keyword">int</span>) (temp ^ (temp &gt;&gt;&gt;<span class="hljs-number">32</span>));         result =<span class="hljs-number">31</span> * result + (string !=<span class="hljs-keyword">null</span> ? string.hashCode() :<span class="hljs-number">0</span>);<span class="hljs-keyword">return</span> result;     } }</code></pre> <p>可以看看JDK内部，对hashCode()的实现，Arrays就是一个很好的例子：</p> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">int</span><span class="hljs-title">hashCode</span>(<span class="hljs-keyword">boolean</span> a[]) {<span class="hljs-keyword">if</span> (a ==<span class="hljs-keyword">null</span>)<span class="hljs-keyword">return</span><span class="hljs-number">0</span>;<span class="hljs-keyword">int</span> result =<span class="hljs-number">1</span>;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">boolean</span> element : a)             result =<span class="hljs-number">31</span> * result + (element ?<span class="hljs-number">1231</span> :<span class="hljs-number">1237</span>);<span class="hljs-keyword">return</span> result;     }</code></pre> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">int</span><span class="hljs-title">hashCode</span>(<span class="hljs-keyword">long</span> a[]) {<span class="hljs-keyword">if</span> (a ==<span class="hljs-keyword">null</span>)<span class="hljs-keyword">return</span><span class="hljs-number">0</span>;<span class="hljs-keyword">int</span> result =<span class="hljs-number">1</span>;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">long</span> element : a) {<span class="hljs-keyword">int</span> elementHash = (<span class="hljs-keyword">int</span>)(element ^ (element &gt;&gt;&gt;<span class="hljs-number">32</span>));             result =<span class="hljs-number">31</span> * result + elementHash;         }<span class="hljs-keyword">return</span> result;     }</code></pre> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-comment">//int、short、char、byte</span><span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">int</span><span class="hljs-title">hashCode</span>(<span class="hljs-keyword">int</span> a[]) {<span class="hljs-keyword">if</span> (a ==<span class="hljs-keyword">null</span>)<span class="hljs-keyword">return</span><span class="hljs-number">0</span>;<span class="hljs-keyword">int</span> result =<span class="hljs-number">1</span>;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> element : a)             result =<span class="hljs-number">31</span> * result + element;<span class="hljs-keyword">return</span> result;     }</code></pre> <p>看到这里那你也许会有和我一样的疑惑，<strong>为什么是31?</strong></p> <h2 id="为什么-hashcode-方法选择数字31作为乘子">为什么 hashCode 方法选择数字31作为乘子</h2> <p>这个数字居然不是用常量声明的，所以没法从字面意思上推断这个数字的用途。后来带着疑问和好奇心，到网上去找资料查询一下。在看完资料后，默默的感叹了一句，原来是这样啊。那么到底是哪样呢？在接下来章节里，请大家带着好奇心和我揭开数字31的用途之谜。</p> <p>在详细说明 String hashCode 方法选择数字31的作为乘子的原因之前，我们先来看看 String hashCode 方法是怎样实现的，如下：</p> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-keyword">public</span><span class="hljs-keyword">int</span><span class="hljs-title">hashCode</span>() {<span class="hljs-keyword">int</span> h = hash;<span class="hljs-keyword">if</span> (h ==<span class="hljs-number">0</span> &amp;&amp; value.length &gt;<span class="hljs-number">0</span>) {<span class="hljs-keyword">char</span> val[] = value;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>; i &lt; value.length; i++) {             h =<span class="hljs-number">31</span> * h + val[i];         }         hash = h;     }<span class="hljs-keyword">return</span> h; }</code></pre> <p>上面的代码就是 String hashCode 方法的实现，是不是很简单。实际上 hashCode 方法核心的计算逻辑只有三行，也就是代码中的 for 循环。我们可以由上面的 for 循环推导出一个计算公式，hashCode 方法注释中已经给出。如下：</p> <pre class="prettyprint"><code class="hljs r">s[<span class="hljs-number">0</span>]*<span class="hljs-number">31</span>^(n-<span class="hljs-number">1</span>) + s[<span class="hljs-number">1</span>]*<span class="hljs-number">31</span>^(n-<span class="hljs-number">2</span>) +<span class="hljs-keyword">...</span> + s[n-<span class="hljs-number">1</span>]</code></pre> <p>这里说明一下，上面的 s 数组即源码中的 val 数组，是 String 内部维护的一个 char 类型数组。这里我来简单推导一下这个公式：</p> <pre class="prettyprint"><code class="language-java hljs">假设 n=<span class="hljs-number">3</span> i=<span class="hljs-number">0</span> -&gt; h =<span class="hljs-number">31</span> *<span class="hljs-number">0</span> + val[<span class="hljs-number">0</span>] i=<span class="hljs-number">1</span> -&gt; h =<span class="hljs-number">31</span> * (<span class="hljs-number">31</span> *<span class="hljs-number">0</span> + val[<span class="hljs-number">0</span>]) + val[<span class="hljs-number">1</span>] i=<span class="hljs-number">2</span> -&gt; h =<span class="hljs-number">31</span> * (<span class="hljs-number">31</span> * (<span class="hljs-number">31</span> *<span class="hljs-number">0</span> + val[<span class="hljs-number">0</span>]) + val[<span class="hljs-number">1</span>]) + val[<span class="hljs-number">2</span>]        h =<span class="hljs-number">31</span>*<span class="hljs-number">31</span>*<span class="hljs-number">31</span>*<span class="hljs-number">0</span> +<span class="hljs-number">31</span>*<span class="hljs-number">31</span>*val[<span class="hljs-number">0</span>] +<span class="hljs-number">31</span>*val[<span class="hljs-number">1</span>] + val[<span class="hljs-number">2</span>]        h =<span class="hljs-number">31</span>^(n-<span class="hljs-number">1</span>)*val[<span class="hljs-number">0</span>] +<span class="hljs-number">31</span>^(n-<span class="hljs-number">2</span>)*val[<span class="hljs-number">1</span>] + val[<span class="hljs-number">2</span>]</code></pre> <p>上面的公式包括公式的推导并不是本文的重点，大家了解了解即可。接下来来说说本文的重点，即选择31的理由。从网上的资料来看，一般有如下两个原因：</p> <p>第一，31是一个不大不小的质数，是作为 hashCode 乘子的优选质数之一。另外一些相近的质数，比如37、41、43等等，也都是不错的选择。那么为啥偏偏选中了31呢？请看第二个原因。</p> <p>第二、31可以被 JVM 优化，<code>31 * i = (i &lt;&lt; 5) - i</code>。</p> <p>上面两个原因中，第一个需要解释一下，第二个比较简单，就不说了。下面我来解释第一个理由。一般在设计哈希算法时，会选择一个特殊的质数。至于为啥选择质数，我想应该是可以降低哈希算法的冲突率。至于原因，这个就要问数学家了，我几乎可以忽略的数学水平解释不了这个原因。上面说到，31是一个不大不小的质数，是优选乘子。那为啥同是质数的2和101（或者更大的质数）就不是优选乘子呢，分析如下。</p> <p>这里先分析质数2。首先，假设<code>n = 6</code>，然后把质数<code>2</code>和<code>n</code>带入上面的计算公式。并仅计算公式中次数最高的那一项，结果是<code>2^5 = 32</code>，是不是很小。所以这里可以断定，当字符串长度不是很长时，用质数2做为乘子算出的哈希值，数值不会很大。也就是说，哈希值会分布在一个较小的数值区间内，分布性不佳，最终可能会导致冲突率上升。</p> <p>上面说了，质数2做为乘子会导致哈希值分布在一个较小区间内，那么如果用一个较大的大质数101会产生什么样的结果呢？根据上面的分析，我想大家应该可以猜出结果了。就是不用再担心哈希值会分布在一个小的区间内了，因为<code>101^5 = 10,510,100,501</code>。但是要注意的是，这个计算结果太大了。如果用 int 类型表示哈希值，结果会溢出，最终导致数值信息丢失。尽管数值信息丢失并不一定会导致冲突率上升，但是我们暂且先认为质数101（或者更大的质数）也不是很好的选择。最后，我们再来看看质数31的计算结果：<code>31^5 = 28629151</code>，结果值相对于<code>32</code>和<code>10,510,100,501</code>来说。是不是很nice，不大不小。</p> <p>上面用了比较简陋的数学手段证明了数字31是一个不大不小的质数，是作为 hashCode 乘子的优选质数之一。接下来我会用详细的实验来验证上面的结论，不过在验证前，我们先看看 Stack Overflow 上关于这个问题的讨论，<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://stackoverflow.com/questions/299304/why-does-javas-hashcode-in-string-use-31-as-a-multiplier"  rel="nofollow">Why does Java’s hashCode() in String use 31 as a multiplier?</a>。其中排名第一的答案引用了《Effective Java》中的一段话，这里也引用一下：</p> <pre class="prettyprint"><code class="hljs livecodeserver">The<span class="hljs-built_in">value</span><span class="hljs-number">31</span> was chosen because<span class="hljs-keyword">it</span> is<span class="hljs-operator">an</span> odd prime. If<span class="hljs-keyword">it</span> were even<span class="hljs-operator">and</span><span class="hljs-operator">the</span> multiplication overflowed, information would be lost,<span class="hljs-keyword">as</span> multiplication<span class="hljs-keyword">by</span><span class="hljs-number">2</span> is equivalent<span class="hljs-built_in">to</span> shifting. The advantage<span class="hljs-operator">of</span><span class="hljs-keyword">using</span><span class="hljs-operator">a</span> prime is less<span class="hljs-built_in">clear</span>, but<span class="hljs-keyword">it</span> is traditional. A nice property<span class="hljs-operator">of</span><span class="hljs-number">31</span> is that<span class="hljs-operator">the</span> multiplication can be replaced<span class="hljs-keyword">by</span><span class="hljs-operator">a</span> shift<span class="hljs-operator">and</span><span class="hljs-operator">a</span> subtraction<span class="hljs-keyword">for</span> better performance:<span class="hljs-number">31</span> * i == (i &lt;&lt;<span class="hljs-number">5</span>) - i. Modern VMs<span class="hljs-built_in">do</span> this<span class="hljs-built_in">sort</span><span class="hljs-operator">of</span> optimization automatically.</code></pre> <p>翻译一下：</p> <pre class="prettyprint"><code class="hljs matlab">选择数字<span class="hljs-number">31</span>是因为它是一个奇质数，如果选择一个偶数会在乘法运算中产生溢出，导致数值信息丢失，因为乘二相当于移位运算。选择质数的优势并不是特别的明显，但这是一个传统。同时，数字<span class="hljs-number">31</span>有一个很好的特性，即乘法运算可以被移位和减法运算取代，来获取更好的性能：<span class="hljs-number">31</span> *<span class="hljs-built_in">i</span> == (<span class="hljs-built_in">i</span> &lt;&lt;<span class="hljs-number">5</span>) -<span class="hljs-built_in">i</span>，现代的 Java 虚拟机可以自动的完成这个优化。</code></pre> <p>排名第二的答案设这样说的：</p> <pre class="prettyprint"><code class="hljs livecodeserver">As Goodrich<span class="hljs-operator">and</span> Tamassia point out, If you take over<span class="hljs-number">50</span>,<span class="hljs-number">000</span> English<span class="hljs-keyword">words</span> (formed<span class="hljs-keyword">as</span><span class="hljs-operator">the</span><span class="hljs-built_in">union</span><span class="hljs-operator">of</span><span class="hljs-operator">the</span><span class="hljs-built_in">word</span> lists provided<span class="hljs-operator">in</span><span class="hljs-constant">two</span> variants<span class="hljs-operator">of</span> Unix),<span class="hljs-keyword">using</span><span class="hljs-operator">the</span> constants<span class="hljs-number">31</span>,<span class="hljs-number">33</span>,<span class="hljs-number">37</span>,<span class="hljs-number">39</span>,<span class="hljs-operator">and</span><span class="hljs-number">41</span> will produce less than<span class="hljs-number">7</span> collisions<span class="hljs-operator">in</span><span class="hljs-keyword">each</span><span class="hljs-keyword">case</span>. Knowing this,<span class="hljs-keyword">it</span> should come<span class="hljs-keyword">as</span> no surprise that many Java implementations choose<span class="hljs-constant">one</span><span class="hljs-operator">of</span> these constants.</code></pre> <p>翻译一下：</p> <pre class="prettyprint"><code class="hljs bash">正如 Goodrich 和 Tamassia 指出的那样，如果你对超过<span class="hljs-number">50</span>,<span class="hljs-number">000</span>个英文单词（由两个不同版本的 Unix 字典合并而成）进行<span class="hljs-built_in">hash</span> code 运算，并使用常数<span class="hljs-number">31</span>,<span class="hljs-number">33</span>,<span class="hljs-number">37</span>,<span class="hljs-number">39</span> 和<span class="hljs-number">41</span> 作为乘子，每个常数算出的哈希值冲突数都小于<span class="hljs-number">7</span>个，所以在上面几个常数中，常数<span class="hljs-number">31</span> 被 Java 实现所选用也就不足为奇了。</code></pre> <p>上面的两个答案完美的解释了 Java 源码中选用数字31的原因。第二个答案的验证，感兴趣的朋友可以看看我所参考的原文：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://segmentfault.com/a/1190000010799123"  rel="nofollow">https://segmentfault.com/a/1190000010799123</a></p> <p>一篇非常干货的文章~</p> <p>参考链接：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://segmentfault.com/a/1190000010799123"  rel="nofollow">https://segmentfault.com/a/1190000010799123</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.jianshu.com/p/039c942b22c0"  rel="nofollow">http://www.jianshu.com/p/039c942b22c0</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://blog.csdn.net/jiangwei0910410003/article/details/22739953"  rel="nofollow">http://blog.csdn.net/jiangwei0910410003/article/details/22739953</a></p> <p>JDK 8 源码</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-37642.htm">动物医院设备清单 动物医院设备清单价格</a></p>
+                                        <p>下一个：<a href="/news/article-38169.htm">动物医院实训总结范文 动物医院实训总结范文大全</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-37642.htm" title="动物医院设备清单 动物医院设备清单价格">动物医院设备清单 动物医院设备清单价格</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-node-share.htm" title="11月12日→18.1M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月12日→18.1M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-free-node-subscribe-links.htm" title="12月19日→19.4M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月19日→19.4M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-free-subscribe-node.htm" title="10月30日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址">10月30日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24883.htm" title="Redis的高并发是如何支持的">Redis的高并发是如何支持的</a></li>
+                        <li class="py-2"><a href="/news/article-29058.htm" title="极品vue3中setup的细节,以及定义多个响应式reactive">极品vue3中setup的细节,以及定义多个响应式reactive</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-node-share.htm" title="11月6日→18.6M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月6日→18.6M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-free-node-subscribe.htm" title="11月22日→20.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月22日→20.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37174.htm" title="延吉市动物卫生检疫站电话是多少（延吉市动物防疫站咨询电话）">延吉市动物卫生检疫站电话是多少（延吉市动物防疫站咨询电话）</a></li>
+                        <li class="py-2"><a href="/news/article-21197.htm" title="中国宠物粮食品牌有哪些名字（中国宠物粮食品牌有哪些名字呢）">中国宠物粮食品牌有哪些名字（中国宠物粮食品牌有哪些名字呢）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

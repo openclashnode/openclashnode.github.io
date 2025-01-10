@@ -1,0 +1,266 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-38643.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？</title>
+        <meta name="description" content="定义function类型  fn() {     console.log(this)   }  使用function类型   render() {     return (       &lt;div" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                                                        <a href="/">
+                                        <span>Open Clash Node</span>
+                                    </a>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                <li><a href="#">关于</a></li>
+                                        <li><a href="#">联系</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> </h1> <p>定义<code>function</code>类型</p> <pre><code class="prism language-javascript"> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>   <span class="token punctuation">}</span> </code></pre> <p>使用<code>function</code>类型</p> <pre><code class="prism language-javascript">  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">return</span> <span class="token punctuation">(</span>       <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>Button onClick<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>fn<span class="token punctuation">}</span><span class="token operator">&gt;</span>请点击<span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span>       <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token punctuation">)</span>     <span class="token punctuation">}</span> </code></pre> <h4> <a id="_19" rel="nofollow"></a>会引发什么样子的问题呢？</h4> <p><code>this</code>指向的问题<br /> 接下来当页面加载完毕的时候我打印一次<code>this</code>和点击以后的<code>this</code>做一次对比</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/9765949a450d79146d32c1d60f2c712f.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /><strong>页面初始化完毕以后this的参数</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/8645c59f6b68a5eeb5d15a78f1129fa7.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <p><strong>fn函数内部的this</strong>(这里的this指向的就是函数自己)<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/77e5a8720058706703c3b510ce56d078.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <h2> <a id="functionthis_32" rel="nofollow"></a>如何解决function函数的this指向的问题呢？</h2> <p><code>call</code>、<code>aplay</code> 和 <code>bind</code>这里就不一一列举了，最常用的就是bind</p> <p><strong>bind:</strong> 方法会创建一个新的函数，当被调用的时候，将其this关键字设置为提供的值，我们必须手动去调用</p> <pre><code class="prism language-html"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Button</span> <span class="token special-attr"><span class="token attr-name">onClick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token value javascript language-javascript"><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span></span></span><span class="token punctuation">&gt;</span></span>请点击<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Button</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>看看效果吧 !<br /> 这里的代码没有改变<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/177f61b7fab726a3f04424e5d079c8d9.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /><strong>使用bind以后的结果:</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/f560aba9a11c5ff89a7bd760916bc801.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <h2> <a id="_45" rel="nofollow"></a>箭头函数类型的定义和使用</h2> <p><strong>定义</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/19af4872289e673c92a44d23e8a59c3c.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /><strong>使用方式和function一样的区别在于箭头函数没有自己的<code>this</code>指向，只会向上继承父级的<code>this</code>指向，如果父级没有<code>this</code>指向还会继续向上检索</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/860e6df2739fa1e67d8e85e7dec85610.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/0abcf7c4e6b422ef3179c0dacaf49d38.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /> 执行后的效果<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/cb71c62dcea55901b943e036cf0ee4e5.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/2a7a075331b50d32912689575b88e832.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <h2> <a id="_54" rel="nofollow"></a>如何进行事件传参呢？</h2> <p>1.使用bind，call，aplay<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/a66ed175d0592975d79137591f289197.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/8fa4c8cb8945a56128a6f2dd13b8f599.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/be1efa4c0cdea07c65bf97984ce0983c.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /> 2.使用箭头函数的方式传参<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/646b1fb583b2fb0223683f35d4f10921.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/b43f3a4983659379002268f8ccae3be6.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <h2> <a id="event_63" rel="nofollow"></a>重点来了，如何使用事件对象event？</h2> <h4> <a id="_64" rel="nofollow"></a>不传参的情况下</h4> <p>不传参的情况下默认值就是event<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/5e634b9ad952fe206de4d5e198f102be.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/39ac59e0938cf1bab8597c2972fc31d1.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/6a78b5a2a9bfa18f1a9a3bcfe003077a.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <h4> <a id="event_70" rel="nofollow"></a>如果我需要传参还需要获取事件对象event呢？</h4> <h5> <a id="1bindcallaplay_72" rel="nofollow"></a>1.使用bind，call，aplay</h5> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/15d64ca6d4ec2fb7892dd6d90ad330ab.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <pre><code class="prism language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Button</span> <span class="token special-attr"><span class="token attr-name">onClick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token value javascript language-javascript"><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span></span></span></span> <span class="token attr-name">'我是传递进去的参数')}</span><span class="token punctuation">&gt;</span></span>请点击<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Button</span><span class="token punctuation">&gt;</span></span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/c0c02b93ddd67c113fd241d9dc910fc3.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /><strong>结果</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/c877b0b500b49d14be7a87f8e4fae39a.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /><strong>这是为什么呢？</strong><br /> 当你使用bind，call，aplay着三个函数的时候，默认他最后一位的参数就是event事件对象<br /><strong>如果我传递三个参数呢？</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/6836eac4907867df2e03479a64b0e15c.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <p>第二个参数是没有值的<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/b830f30723c4db82cf66191a1e5ee508.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /> 就会发现最后一个怎么没有值呢？<br /> 通过推算的出来的结果是赋值的event的公式应该是<br /><code>传递进去参数的长度 + 1 = 就是event事件对象最后所在的位置</code></p> <h5> <a id="2_93" rel="nofollow"></a>2.使用箭头函数(使用较多)</h5> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/b04e79ddbc304d71d92fc6085ef23179.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <pre><code class="prism language-javascript"> <span class="token operator">&lt;</span>Button onClick<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span><span class="token string">'我是传递进去的参数'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>请点击<span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/4bb2a7e70a64914aeaecf45094b68a2f.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/302fbe9f7bd49c86cf72ca41fec6786d.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <p>这里的运行机制就相当于，我先拿到事件对象赋值给原先的函数，因为函数如果不传参的情况下，默认值，就是事件对象。<br /><code>()=&gt;</code>这种写法相当于直接返回结果</p> </h1> <p>这种写法是万万不可的!!!<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/0a2ac8903798c9ea19edbcb1b6d30121.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"><br /> 像这种方法就相当于这个button按钮好了以后就加载这个函数<br /> render树刷新一次，这个事件都会执行一次，会增加计算机的负担。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/09c9a5f90d64c53cc0e8b8cc4bc0e510.jpg" alt="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？"></p> <pre><code class="prism language-javascript">    <span class="token operator">&lt;</span>Button onClick<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'我是传递进去的参数'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>请点击<span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span> </code></pre> <p>万万不能这样写!!!</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-38169.htm">动物医院实训总结范文 动物医院实训总结范文大全</a></p>
+                                        <p>下一个：<a href="/news/article-38646.htm">三国杀皮肤武将什么意思（三国杀里的皮肤有什么用）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-node-share-links.htm" title="12月9日→19.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月9日→19.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-free-subscribe-node.htm" title="1月2日→19.9M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月2日→19.9M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-3-node-share.htm" title="1月3日→19.9M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月3日→19.9M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-node-subscribe-links.htm" title="12月14日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月14日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26739.htm" title="Qt的.pro文件格式解析">Qt的.pro文件格式解析</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-node-subscribe.htm" title="12月17日→22.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月17日→22.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-31909.htm" title="C#多态性02">C#多态性02</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-node-share.htm" title="11月28日→21.1M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月28日→21.1M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26738.htm" title="C语言与java中函数传参比较">C语言与java中函数传参比较</a></li>
+                        <li class="py-2"><a href="/news/article-23030.htm" title="宠物粮食创业项目计划书范文（宠物粮市场开发方案）">宠物粮食创业项目计划书范文（宠物粮市场开发方案）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
