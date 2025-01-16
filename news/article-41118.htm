@@ -1,0 +1,266 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-41118.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>基于Ansible实现Apache Doris快速部署运维指南</title>
+        <meta name="description" content="Apache Doris 介绍 Apache Doris是一个现代化的MPP分析型数据库产品。仅需亚秒级响应时间即可获得查询结果，有效地支持实时数据分析。Apache Doris的分布式架构非常简洁，" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                                                        <a href="/">
+                                        <span>Open Clash Node</span>
+                                    </a>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                <li><a href="#">关于</a></li>
+                                        <li><a href="#">联系</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>基于Ansible实现Apache Doris快速部署运维指南</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				</h1> <h2 id="apache-doris-介绍">Apache Doris 介绍</h2> <p>Apache Doris是一个现代化的MPP分析型数据库产品。仅需亚秒级响应时间即可获得查询结果，有效地支持实时数据分析。Apache Doris的分布式架构非常简洁，易于运维，并且可以支持10PB以上的超大数据集。</p> <p>Apache Doris可以满足多种数据分析需求，例如固定历史报表，实时数据分析，交互式数据分析和探索式数据分析等。令您的数据分析工作更加简单高效！</p> <h2 id="doris-ansible简介">Doris Ansible简介</h2> <p>	Doris_ansible是基于ansible构建的Doris高可用集群轻量化自动运维工具，它能够在本地方便快捷的一键拉起Doris高可用集群，并且集群的启停、升降级、扩缩容都可以通过一条简单的命令来实现，使用户可以将注意力专注于Doris强大的分析能力，而不用在运维上面耗费心力。后续将会增加更多使用者关注的自动化功能。如监控、运维巡检等一系列功能。</p> <h2 id="doris-ansible使用步骤">Doris Ansible使用步骤</h2> <h3 id="前置基础">前置基础</h3> <h4 id="1-安装ansible">1. 安装ansible</h4> <pre><code>yum install -y ansible</code></pre> <h4 id="2-下载doris_ansible">2. 下载Doris_Ansible</h4> <pre><code>git clone https://github.com/mklzl/doris_ansible</code></pre> <h4 id="3-集群规划无需配置仅作参考">3. 集群规划（无需配置，仅作参考）</h4> <pre><code># fe master : 192.168.1.241 follower1: 192.168.1.239 follower2: 192.168.2.243  # be backend1: 192.168.1.239 backend2: 192.168.1.241 backend3: 192.168.1.243  # broker broker1: 192.168.1.239 broker2: 192.168.1.241 broker3: 192.168.1.243  # 安装版本及软件包所在位置 /home/doris_ansible/PALO-0.15.1-rc09-binary.tar.gz  # 安装目录 /home/doris_ansible  # 升降级软件包所在路径 /home/doris_ansible/PALO-0.15.3- release-binary.tar.gz</code></pre> <h3 id="开始使用">开始使用</h3> <h4 id="1-配置集群初始化配置">1. 配置集群初始化配置</h4> <ul> <li> <p>分配集群角色hosts</p> <p><code>vi /etc/ansible/hosts（cluster1为对应Doris集群的集群id，这里可以部署多个不同的集群配置，启动时，指定对应的集群ID即可操作对应的集群）</code></p> <pre><code>  ## 集群cluster1中参与的机器ip   [cluster1.doris_hosts]   192.168.1.239   192.168.1.241   192.168.1.243    ##集群cluster1中fe所在机器的ip   [cluster1.frontends]   192.168.1.239   192.168.1.241   192.168.1.243    ##集群cluster1中master节点所在的ip   [cluster1.master]   192.168.1.241    ##集群cluster1中follower所在节点的ip   [cluster1.follower]   192.168.1.239   192.168.1.243    ##集群cluster1中be所在节点的ip   [cluster1.backends]   192.168.1.239   192.168.1.241   192.168.1.243      ## 要进行扩缩容的fe所在的ip   [cluster1.scale_fe]   192.168.1.239    ## 要进行扩缩容的be所在的ip   [cluster1.scale_be]   192.168.1.239       ## 要进行扩缩容的broker所在的ip   [cluster1.scale_broker]   192.168.1.239    ##集群cluster1中broker节点所在的ip   [cluster1.brokers]   192.168.1.239   192.168.1.241   192.168.1.243</code></pre> </li> <li> <p>配置初始化文件</p> <pre><code>vi ./conf/cluster1.yml(这里配置集群cluster1的对应ip组)  --- follower: [192.168.1.239,192.168.1.243] backends: [192.168.1.239,192.168.1.241,192.168.1.243] brokers: [192.168.1.239,192.168.1.241,192.168.1.243] master: 192.168.1.241  vi ./conf/setup_vars.yml --- # 生产环境的fe.conf所在路径。 # 如果没有特殊配置，建议使用安装包内的fe.conf，请根据机器情况酌情配置priority_networks fe_conf_path: /home/doris_ansible/fe.conf  #生产环境的be.conf所在路径。 # 如果没有特殊配置，建议使用安装包内的be.conf，请根据机器情况酌情配置priority_networks be_conf_path: /home/doris_ansible/be.conf  # heartbeat_service_port，请和be.conf中的heartbeat_service_port配置保持一致 heartbeat_service_port: 9050   # edit_log_port，请和fe.conf中的edit_log_port配置保持一致 edit_log_port: 9010  # query_port，请和fe.conf中的query_port配置保持一致 query_port: 9030  # broker_ipc_port，请和apache_hdfs_broker.conf中的broker_ipc_port保持一致 broker_ipc_port: 8000  # 待安装的doris压缩包所在路径，请写绝对路径 doris_filepath: /home/doris_ansible/PALO-0.15.1-rc09-binary.tar.gz  # doris压缩包要解压安装的位置 dest_filepath: /home/doris_ansible  #解压后，doris的安装目录 doris_home: /home/doris_ansible/PALO-0.15.1-rc09-binary  # 机器java_home所在路径，请确保所有机器保持一致 java_home: /usr/java/jdk1.8.0_131</code></pre> </li> </ul> <h4 id="2-初始化集群">2. 初始化集群</h4> <pre><code>#cluster=cluster1 是指定的对对应集群的操作 ansible-playbook -e "cluster=cluster1" ./core/setup.yml</code></pre> <h4 id="3-添加角色">3. 添加角色</h4> <pre><code>ansible-playbook -e "cluster=cluster1" ./core/add_roles.yml</code></pre> <h4 id="4-启停集群">4. 启停集群</h4> <pre><code>#一键停止对应集群 ansible-playbook -e "cluster=cluster1" ./core/stop_all.yml  #一键启动对应集群 ansible-playbook -e "cluster=cluster1" ./core/start_all.yml</code></pre> <h4 id="5-集群升降级">5. 集群升降级</h4> <ul> <li> <p>配置集群升降级配置</p> <pre><code>vi ./conf/upgrade_vars.yml --- #需要回滚或者升级的压缩包所在路径 newdoris_filepath: /home/doris_ansible/PALO-0.15.3-release-binary.tar.gz  #压缩包解压路径 newdoris_destpath: /home/doris_ansible  #解压后的doirs_home newdoris_home: /home/doris_ansible/PALO-0.15.3-release-binary  #java_home所在路径 java_home: /usr/java/jdk1.8.0_131</code></pre> </li> <li> <p>进行升降级操作</p> <pre><code>ansible-playbook -e "cluster=cluster1" ./core/upgrade.yml</code></pre> </li> </ul> <h4 id="6-集群扩缩容">6. 集群扩缩容</h4> <ol> <li>配置集群扩缩容配置</li> </ol> <pre><code>vi /etc/ansible/hosts  (配置要进行扩缩容的角色的hosts，可以配置多个hosts) ## 要进行扩缩容的fe所在的ip   [cluster1.scale_fe]   192.168.1.239    ## 要进行扩缩容的be所在的ip   [cluster1.scale_be]   192.168.1.239       ## 要进行扩缩容的broker所在的ip   [cluster1.scale_broker]   192.168.1.239</code></pre> <ol start="2"> <li>FE 扩缩容</li> </ol> <pre><code>  vi ./conf/scale_fe_vars.yml   ---   ## 要进行扩缩容的fe   frontends: 192.168.1.239      ##(多个ip使用数组的方式)   frontends: [192.168.1.239,192.168.1.241]</code></pre> <ol start="3"> <li>BE 扩缩容</li> </ol> <pre><code> vi ./conf/scale_be_vars.yml  ---   ## 要进行扩缩容的be   backends: 192.168.1.239      ##(多个ip使用数组的方式)   backends: [192.168.1.239,192.168.1.241]</code></pre> <ol start="4"> <li>Broker 扩缩容</li> </ol> <pre><code>  vi ./conf/scale_broker_vars.yml   ---   ## 要进行扩缩容的broker   brokers: 192.168.1.239      ##(多个ip使用数组的方式)   brokers: [192.168.1.239,192.168.1.241]</code></pre> <ol start="5"> <li>执行扩缩容</li> </ol> <pre><code># 扩容   # 扩容broker   	ansible-playbook -e "cluster=cluster1 action=out" ./core/scale_broker.yml   # 扩容be   	ansible-playbook -e "cluster=cluster1 action=out" ./core/scale_be.yml   # 扩容fe   	ansible-playbook -e "cluster=cluster1 action=out" ./core/scale_fe.yml # 缩容   #缩容broker     ansible-playbook -e "cluster=cluster1 action=out" ./core/scale_broker.yml   #缩容be     ansible-playbook -e "cluster=cluster1 action=out" ./core/scale_be.yml   #缩容fe     ansible-playbook -e "cluster=cluster1 action=out" ./core/scale_fe.yml</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41116.htm">Springcloud通过maven打包包含公共common模块的项目</a></p>
+                                        <p>下一个：<a href="/news/article-41609.htm">为什么猫不用打狂犬疫苗针（家猫为啥不建议打狂犬疫苗）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-32872.htm" title="猫咪驱虫大概多少钱一只（猫咪驱虫多少钱一次?）">猫咪驱虫大概多少钱一只（猫咪驱虫多少钱一次?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-node-subscribe.htm" title="11月9日→20.1M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月9日→20.1M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-38643.htm" title="在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？">在react中使用event(事件对象)，如何使用，注意事项和react中如何定义和使用函数？</a></li>
+                        <li class="py-2"><a href="/news/article-23030.htm" title="宠物粮食创业项目计划书范文（宠物粮市场开发方案）">宠物粮食创业项目计划书范文（宠物粮市场开发方案）</a></li>
+                        <li class="py-2"><a href="/news/article-21740.htm" title="mysql 数据库密码问题">mysql 数据库密码问题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-node-share-links.htm" title="11月8日→21.5M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月8日→21.5M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-36278.htm" title="质量好的宠物服装（质量好的宠物服装品牌）">质量好的宠物服装（质量好的宠物服装品牌）</a></li>
+                        <li class="py-2"><a href="/news/article-33821.htm" title="被流浪猫咬伤轻微出血怎么办（被流浪猫咬流血了怎么办）">被流浪猫咬伤轻微出血怎么办（被流浪猫咬流血了怎么办）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-free-node-subscribe-links.htm" title="1月4日→22.3M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月4日→22.3M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37641.htm" title="符合动物医院法定条件是什么意思呀英语（动物医院诊疗许可证需要提供什么）">符合动物医院法定条件是什么意思呀英语（动物医院诊疗许可证需要提供什么）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
