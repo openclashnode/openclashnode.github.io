@@ -185,6 +185,7 @@
                   				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <pre><code>//这个报错 我的问题是 要用到的数据读不到这个属性（我用的vue） //1.检查你的data定义的属性是不是没有你用到的这个属性,没有的话就定义一个，如下： #template &lt;div class="he-info__item"&gt;     &lt;span class="he-label"&gt;收货人姓名:&lt;/span&gt;     &lt;span class="he-value"&gt;{<!-- -->{ detail.buyer.name }}&lt;/span&gt; &lt;/div&gt; &lt;div class="he-info__item"&gt;    &lt;span class="he-label"&gt;联系方式:&lt;/span&gt;    &lt;span class="he-value"&gt;{<!-- -->{ detail.buyer.mobile }}&lt;/span&gt; &lt;/div&gt;  #js export default {    data () {        detail: {         buyer: {           name: "",           mobile: "",         },         user: {           nickname: "",         },       },    } } //2.也可能是后端返回给你的数据没有这个属性 或者 返回的有的有数据 有的是 null ， // 这时候就不能写 {<!-- -->{ item.xxx || “” }} 不然会报错 Cannot read properties of undefined (reading ‘xxx‘)“ 可以这么解决 如下： #template  &lt;div v-if="!!item.invite"&gt;{<!-- -->{ item.invite.nickname }}&lt;/div&gt; //有这个属性才显示     //或者这样也行  &lt;div v-if="item?.invite"&gt;{<!-- -->{ item.invite.nickname }}&lt;/div&gt; //有这个属性才显示    &lt;div v-else&gt;{<!-- -->{ "" }}&lt;/div&gt; //没有返回 或者 null 直接填 “”   //3.网上还有一种就是 数据还没返回 你就开始使用这个属性 可以加个 this.$nectTick (()=&gt;{//获取数据}) 包裹一下，但是本人没试过    //完结 撒花  //仅代表我遇到此问题的解决方法 可能还有别的情况。。。。。。。。。</code></pre> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-44587.htm">我们如何使用来自任何表达式，函数等的MySQL自我计算输出在一行中插入值？</a></p>
+                                        <p>下一个：<a href="/news/article-45094.htm">vue中动态改变样式</a></p>
                                     </div>
                                     </div>
                     <div class="col-md-3">
@@ -194,16 +195,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-1-9-free-node-subscribe-links.htm" title="1月9日→21.7M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月9日→21.7M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-free-node-subscribe.htm" title="11月10日→22.5M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月10日→22.5M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-33820.htm" title="兽医疫苗批号怎么查（兽医疫苗批号怎么查询）">兽医疫苗批号怎么查（兽医疫苗批号怎么查询）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-9-node-share-links.htm" title="12月9日→19.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月9日→19.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-33330.htm" title="宠物领养网站html模板下载大全免费（宠物领养网站app）">宠物领养网站html模板下载大全免费（宠物领养网站app）</a></li>
-                        <li class="py-2"><a href="/news/article-22574.htm" title="猫三联三针间隔多久打一次疫苗（猫三联三针多久打完）">猫三联三针间隔多久打一次疫苗（猫三联三针多久打完）</a></li>
-                        <li class="py-2"><a href="/news/article-38168.htm" title="JAVA基础小细节——equals()与hashCode()">JAVA基础小细节——equals()与hashCode()</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-subscribe-node.htm" title="12月28日→18.6M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月28日→18.6M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-40129.htm" title="什么叫领养宠物的人呢（领养宠物狗是什么意思）">什么叫领养宠物的人呢（领养宠物狗是什么意思）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-25-node-share-links.htm" title="10月25日→20.5M/S|2024年最新免费节点Mellow Github订阅链接地址">10月25日→20.5M/S|2024年最新免费节点Mellow Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-node-share-links.htm" title="11月15日→19.7M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月15日→19.7M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-free-node-subscribe-links.htm" title="10月28日→18.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">10月28日→18.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-node-share-links.htm" title="10月31日→19.6M/S|2024年最新免费节点Open Clash Node订阅链接地址">10月31日→19.6M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-19825.htm" title="springboot整合XXL-JOB实行动态定时任务">springboot整合XXL-JOB实行动态定时任务</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-free-high-speed-nodes.htm" title="12月18日→22.8M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月18日→22.8M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-high-speed-nodes.htm" title="12月3日→18.6M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月3日→18.6M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25808.htm" title="宠物医院坑人怎么投诉（宠物医院该向哪里投诉）">宠物医院坑人怎么投诉（宠物医院该向哪里投诉）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-free-node-subscribe-links.htm" title="12月24日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月24日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40619.htm" title="广州哪里买狗狗好（广州哪里买狗最便宜）">广州哪里买狗狗好（广州哪里买狗最便宜）</a></li>
+                        <li class="py-2"><a href="/news/article-30487.htm" title="动物疫苗使用方法 动物疫苗使用方法视频">动物疫苗使用方法 动物疫苗使用方法视频</a></li>
                     </ul>
     </div>
 </div>
@@ -215,7 +216,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
