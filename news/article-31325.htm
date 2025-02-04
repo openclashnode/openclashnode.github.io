@@ -8,8 +8,36 @@
     <title>Go语学习笔记 &#8211; gorm使用 &#8211; 表增删改查 | Web框架Gin（八）</title>
         <meta name="description" content="目录 新增修改接口 查询所有未逻辑删除接口 根据ID删除接口 时间字段序列化问题处理 接口验证 小结  学习笔记，写到哪是哪。 接着上一篇文章：Go语学习笔记 - gorm使用 - 数据库配置、表新增" />
         <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open Clash Node免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://openclashnode.github.io/news/article-31325.htm" />
+    <meta property="og:site_name" content="Open Clash Node免费机场订阅节点官网" />
+    <meta property="og:title" content="Go语学习笔记 &#8211; gorm使用 &#8211; 表增删改查 | Web框架Gin（八）" />
+    <meta property="og:image" content="https://openclashnode.github.io/uploads/20241025/d1c1f16e3d1424dcc7433dc92bbb28bd.webp" />
+        <meta property="og:release_date" content="2024-12-26T00:14:49" />
+    <meta property="og:updated_time" content="2024-12-26T00:14:49" />
+        <meta property="og:description" content="目录 新增修改接口 查询所有未逻辑删除接口 根据ID删除接口 时间字段序列化问题处理 接口验证 小结  学习笔记，写到哪是哪。 接着上一篇文章：Go语学习笔记 - gorm使用 - 数据库配置、表新增" />
+        
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Go语学习笔记 &#8211; gorm使用 &#8211; 表增删改查 | Web框架Gin（八）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <!-- CSS here -->
     <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
     <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
@@ -167,16 +195,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-24-free-node-subscribe-links.htm" title="12月24日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月24日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-23479.htm" title="宠物粮食加工厂加盟条件是什么呢视频（宠物粮加工需要多少钱）">宠物粮食加工厂加盟条件是什么呢视频（宠物粮加工需要多少钱）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-25-node-share-links.htm" title="10月25日→20.5M/S|2024年最新免费节点Mellow Github订阅链接地址">10月25日→20.5M/S|2024年最新免费节点Mellow Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-6-node-share.htm" title="11月6日→18.6M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月6日→18.6M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-26-node-share-links.htm" title="11月26日→19M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月26日→19M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-18-free-high-speed-nodes.htm" title="11月18日→21.6M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月18日→21.6M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-18908.htm" title="动物疫苗接种证图片样本（动物疫苗接种证图片样本高清）">动物疫苗接种证图片样本（动物疫苗接种证图片样本高清）</a></li>
+                        <li class="py-2"><a href="/news/article-35206.htm" title="动物医院名字有创意两个字的（动物医院名片）">动物医院名字有创意两个字的（动物医院名片）</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-12-19-free-node-subscribe-links.htm" title="12月19日→19.4M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月19日→19.4M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-16-free-subscribe-node.htm" title="12月16日→20.7M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月16日→20.7M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-29987.htm" title="孕妇让猫咪抓伤有一点血（怀孕让猫挠了出血了没有事吧）">孕妇让猫咪抓伤有一点血（怀孕让猫挠了出血了没有事吧）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-free-node-subscribe-links.htm" title="12月30日→18M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月30日→18M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37641.htm" title="符合动物医院法定条件是什么意思呀英语（动物医院诊疗许可证需要提供什么）">符合动物医院法定条件是什么意思呀英语（动物医院诊疗许可证需要提供什么）</a></li>
+                        <li class="py-2"><a href="/news/article-37172.htm" title="petite-vue源码剖析-沙箱模型">petite-vue源码剖析-沙箱模型</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-25-free-node-subscribe-links.htm" title="1月25日→21.7M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月25日→21.7M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-33821.htm" title="被流浪猫咬伤轻微出血怎么办（被流浪猫咬流血了怎么办）">被流浪猫咬伤轻微出血怎么办（被流浪猫咬流血了怎么办）</a></li>
+                        <li class="py-2"><a href="/news/article-38646.htm" title="三国杀皮肤武将什么意思（三国杀里的皮肤有什么用）">三国杀皮肤武将什么意思（三国杀里的皮肤有什么用）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-free-node-subscribe.htm" title="1月29日→21.5M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月29日→21.5M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-node-subscribe-links.htm" title="12月14日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址">12月14日→18.4M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -188,16 +216,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
