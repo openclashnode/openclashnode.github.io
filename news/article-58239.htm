@@ -1,0 +1,293 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-58239.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>图解：冒泡排序及其优化</title>
+        <meta name="description" content="一、什么是冒泡排序？  冒泡排序（Bubble sort）,是一种较简单的排序算法。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端（升序或降序排列），就如同碳酸饮料中二氧化碳的气泡" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open Clash Node免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://openclashnode.github.io/news/article-58239.htm" />
+    <meta property="og:site_name" content="Open Clash Node免费机场订阅节点官网" />
+    <meta property="og:title" content="图解：冒泡排序及其优化" />
+    <meta property="og:image" content="https://openclashnode.github.io/uploads/20241025/46a2ba28ef7d80ebc4b3a67937b6f5c5.webp" />
+        <meta property="og:release_date" content="2025-02-17T09:58:25" />
+    <meta property="og:updated_time" content="2025-02-17T09:58:25" />
+        <meta property="og:description" content="一、什么是冒泡排序？  冒泡排序（Bubble sort）,是一种较简单的排序算法。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端（升序或降序排列），就如同碳酸饮料中二氧化碳的气泡" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="图解：冒泡排序及其优化">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                    <a href="/">
+                                                                        <span>Open Clash Node</span>
+                                                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>图解：冒泡排序及其优化</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h3>一、什么是冒泡排序？</h3> <blockquote> <p><span style="color:#0d0016;"></span><span style="color:#fe2c24;">冒泡排序</span><span style="color:#0d0016;">（Bubble sort）,</span>是一种较简单的排序算法。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端（升序或降序排列），就如同碳酸饮料中二氧化碳的气泡最终会上浮到顶端一样，故名“冒泡排序”。（PS：来源百度百科）</p> </blockquote> <p style="text-align:center;"></p> <h3 id="%C2%A0%E4%BA%8C%E3%80%81%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86">&nbsp;二、算法原理（升序）</h3> <ul> <li>&nbsp;1、比较相邻的两个元素。若第一个比第二个大，交换位置，反之位置不变。</li> <li>&nbsp;2、交换位置后，再与后面的一个两两比较。</li> <li>&nbsp;3、针对所有元素重复以上动作，最后一个除外。</li> </ul> <p>&nbsp;举例来说：<span style="color:#fe2c24;">36,26,27,2,4,19,50,48</span>来说，会有多趟排序（size - 1），每一趟要排多次（size - k）,<strong>这里列举出第一趟：</strong></p> <p style="text-align:center;"><img fetchpriority="high" decoding="async" alt="" height="470" src="http://img.555519.xyz/uploads/20221120/04c3b3ce58a8095be68a2f11346d054c.jpg"></p> <p><strong>多趟排序的后的结果总结是这样的：</strong></p> <p style="text-align:center;"><img decoding="async" alt="" height="481" src="http://img.555519.xyz/uploads/20221120/4af4d55dd1fd151898511fafd9c7a3d1.jpg"></p> <blockquote> <p>PS：这里留下一个思考，图里留了一个<span style="color:#fe2c24;"><strong>注意</strong></span>字样，在这里数组已经排序好了，但是还是会依次比较，你能想到什么方法优化吗？</p> </blockquote> <p><strong>它的动态执行过程如下动图所示：</strong></p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221120/6fdf238c7942d28f7806ab2b6a8d199c.jpg"></p> <p>PS：此动图来源于网络。</p> <table align="center" border="1" cellpadding="1" cellspacing="1" style="width:700px;"> <thead> <tr> <th style="width:156px;">&nbsp; &nbsp;最坏时间复杂度</th> <th style="width:175px;">&nbsp; &nbsp; &nbsp; &nbsp; 最好时间复杂度</th> <th style="width:203px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;空间复杂度</th> <th style="width:165px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 是否稳定</th> </tr> </thead> <tbody> <tr> <td style="width:156px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; O(n^2)</td> <td style="width:175px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; O(n)</td> <td style="width:203px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;O(1)</td> <td style="width:165px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 稳定</td> </tr> </tbody> </table> <h3>三、代码实现</h3> <pre><code class="language-java">public class BubbleSort {     public static void main(String[] args) {         // 直接定义一个数组         int[] nums = {36,26,27,2,4,19,50,48};         System.out.println("排序前的数组：" + Arrays.toString(nums));         sort(nums);         System.out.println("排序前的数组：" + Arrays.toString(nums));     }      /*     * 对数组进行冒泡排序     *     * @param nums 需要排序的数组     * */     private static void sort(int[] nums) {         // 数组长度 len         int len = nums.length;         // 临时变量 temp         int temp = 0;         // 外层循环控制排序趟数，len个进行len - 1趟         for (int i = 0; i &lt; len - 1; i++) {             System.out.println("第"+ (i + 1) +"趟：");             // 内层循环控制比较的次数，第i趟比较i-1次             for (int j = 0; j &lt; len - 1 - i; j++) {                 // 比较相邻的两个元素，若前面的数字大于后面的，交换位置                 if (nums[j] &gt; nums[j+1]) {                     temp = nums[j+1];                     nums[j+1] = nums[j];                     nums[j] = temp;                 }              System.out.println("    "+"第"+ (j + 1) +"次：" + Arrays.toString(nums));             }         }     } }</code></pre> <blockquote> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这里插一嘴，想起来自己刚接触冒泡排序的时候，感觉那个时候的自己就是一个菜逼，哈哈哈哈哈，不理解两个for的意义，写了好几遍之后还是不理解，似懂非懂。对了，当时还对交换数据位置哪里每次写都要纠结好久，想着怎么交换呀，拿笔在纸上比划半年，才写出来，后来找到了一个小技巧：<strong>起手临时变量，中间半交叉，收尾临时变量。</strong>仅供参考，大佬勿喷（小声BB）</p> </blockquote> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221120/6cb6562a8c84e2d15ecfde6563da5b50.jpg"></p> <p><strong>输出的结果：</strong></p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221120/c708780228fbca99548b7cb22864bfdf.jpg"></p> <blockquote> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从运行的结果可以看出，从红色标记开始，后面的排序的已经是有序的，但是代码还是要往后面执行，因此说明代码是可以进行优化，这里你可以思考一下怎么去优化这个问题。</p> </blockquote> <h3>4、优化：</h3> <blockquote> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加一个标志位，当每次发生交换的时候，就进行标记，如果没有发生交换，不标记，也就是说此时数组已经有序，直接跳出循环，于此同时再记录一下最后一次交换元素的位置，即可完成对这个排序的优化。</p> </blockquote> <p><strong>代码如下所示：</strong></p> <pre><code class="language-java">public class BubbleSort {     public static void main(String[] args) {         // 直接定义一个数组         int[] nums = {36,26,27,2,4,19,50,48};         System.out.println("排序前的数组：" + Arrays.toString(nums));         sort(nums);         System.out.println("排序前的数组：" + Arrays.toString(nums));     }      /*      * 对数组进行冒泡排序      *      * @param nums 需要排序的数组      * */     private static void sort(int[] nums) {         // 数组长度 len         int len = nums.length - 1;         // 记录最后一个交换的位置         int pos = 0;         // 临时变量 temp         int temp = 0;         // 外层循环控制排序趟数，len个进行len - 1趟         for (int i = 0; i &lt; nums.length - 1; i++) {             System.out.println("第" + (i + 1) + "趟：");             // 标记位             boolean flag = true;             // 内层循环控制比较的次数，第i趟比较i-1次             for (int j = 0; j &lt; len; j++) {                 // 比较相邻的两个元素，若前面的数字大于后面的，交换位置                 if (nums[j] &gt; nums[j + 1]) {                     temp = nums[j + 1];                     nums[j + 1] = nums[j];                     nums[j] = temp;                     // 如果能走到这里说明有有元素交换，还不是有序的，标记为false                     flag = false;                     // 最后一次交换元素的位置                     pos = j;                 }                 System.out.println("    第" + (j + 1) + "次：" + Arrays.toString(nums));             }             // 如果没有元素交换，直接跳出循环             if (flag) {                 break;             }             // 把最后一次交换元素的位置赋值给len,即下一次比较到记录位置             len = pos;         }     } }</code></pre> <p><strong>输出的结果：</strong></p> <h3 style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221120/a554697111029592bb2c68094d0af4a6.jpg"></h3> <blockquote> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于优化这块，我觉得并不具备普遍性，如果是在最坏的时间复杂度的情况下，优化与不优化输出的结果都是一样的，所以我们只需要了解冒泡的思想即可。另外加标志位这个思想在实际的开发中也很常用，需要我们多多思考。</p> </blockquote> <hr/> <p><strong>水平有限，写的不好的地方，希望大家指出。如果你感觉这篇文章对你有帮助，点赞支持一下</strong></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-57665.htm">猫咪领养协议书下载（宠物猫领养协议书）</a></p>
+                                        <p>下一个：<a href="/news/article-58240.htm">动物医院工作怎么样啊（动物医院职位）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-48420.htm" title="猫咪打疫苗打几针多少钱啊一次（猫咪打疫苗总共需要多少钱）">猫咪打疫苗打几针多少钱啊一次（猫咪打疫苗总共需要多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-53244.htm" title="Spring按业务模块输出日志到不同的文件_在线工具">Spring按业务模块输出日志到不同的文件_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-node-share-links.htm" title="11月15日→19.7M/S|2024年最新免费节点Open Clash Node订阅链接地址">11月15日→19.7M/S|2024年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23028.htm" title="SpringBoot 转发请求至指定页面">SpringBoot 转发请求至指定页面</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-node-share-links.htm" title="2月15日→18.5M/S|2025年最新免费节点Open Clash Node订阅链接地址">2月15日→18.5M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-free-node-subscribe-links.htm" title="1月11日→19.3M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月11日→19.3M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-34289.htm" title="Go语学习笔记 &#8211; gorm使用 &#8211; 表增删改查 | Web框架Gin（八）">Go语学习笔记 &#8211; gorm使用 &#8211; 表增删改查 | Web框架Gin（八）</a></li>
+                        <li class="py-2"><a href="/news/article-54334.htm" title="爱宠屋电话（重庆宠爱爱宠屋）">爱宠屋电话（重庆宠爱爱宠屋）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-node-subscribe-links.htm" title="1月31日→18.1M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月31日→18.1M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-57665.htm" title="猫咪领养协议书下载（宠物猫领养协议书）">猫咪领养协议书下载（宠物猫领养协议书）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

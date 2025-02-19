@@ -1,0 +1,293 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-58860.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>vue-cli@3封装多模块Vuex（vue项目模板封装系列）</title>
+        <meta name="description" content="前言 上一期分享了如何在vue-cli3的框架中，封装Axios。本期将分享如何在vue项目中添加Vuex，并封装使用。  本文内容偏重于vuex的使用介绍，因此，并不会对项目案例中vuex的细节进行" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open Clash Node免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://openclashnode.github.io/news/article-58860.htm" />
+    <meta property="og:site_name" content="Open Clash Node免费机场订阅节点官网" />
+    <meta property="og:title" content="vue-cli@3封装多模块Vuex（vue项目模板封装系列）" />
+    <meta property="og:image" content="https://openclashnode.github.io/uploads/20241025/6c71c2d72fe9274c4307a712b2ea41e7.webp" />
+        <meta property="og:release_date" content="2025-02-18T09:46:46" />
+    <meta property="og:updated_time" content="2025-02-18T09:46:46" />
+        <meta property="og:description" content="前言 上一期分享了如何在vue-cli3的框架中，封装Axios。本期将分享如何在vue项目中添加Vuex，并封装使用。  本文内容偏重于vuex的使用介绍，因此，并不会对项目案例中vuex的细节进行" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue-cli@3封装多模块Vuex（vue项目模板封装系列）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                    <a href="/">
+                                                                        <span>Open Clash Node</span>
+                                                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>vue-cli@3封装多模块Vuex（vue项目模板封装系列）</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3> <a id="_0" rel="nofollow"></a>前言</h3> <p>上一期分享了如何在vue-cli3的框架中，封装Axios。本期将分享如何在vue项目中添加Vuex，并封装使用。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/198423863017b4ae0b29ad6eabeb5bb0.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p>本文内容偏重于vuex的使用介绍，因此，并不会对项目案例中vuex的细节进行讲解，强烈建议读者配合GitHub上面的项目实例进行对比阅读，这样会帮助你更好地理解案例中vuex封装使用的全过程（ps：主要是我觉得我的案例代码写的还可以，一看就懂，文章内容属于案例代码的阅读目录）。</p> <p>GitHub项目地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/jiangjiaheng/web-template"  rel="nofollow">https://github.com/jiangjiaheng/web-template</a></p> <h3> <a id="Vuex_10" rel="nofollow"></a>关于Vuex</h3> <h4> <a id="1__12" rel="nofollow"></a>1. 官方文档</h4> <p>本文默认你对vuex有一定的了解，并且阅读过vuex的官方文档，因此本文就不在赘述关于Vuex的基础知识。</p> <p>Vuex官方文档地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://vuex.vuejs.org/zh/guide/"  rel="nofollow">https://vuex.vuejs.org/zh/guide/</a></p> <h4> <a id="2__18" rel="nofollow"></a>2. 个人理解</h4> <p>如果你已经阅读过Vuex的官方文档，相信你已经认识了<code>state</code>, <code>getter</code>, <code>mutation</code>, <code>action</code>, <code>modules</code> ，它们都是Vuex的核心元素。</p> <p>关于它们的具体内容，不在赘述，在这里面我只是简单总结一下，这几个元素的特点、作用，帮助初学者更好地理解。</p> <ul> <li> <p><code>state</code> 类似于vue中<code>data</code>，用于存放数据模型；</p> </li> <li> <p><code>getter</code>类似于vue中<code>computed</code>，相当于<code>state</code>的计算属性；</p> </li> <li> <p><code>mutation</code>类似于vue中的<code>method</code>，只有它的方法函数可以改变<code>state</code>的值，同时它的方法函数必须是同步，不能是异步；</p> </li> <li> <p><code>action</code>类似<code>mutation</code>，但是它只能通过调用<code>mutation</code>来改变<code>state</code>的值，同时它的函数方法可以是异步的；</p> </li> <li> <p><code>modules</code>可以引入多个module，通过这个属性，我们可以添加多个module进入Vuex的store中。</p> </li> </ul> <h3> <a id="_34" rel="nofollow"></a>项目实例</h3> <h4> <a id="1__36" rel="nofollow"></a>1. 介绍</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/d5a7786f9251cfa27187b980644cd10f.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p>如上图所示，我将通过自己创建评分组件，为你展示如何封装多个module的Vuex仓库，并且优雅地使用它们。</p> <h4> <a id="2_Vuex_42" rel="nofollow"></a>2. 添加Vuex</h4> <pre><code>npm add vuex </code></pre> <p>在vue项目所在文件夹内打开命令行，输入上面的指令，即可添加Vuex。</p> <p>添加成功后，你就可以在src文件夹下，看到store文件夹，并且在main.js中，也会自动添加store。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/574d3a72f956b1a56f0ae65e0c1c6a7d.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/8f5e0fc4583f3a0e80eb1945dd0049f4.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <h4> <a id="3_modules_55" rel="nofollow"></a>3. 封装modules</h4> <p>在store的文件夹中，创建一个modules文件夹，并且在该文件夹中添加modulA.js，moduleB.js文件。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/e843d9c51054b1cd2400bfe82912ffbf.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p>再在两个module文件中添加，各自module的内容。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/b8b8f763195febbe92c3e5592383791d.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/24921128cc5f227ed180209c489bd0a3.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p>最后在store.js中引入这两个模块，完成封装。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/e305dd8c27d02e6f42914596293d3c35.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <h4> <a id="4__71" rel="nofollow"></a>4. 创建评分卡片</h4> <p>在component文件夹下面，添加一个RateCard.vue文件，添加代码。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/2e7355ac05391d10235ec7c2368f6785.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <h4> <a id="5_vueVuex_77" rel="nofollow"></a>5. 在vue文件中引用Vuex</h4> <p>在home.vue引入RateCard，然后再引入vuex，进行使用。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/81e8a6dc7c6c49bc38b78805a617d8e6.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221229/65fdafe2a6c265868e9552808c56035d.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-58240.htm">动物医院工作怎么样啊（动物医院职位）</a></p>
+                                        <p>下一个：<a href="/news/article-58861.htm">Python 查找算法_众里寻他千百度，蓦然回首那人却在灯火阑珊处（线性、二分，分块、插值查找算法)</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-free-node-subscribe-links.htm" title="1月5日→18M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月5日→18M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-node-share-links.htm" title="1月27日→20.9M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月27日→20.9M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-free-high-speed-nodes.htm" title="2月4日→19.3M/S|2025年最新免费节点Open Clash Node订阅链接地址">2月4日→19.3M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-25-free-node-subscribe-links.htm" title="1月25日→21.7M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月25日→21.7M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-51669.htm" title="JavaScript如何查找不同的元素">JavaScript如何查找不同的元素</a></li>
+                        <li class="py-2"><a href="/news/article-43614.htm" title="宠物粮加工厂原料供应商电话（宠物粮加工厂原料供应商电话是多少）">宠物粮加工厂原料供应商电话（宠物粮加工厂原料供应商电话是多少）</a></li>
+                        <li class="py-2"><a href="/news/article-29533.htm" title="自己给宠物打疫苗有危险吗（宠物疫苗可以自己打吗怎么打）">自己给宠物打疫苗有危险吗（宠物疫苗可以自己打吗怎么打）</a></li>
+                        <li class="py-2"><a href="/news/article-24883.htm" title="Redis的高并发是如何支持的">Redis的高并发是如何支持的</a></li>
+                        <li class="py-2"><a href="/news/article-55980.htm" title="动物防疫疫苗中标公告最新消息新闻（动物防疫站疫苗多少钱）">动物防疫疫苗中标公告最新消息新闻（动物防疫站疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-node-share-links.htm" title="2月15日→18.5M/S|2025年最新免费节点Open Clash Node订阅链接地址">2月15日→18.5M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
