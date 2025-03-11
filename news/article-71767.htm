@@ -1,0 +1,290 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-71767.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>springboot RestTemplate,访问https实现SSL请求</title>
+        <meta name="description" content="一、RestTemplate 简介Spring RestTemplate是Spring提供的用于访问Rest服务的客户端，RestTemplate 提供了多种便捷访问远程Http服务的方法，能够大大提" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open Clash Node免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://openclashnode.github.io/news/article-71767.htm" />
+    <meta property="og:site_name" content="Open Clash Node免费机场订阅节点官网" />
+    <meta property="og:title" content="springboot RestTemplate,访问https实现SSL请求" />
+    <meta property="og:image" content="https://openclashnode.github.io/uploads/20241025/42f590e8610b872397be48ff5d5adb17.webp" />
+        <meta property="og:release_date" content="2025-03-11T07:48:12" />
+    <meta property="og:updated_time" content="2025-03-11T07:48:12" />
+        <meta property="og:description" content="一、RestTemplate 简介Spring RestTemplate是Spring提供的用于访问Rest服务的客户端，RestTemplate 提供了多种便捷访问远程Http服务的方法，能够大大提" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="springboot RestTemplate,访问https实现SSL请求">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                    <a href="/">
+                                                                        <span>Open Clash Node</span>
+                                                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>springboot RestTemplate,访问https实现SSL请求</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div class="article fmt article__content"> <p>一、RestTemplate 简介<br />Spring RestTemplate是Spring提供的用于访问Rest服务的客户端，RestTemplate 提供了多种便捷访问远程Http服务的方法，能够大大提高客户端的编写效率.</p> <p>RestTemplate包含以下几个部分：</p> <ul> <li>HttpMessageConverter 对象转换器:将请求对象转换为具体的数据格式输出，例 <br /> 入:Jaxb2RootElementHttpMessageConverterket提供对xml格式的输入输出支持</li> <li>ClientHttpRequestFactory HTTP请求工厂，默认是JDK的HttpURLConnection，<br /> 可以通过使用ClientHttpRequestFactory指定不同的HTTP请求方式</li> <li>ResponseErrorHandler 异常错误处理</li> <li>ClientHttpRequestInterceptor 请求拦截器</li> </ul> <p>RestTemplate通过HttpEntity添加消息headers </p> <p>二、springboot 通过RestTemplate实现https访问</p> <pre><code>import java.io.InputStream; import java.security.KeyStore; import java.util.ArrayList; import java.util.Collections; import java.util.List;  import javax.net.ssl.HostnameVerifier; import javax.net.ssl.HttpsURLConnection; import javax.net.ssl.KeyManagerFactory; import javax.net.ssl.SSLContext; import javax.net.ssl.SSLSession; import javax.net.ssl.TrustManager;  import org.apache.commons.lang3.StringUtils; import org.apache.http.HttpHost; import org.apache.http.conn.ssl.SSLConnectionSocketFactory; import org.apache.http.impl.client.HttpClientBuilder; import org.apache.http.impl.client.HttpClients; import org.apache.http.ssl.SSLContexts; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.boot.context.properties.ConfigurationProperties; import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Conditional; import org.springframework.context.annotation.Configuration; import org.springframework.http.MediaType; import org.springframework.http.client.HttpComponentsClientHttpRequestFactory; import org.springframework.http.converter.json.GsonHttpMessageConverter; import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter; import org.springframework.web.client.RestTemplate;  /**  * service相关配置  *  * @date 2017年3月1日  * @since 1.0.0  */ @Configuration public class ServiceConfigConfiguration {      @Autowired     sslProperties sslProperties ;       /**      * 访问SSL的Template      *      * @throws Exception      */     @Bean("sslRestTemplate")     @Conditional(sslCondition.class)     public RestTemplate tmsRestTemplate() throws Exception {         //新建RestTemplate对象         RestTemplate restTemplate = new RestTemplate();         //判断证书文件地址是否存在         if (StringUtils.isNotEmpty(sslProperties.getKeyfile())) {             //在握手期间，如果URL的主机名和服务器的标识主机名不匹配，则验证机制可以回调此接口的实现                程序来确定是否应该允许此连接             HostnameVerifier hv = new HostnameVerifier() {                 @Override                 public boolean verify(String urlHostName, SSLSession session) {                     return true;                 }             };             HttpsURLConnection.setDefaultHostnameVerifier(hv);             //构建SSL-Socket链接工厂             SSLConnectionSocketFactory ssLSocketFactory = buildSSLSocketFactory("PKCS12",              sslProperties.getKeyfile(),sslProperties.getPassword(),              Lists.newArrayList("TLSv1"), true);             //Spring提供HttpComponentsClientHttpRequestFactory指定使用HttpClient作为底层实现创建 HTTP请求             HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory(                     HttpClients.custom().setSSLSocketFactory(ssLSocketFactory).build()             );             //设置传递数据超时时长             httpRequestFactory.setReadTimeout(sslProperties.getTimeout());             //设置建立连接超时时长             httpRequestFactory.setConnectTimeout(sslProperties.getTimeout());             //设置获取连接超时时长             httpRequestFactory.setConnectionRequestTimeout(tmsProperties.getTimeout());                          restTemplate.setRequestFactory(httpRequestFactory);              // 返回消息头也是text_html,消息格式是XML,添加新的message converter             Jaxb2RootElementHttpMessageConverter messageConverter = new Jaxb2RootElementHttpMessageConverter();             //设置message Converter支持的媒体类型             List&lt;MediaType&gt; finalMediaTypes = new ArrayList&lt;&gt;();             finalMediaTypes.addAll(messageConverter.getSupportedMediaTypes());             finalMediaTypes.add(MediaType.TEXT_HTML);             messageConverter.setSupportedMediaTypes(finalMediaTypes);             restTemplate.setMessageConverters(Lists.newArrayList(messageConverter));          }         return restTemplate;     }      /**      * 构建SSLSocketFactory      *      * @param keyStoreType      * @param keyFilePath      * @param keyPassword      * @param sslProtocols      * @param auth 是否需要client默认相信不安全证书      * @return      * @throws Exception      */     private SSLConnectionSocketFactory buildSSLSocketFactory(String keyStoreType, String keyFilePath,                                                              String keyPassword, List&lt;String&gt; sslProtocols, boolean auth) throws Exception {         //证书管理器，指定证书及证书类型         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());         //KeyStore用于存放证书，创建对象时 指定交换数字证书的加密标准         KeyStore keyStore = KeyStore.getInstance(keyStoreType);              InputStream inputStream = resourcePatternResolver.getResource(keyFilePath).getInputStream();         try {             //添加证书             keyStore.load(inputStream, keyPassword.toCharArray());         } finally {             inputStream.close();         }         keyManagerFactory.init(keyStore, keyPassword.toCharArray());                  SSLContext sslContext = SSLContext.getInstance("SSL");         if (auth) {             // 设置信任证书（绕过TrustStore验证）             TrustManager[] trustAllCerts = new TrustManager[1];             TrustManager trustManager = new AuthX509TrustManager();             trustAllCerts[0] = trustManager;             sslContext.init(keyManagerFactory.getKeyManagers(), trustAllCerts, null);             HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());         } else {             //加载证书材料，构建sslContext             sslContext = SSLContexts.custom().loadKeyMaterial(keyStore, keyPassword.toCharArray()).build();         }          SSLConnectionSocketFactory sslConnectionSocketFactory =                 new SSLConnectionSocketFactory(sslContext, sslProtocols.toArray(new String[sslProtocols.size()]),                         null,                         new HostnameVerifier() {                             // 这里不校验hostname                             @Override                             public boolean verify(String urlHostName, SSLSession session) {                                 return true;                             }                         });          return sslConnectionSocketFactory;     } }</code></pre> <p>AuthX509TrustManager 证书信任管理器类就是实现了接口X509TrustManager的类。可以自己实现该接口，信任我们指定的证书</p> <pre><code>public class AuthX509TrustManager implements javax.net.ssl.TrustManager, javax.net.ssl.X509TrustManager {     public java.security.cert.X509Certificate[] getAcceptedIssuers() {         return null;     }          public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType)             throws java.security.cert.CertificateException {         return;     }      public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType)             throws java.security.cert.CertificateException {         return;     } } </code></pre> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-71098.htm">动物疫苗需要冷藏吗多久打（动物疫苗保质期一般多久）</a></p>
+                                        <p>下一个：<a href="/news/article-71768.htm">合肥免费宠物救援中心（合肥宠物救援中心电话）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-18-free-subscribe-node.htm" title="1月18日→20.3M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月18日→20.3M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-57664.htm" title="动物园兽医招聘信息网（去动物园当兽医待遇怎么样）">动物园兽医招聘信息网（去动物园当兽医待遇怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-40129.htm" title="什么叫领养宠物的人呢（领养宠物狗是什么意思）">什么叫领养宠物的人呢（领养宠物狗是什么意思）</a></li>
+                        <li class="py-2"><a href="/news/article-69793.htm" title="Visual Studio快捷键汇总_实用技巧_">Visual Studio快捷键汇总_实用技巧_</a></li>
+                        <li class="py-2"><a href="/news/article-47049.htm" title="动物疫苗业务员能挣多少（动物疫苗经营）">动物疫苗业务员能挣多少（动物疫苗经营）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-10-free-high-speed-nodes.htm" title="2月10日→21.4M/S|2025年最新免费节点Open Clash Node订阅链接地址">2月10日→21.4M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40619.htm" title="广州哪里买狗狗好（广州哪里买狗最便宜）">广州哪里买狗狗好（广州哪里买狗最便宜）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-21-free-subscribe-node.htm" title="2月21日→19.5M/S|2025年最新免费节点Open Clash Node订阅链接地址">2月21日→19.5M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-71098.htm" title="动物疫苗需要冷藏吗多久打（动物疫苗保质期一般多久）">动物疫苗需要冷藏吗多久打（动物疫苗保质期一般多久）</a></li>
+                        <li class="py-2"><a href="/news/article-38169.htm" title="动物医院实训总结范文 动物医院实训总结范文大全">动物医院实训总结范文 动物医院实训总结范文大全</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

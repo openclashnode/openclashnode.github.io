@@ -1,0 +1,290 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-71097.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>小程序进阶-如何去除或隐藏页面滚动条</title>
+        <meta name="description" content="前言   当小程序页面展示内容超过屏幕高度或宽度，我们想要看到全部内容，这时候就必须用到页面滚动。可是，我们发现滚动页面的滚动条特别的突兀和丑陋，而且参考大部分的小程序都是将滚动条去掉了。那么，我们该" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open Clash Node免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://openclashnode.github.io/news/article-71097.htm" />
+    <meta property="og:site_name" content="Open Clash Node免费机场订阅节点官网" />
+    <meta property="og:title" content="小程序进阶-如何去除或隐藏页面滚动条" />
+    <meta property="og:image" content="https://openclashnode.github.io/uploads/20241025/e4f1a15dcfca07b612daac49f9f28f05.webp" />
+        <meta property="og:release_date" content="2025-03-10T04:37:23" />
+    <meta property="og:updated_time" content="2025-03-10T04:37:23" />
+        <meta property="og:description" content="前言   当小程序页面展示内容超过屏幕高度或宽度，我们想要看到全部内容，这时候就必须用到页面滚动。可是，我们发现滚动页面的滚动条特别的突兀和丑陋，而且参考大部分的小程序都是将滚动条去掉了。那么，我们该" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="小程序进阶-如何去除或隐藏页面滚动条">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                    <a href="/">
+                                                                        <span>Open Clash Node</span>
+                                                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>小程序进阶-如何去除或隐藏页面滚动条</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2><a id="_0" rel="nofollow"></a>前言</h2> <p>  当小程序页面展示内容超过屏幕高度或宽度，我们想要看到全部内容，这时候就必须用到页面滚动。可是，我们发现滚动页面的滚动条特别的突兀和丑陋，而且参考大部分的小程序都是将滚动条去掉了。那么，我们该怎么去掉滚动条呢？</p> <h2><a id="_3" rel="nofollow"></a>方案一</h2> <p>  我们知道，当展示内容超过页面高度，会触发page默认的滚动条。如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/3ea57b0d01e07d4d8aca80e4d84ac5dd.jpg" alt="小程序进阶-如何去除或隐藏页面滚动条"><br /> 在小程序社区，我找到了一个方案：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/150729ce3cd6b3f5ac222bc647a066b9.jpg" alt="小程序进阶-如何去除或隐藏页面滚动条"><br /> 看代码：<br /> index.wxss</p> <pre><code class="prism language-wxss">.intro{   width: 100vw;   height: 100vh;   overflow: hidden;   margin: auto; } .sub{   height: 100%;   width: calc(100vw + 6px);   overflow-x: hidden; }</code></pre> <p>index.wxml</p> <pre><code class="prism language-wxml">&lt;view class="intro"&gt; 	&lt;view class="sub"&gt; 		页面内容 	&lt;/view&gt; &lt;/view&gt;</code></pre> <p>简而言之，就是将滚动条很好的隐藏起来了！！！！！</p> <h2><a id="_33" rel="nofollow"></a>方案二</h2> <p>当然我们更多使用的应该是scroll-view，隐藏滚动条的方法也很简单。<br /> 我们可以在app.wxss（全局）或当前页面.wxss加入如下代码即可：</p> <pre><code class="prism language-wxss">::-webkit-scrollbar {   display: none;   width: 0;   height: 0;   color: transparent; }</code></pre> <p>值得注意的是：</p> <pre><code class="prism language-php"><span class="token operator">&lt;</span>scroll<span class="token operator">-</span>view   scroll<span class="token operator">-</span>y style<span class="token operator">=</span><span class="token string double-quoted-string">"width: 100%; height: 100%;"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>scroll<span class="token operator">-</span>view<span class="token operator">&gt;</span></code></pre> <p>scroll-view高度不要设置为相对高度，如100%。否则，page页面的滚动条又会出现了！！！<br /> 我们可以这样做：</p> <pre><code class="prism language-php"><span class="token operator">&lt;</span>scroll<span class="token operator">-</span>view   scroll<span class="token operator">-</span>y style<span class="token operator">=</span><span class="token string double-quoted-string">"width: 100%; height: 100vh;"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>scroll<span class="token operator">-</span>view<span class="token operator">&gt;</span></code></pre> <p>如果仍然无效，减少height的值，例如设为height:99vh。scroll-view高度大于page高度仍会出现滚动条的。<br /> 父元素如page记得设置：</p> <pre><code class="prism language-*">overflow: hidden;</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-70434.htm">免费领养狗狗的app（免费领养狗狗的文案）</a></p>
+                                        <p>下一个：<a href="/news/article-71098.htm">动物疫苗需要冷藏吗多久打（动物疫苗保质期一般多久）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-free-node-subscribe.htm" title="1月29日→21.5M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月29日→21.5M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-59382.htm" title="猫三针疫苗多少钱（宠物猫三针疫苗多少钱）">猫三针疫苗多少钱（宠物猫三针疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-free-node-subscribe-links.htm" title="1月6日→18.2M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月6日→18.2M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-64726.htm" title="猫三联疫苗一共多少钱（猫三联疫苗多少钱?）">猫三联疫苗一共多少钱（猫三联疫苗多少钱?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-free-high-speed-nodes.htm" title="3月11日→21.6M/S|2025年最新免费节点Open Clash Node订阅链接地址">3月11日→21.6M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-53785.htm" title="动物医院管理制度文本怎么写范文图片（动物医院管理制度文本怎么写范文图片高清）">动物医院管理制度文本怎么写范文图片（动物医院管理制度文本怎么写范文图片高清）</a></li>
+                        <li class="py-2"><a href="/news/article-57101.htm" title="动物疫苗价格表最新图片大全集 动物疫苗价格表最新图片大全集下载">动物疫苗价格表最新图片大全集 动物疫苗价格表最新图片大全集下载</a></li>
+                        <li class="py-2"><a href="/news/article-45094.htm" title="vue中动态改变样式">vue中动态改变样式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-28-node-share.htm" title="2月28日→20.4M/S|2025年最新免费节点Open Clash Node订阅链接地址">2月28日→20.4M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-free-high-speed-nodes.htm" title="2月16日→20.7M/S|2025年最新免费节点Open Clash Node订阅链接地址">2月16日→20.7M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
