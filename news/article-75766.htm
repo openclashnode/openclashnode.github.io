@@ -1,0 +1,290 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-75766.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Spring 4 中使用 Scheduled 任务调度</title>
+        <meta name="description" content="前言 这一篇我们来说一下在Spring中如何使用Scheduled做定时任务  使用 依赖 我们导入context依赖就好 内部包含了 core aop express beans         &" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open Clash Node免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://openclashnode.github.io/news/article-75766.htm" />
+    <meta property="og:site_name" content="Open Clash Node免费机场订阅节点官网" />
+    <meta property="og:title" content="Spring 4 中使用 Scheduled 任务调度" />
+    <meta property="og:image" content="https://openclashnode.github.io/uploads/20241025/e4f1a15dcfca07b612daac49f9f28f05.webp" />
+        <meta property="og:release_date" content="2025-03-17T09:41:14" />
+    <meta property="og:updated_time" content="2025-03-17T09:41:14" />
+        <meta property="og:description" content="前言 这一篇我们来说一下在Spring中如何使用Scheduled做定时任务  使用 依赖 我们导入context依赖就好 内部包含了 core aop express beans         &" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring 4 中使用 Scheduled 任务调度">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                    <a href="/">
+                                                                        <span>Open Clash Node</span>
+                                                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>Spring 4 中使用 Scheduled 任务调度</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night"> <h2> <a id="_0" rel="nofollow"></a>前言</h2> <p>这一篇我们来说一下在Spring中如何使用Scheduled做定时任务</p> <h3> <a id="_3" rel="nofollow"></a>使用</h3> <p>依赖 我们导入context依赖就好 内部包含了 core aop express beans</p> <pre><code class="prism language-xml">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-context<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>5.1.9.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>applicationContext.xml</p> <pre><code class="prism language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>        <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>        <span class="token attr-name"><span class="token namespace">xmlns:</span>task</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/task<span class="token punctuation">"</span></span>        <span class="token attr-name"><span class="token namespace">xmlns:</span>context</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/context<span class="token punctuation">"</span></span>        <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd  http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd  http://www.springframework.org/schema/context 	http://www.springframework.org/schema/context/spring-context.xsd<span class="token punctuation">"</span></span>        <span class="token attr-name">default-autowire</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>byName<span class="token punctuation">"</span></span> <span class="token attr-name">default-lazy-init</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>      <span class="token comment">&lt;!-- 定时任务相关配置 --&gt;</span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">task:</span>executor</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>executor<span class="token punctuation">"</span></span> <span class="token attr-name">pool-size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span> <span class="token attr-name">queue-capacity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>128<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">task:</span>scheduler</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>scheduler<span class="token punctuation">"</span></span> <span class="token attr-name">pool-size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">task:</span>annotation-driven</span> <span class="token attr-name">executor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>executor<span class="token punctuation">"</span></span> <span class="token attr-name">scheduler</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>scheduler<span class="token punctuation">"</span></span> <span class="token attr-name">proxy-target-class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>job<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>top.liwenxiang.job.Job<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>创建一个Job类</p> <pre><code class="prism language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>liwenxiang<span class="token punctuation">.</span>job<span class="token punctuation">;</span>  <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>scheduling<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Scheduled<span class="token punctuation">;</span> <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Component<span class="token punctuation">;</span>  <span class="token annotation punctuation">@Component</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Job</span> <span class="token punctuation">{<!-- --></span>     <span class="token annotation punctuation">@Scheduled</span><span class="token punctuation">(</span>cron <span class="token operator">=</span> <span class="token string">"1,2,3,4,5,10,11 * * * * ? "</span><span class="token punctuation">)</span>     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>创建一个类进行测试 或者直接使用Junit 直接run运行即可</p> <pre><code class="prism language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>liwenxiang<span class="token punctuation">.</span>job<span class="token punctuation">;</span>  <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>ApplicationContext<span class="token punctuation">;</span> <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>support<span class="token punctuation">.</span>ClassPathXmlApplicationContext<span class="token punctuation">;</span>  <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Application</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         ApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"classpath:application.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span>  </code></pre> <p>会看到每一分的1,2,3,4,5,10,11秒会打印1</p> <p>其他使用方式</p> <pre><code class="prism language-java"> <span class="token annotation punctuation">@Scheduled</span><span class="token punctuation">(</span>fixedRate <span class="token operator">=</span> <span class="token number">10000</span><span class="token punctuation">)</span> </code></pre> <pre><code class="prism language-java"> <span class="token annotation punctuation">@Scheduled</span><span class="token punctuation">(</span>fixedDelay<span class="token operator">=</span> <span class="token number">10000</span><span class="token punctuation">)</span> </code></pre> <p>我们DEMO中的是使用的cron表达式</p> <p>一个cron表达式有至少6个（也可能7个）有空格分隔的时间元素。</p> <p>按顺序依次为<br /> 秒（0~59）<br /> 分钟（0~59）</p> <p>小时（0~23）</p> <p>天（月）（0~31，但是你需要考虑你月的天数）</p> <p>月（0~11）</p> <p>天（星期）（1~7 1=SUN 或 SUN，MON，TUE，WED，THU，FRI，SAT）</p> <p>7.年份（1970－2099）</p> <p>其中每个元素可以是一个值(如6),一个连续区间(9-12),一个间隔时间(8-18/4)(/表示每隔4小时),一个列表(1,3,5),通配符。由于"月份中的日期"和"星期中的日期"这两个元素互斥的,必须要对其中一个设置?.</p> <p>0 0 10,14,16 * * ? 每天上午10点，下午2点，4点<br /> 0 0/30 9-17 * * ? 朝九晚五工作时间内每半小时<br /> 0 0 12 ? * WED 表示每个星期三中午12点<br /> “0 0 12 * * ?” 每天中午12点触发<br /> “0 15 10 ? * *” 每天上午10:15触发<br /> “0 15 10 * * ?” 每天上午10:15触发<br /> “0 15 10 * * ? *” 每天上午10:15触发<br /> “0 15 10 * * ? 2005” 2005年的每天上午10:15触发<br /> “0 * 14 * * ?” 在每天下午2点到下午2:59期间的每1分钟触发<br /> “0 0/5 14 * * ?” 在每天下午2点到下午2:55期间的每5分钟触发<br /> “0 0/5 14,18 * * ?” 在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发<br /> “0 0-5 14 * * ?” 在每天下午2点到下午2:05期间的每1分钟触发<br /> “0 10,44 14 ? 3 WED” 每年三月的星期三的下午2:10和2:44触发<br /> “0 15 10 ? * MON-FRI” 周一至周五的上午10:15触发<br /> “0 15 10 15 * ?” 每月15日上午10:15触发<br /> “0 15 10 L * ?” 每月最后一日的上午10:15触发<br /> “0 15 10 ? * 6L” 每月的最后一个星期五上午10:15触发<br /> “0 15 10 ? * 6L 2002-2005” 2002年至2005年的每月的最后一个星期五上午10:15触发<br /> “0 15 10 ? * 6#3” 每月的第三个星期五上午10:15触发</p> <p>有些子表达式能包含一些范围或列表</p> <p>例如：子表达式（天（星期））可以为 “MON-FRI”，“MON，WED，FRI”，“MON-WED,SAT”</p> <p>“*”字符代表所有可能的值</p> <p>因此，“<em>”在子表达式（月）里表示每个月的含义，“</em>”在子表达式（天（星期））表示星期的每一天</p> <p>“/”字符用来指定数值的增量</p> <p>例如：在子表达式（分钟）里的“0/15”表示从第0分钟开始，每15分钟</p> <pre><code>     在子表达式（分钟）里的“3/20”表示从第3分钟开始，每20分钟（它和“3，23，43”）的含义一样 </code></pre> <p>“？”字符仅被用于天（月）和天（星期）两个子表达式，表示不指定值</p> <p>当2个子表达式其中之一被指定了值以后，为了避免冲突，需要将另一个子表达式的值设为“？”</p> <p>“L” 字符仅被用于天（月）和天（星期）两个子表达式，它是单词“last”的缩写</p> <p>但是它在两个子表达式里的含义是不同的。</p> <p>在天（月）子表达式中，“L”表示一个月的最后一天</p> <p>在天（星期）自表达式中，“L”表示一个星期的最后一天，也就是SAT</p> <p>如果在“L”前有具体的内容，它就具有其他的含义了</p> <p>例如：“6L”表示这个月的倒数第６天，“ＦＲＩＬ”表示这个月的最一个星期五</p> <p>注意：在使用“L”参数时，不要指定列表或范围，因为这会导致问题</p> <p>字段 允许值 允许的特殊字符<br /> 秒 0-59 , - * /<br /> 分 0-59 , - * /<br /> 小时 0-23 , - * /<br /> 日期 1-31 , - * ? / L W C<br /> 月份 1-12 或者 JAN-DEC , - * /<br /> 星期 1-7 或者 SUN-SAT , - * ? / L C #<br /> 年（可选） 留空, 1970-2099 , - * /</p> <h2> <a id="_169" rel="nofollow"></a>结语</h2> <p>希望对您们有帮助！</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-75106.htm">戚风蛋糕做法（戚风蛋糕做法视频）</a></p>
+                                        <p>下一个：<a href="/news/article-75768.htm">成都领养宠物中心电话号码（成都领养宠物中心电话号码是多少）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-53245.htm" title="开一家宠物医院大概多少钱一个月（开一家宠物医院需要什么资质）">开一家宠物医院大概多少钱一个月（开一家宠物医院需要什么资质）</a></li>
+                        <li class="py-2"><a href="/news/article-74396.htm" title="生物疫苗和药品（生物医药和疫苗）">生物疫苗和药品（生物医药和疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-55979.htm" title="数据库四大特性及数据库隔离级别（*）">数据库四大特性及数据库隔离级别（*）</a></li>
+                        <li class="py-2"><a href="/news/article-64724.htm" title="动物疫苗的作用原理是什么意思 动物疫苗的作用原理是什么意思啊">动物疫苗的作用原理是什么意思 动物疫苗的作用原理是什么意思啊</a></li>
+                        <li class="py-2"><a href="/news/article-61125.htm" title="Vue假数据应用——表格的添加、删除、搜索">Vue假数据应用——表格的添加、删除、搜索</a></li>
+                        <li class="py-2"><a href="/news/article-60553.htm" title="兽药排行榜前三十名 兽药排行榜前三十名有哪些">兽药排行榜前三十名 兽药排行榜前三十名有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-45094.htm" title="vue中动态改变样式">vue中动态改变样式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-20-node-share-links.htm" title="2月20日→18.1M/S|2025年最新免费节点Open Clash Node订阅链接地址">2月20日→18.1M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-51134.htm" title="韩国discovery鞋子价格(韩国品牌discovery女鞋)">韩国discovery鞋子价格(韩国品牌discovery女鞋)</a></li>
+                        <li class="py-2"><a href="/news/article-54878.htm" title="狂犬疫苗需要打几针（狂犬疫苗需要多少钱）">狂犬疫苗需要打几针（狂犬疫苗需要多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
