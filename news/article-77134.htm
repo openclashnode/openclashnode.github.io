@@ -1,0 +1,290 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-77134.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>七、C++ 内联函数</title>
+        <meta name="description" content="1.内联 C 语言中有宏函数的概念。宏函数的特点是内嵌到调用代码中去，避免了函数调用的开销。但是由于宏函数的处理发生在预处理阶段，缺失了语法检测和有可能带来的语意差错。  2.语法 C++提供了 in" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open Clash Node免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://openclashnode.github.io/news/article-77134.htm" />
+    <meta property="og:site_name" content="Open Clash Node免费机场订阅节点官网" />
+    <meta property="og:title" content="七、C++ 内联函数" />
+    <meta property="og:image" content="https://openclashnode.github.io/uploads/20241025/d1c1f16e3d1424dcc7433dc92bbb28bd.webp" />
+        <meta property="og:release_date" content="2025-03-19T09:11:06" />
+    <meta property="og:updated_time" content="2025-03-19T09:11:06" />
+        <meta property="og:description" content="1.内联 C 语言中有宏函数的概念。宏函数的特点是内嵌到调用代码中去，避免了函数调用的开销。但是由于宏函数的处理发生在预处理阶段，缺失了语法检测和有可能带来的语意差错。  2.语法 C++提供了 in" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="七、C++ 内联函数">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                    <a href="/">
+                                                                        <span>Open Clash Node</span>
+                                                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>七、C++ 内联函数</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <h2> <a id="1_1" rel="nofollow"></a>1.内联</h2> <p>C 语言中有宏函数的概念。宏函数的特点是内嵌到调用代码中去，避免了函数调用的开销。但是由于宏函数的处理发生在预处理阶段，缺失了语法检测和有可能带来的语意差错。</p> <h2> <a id="2_3" rel="nofollow"></a>2.语法</h2> <p>C++提供了 inline 关键字，实现了真正的内嵌。<br /> 宏函数 VS inline函数</p> <pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span> <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span> <span class="token comment">//优点：内嵌代码，辟免压栈与出栈的开销</span> <span class="token comment">//缺点: 代码替换，易使生成代码体积变大，易产生逻辑错误，无类型检查</span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">SQR</span><span class="token expression"><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span></span></span> <span class="token comment">//优点：高度抽象，避免重复开发，类型检查</span> <span class="token comment">//缺点: 压栈与出栈，带来开销</span> <span class="token keyword">inline</span> <span class="token keyword">int</span> <span class="token function">sqr</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	<span class="token keyword">return</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	<span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> 	<span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span><span class="token number">5</span><span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span><span class="token function">SQR</span><span class="token punctuation">(</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> 		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span><span class="token function">sqr</span><span class="token punctuation">(</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span>	 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230109/529e6ea2ac472cc387e3cc39a6d0d482.jpg" alt="七、C++ 内联函数"></p> <h2> <a id="3_34" rel="nofollow"></a>3.评价</h2> <p>引入内联函数的目的是为了解决程序中函数调用的效率问题，这么说吧，程序在编译器编译的时候，编译器将程序中出现的内联函数的调用表达式用内联函数的函数体进行替换，而对于其他的函数，都是在运行时候才被替代。这其实就是个空间代价换时间的i节省。所以内联函数一般都是1-5行的小函数。在使用内联函数时要留神：<br /> 1.在内联函数内不允许使用循环语句和开关语句；<br /> 2.内联函数的定义必须出现在内联函数第一次调用之前；<br /> 3.类结构中所在的类说明内部定义的函数是内联函数；</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-76460.htm">什么品牌的拖鞋质量好又时尚(什么品牌的拖鞋质量好又不贵)</a></p>
+                                        <p>下一个：<a href="/news/article-77135.htm">Docker报错：Using default tag: latest Error response from daemon: Get https://registry-1.docker.io/v2/</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-72418.htm" title="10种图片猫抓破皮不需要***（10种图片猫抓破皮不需要***口腔溃疡半个月还没有好）">10种图片猫抓破皮不需要***（10种图片猫抓破皮不需要***口腔溃疡半个月还没有好）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-node-share-links.htm" title="1月7日→19.6M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月7日→19.6M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-48419.htm" title="塞尔达海拉鲁大陆海啸（塞尔达海拉鲁大森林路线）">塞尔达海拉鲁大陆海啸（塞尔达海拉鲁大森林路线）</a></li>
+                        <li class="py-2"><a href="/news/article-77134.htm" title="七、C++ 内联函数">七、C++ 内联函数</a></li>
+                        <li class="py-2"><a href="/news/article-57665.htm" title="猫咪领养协议书下载（宠物猫领养协议书）">猫咪领养协议书下载（宠物猫领养协议书）</a></li>
+                        <li class="py-2"><a href="/news/article-64726.htm" title="猫三联疫苗一共多少钱（猫三联疫苗多少钱?）">猫三联疫苗一共多少钱（猫三联疫苗多少钱?）</a></li>
+                        <li class="py-2"><a href="/news/article-75768.htm" title="成都领养宠物中心电话号码（成都领养宠物中心电话号码是多少）">成都领养宠物中心电话号码（成都领养宠物中心电话号码是多少）</a></li>
+                        <li class="py-2"><a href="/news/article-68526.htm" title="1970年农历四月二十七是几号呢（1970年农历4月27日）">1970年农历四月二十七是几号呢（1970年农历4月27日）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-node-subscribe-links.htm" title="1月15日→22.3M/S|2025年最新免费节点Open Clash Node订阅链接地址">1月15日→22.3M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-36688.htm" title="宠物美容师挣钱吗?（宠物美容师挣钱吗知乎）">宠物美容师挣钱吗?（宠物美容师挣钱吗知乎）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
