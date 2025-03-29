@@ -1,0 +1,290 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-84087.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>GAIA-IR: GraphScope 上的并行化图查询引擎</title>
+        <meta name="description" content="在本文中，我们将介绍 GraphScope 图交互式查询引擎 GAIA-IR，它支持高效的 Gremlin 语言表达的交互图查询，同时高度抽象了图上的查询计算，具有高可扩展性。  背景介绍 在海量数据" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open Clash Node免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://openclashnode.github.io/news/article-84087.htm" />
+    <meta property="og:site_name" content="Open Clash Node免费机场订阅节点官网" />
+    <meta property="og:title" content="GAIA-IR: GraphScope 上的并行化图查询引擎" />
+    <meta property="og:image" content="https://openclashnode.github.io/uploads/20241025/d2d8ab46c5cf6d92f50c028f8a2b70bc.webp" />
+        <meta property="og:release_date" content="2025-03-29T09:02:16" />
+    <meta property="og:updated_time" content="2025-03-29T09:02:16" />
+        <meta property="og:description" content="在本文中，我们将介绍 GraphScope 图交互式查询引擎 GAIA-IR，它支持高效的 Gremlin 语言表达的交互图查询，同时高度抽象了图上的查询计算，具有高可扩展性。  背景介绍 在海量数据" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="GAIA-IR: GraphScope 上的并行化图查询引擎">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                    <a href="/">
+                                                                        <span>Open Clash Node</span>
+                                                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>GAIA-IR: GraphScope 上的并行化图查询引擎</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<blockquote> <p>在本文中，我们将介绍 GraphScope 图交互式查询引擎 GAIA-IR，它支持高效的 Gremlin 语言表达的交互图查询，同时高度抽象了图上的查询计算，具有高可扩展性。</p> </blockquote> <h3 data-tool="mdnice编辑器">背景介绍</h3> <p data-tool="mdnice编辑器">在海量数据的分析中，图查询是一种重要的工具。Gremlin<sup>[1]</sup>&nbsp;是由 Apache Tinkerpop 提出并维护的工业界标准的图查询语言，被业界流行图数据库广泛应用，例如&nbsp;Neo4j<sup>[2]</sup>&nbsp;、OrientDB<sup>[3]</sup>、JanusGraph<sup>[4]</sup>、Microsoft&nbsp;Cosmos&nbsp;DB<sup>[5]</sup>&nbsp;以及&nbsp;Amazon&nbsp;Neptune<sup>[6]</sup>。而 GraphScope 中的图查询引擎 GAIA 则是业界首个开源的支持大规模分布式并行化 Gremlin 的系统。然而，尽管 Gremlin 语言的灵活性是它显著的优势，在 GAIA 系统的设计和使用中，我们也发现了一些存在的问题。</p> <h4 data-tool="mdnice编辑器">现有问题</h4> <p data-tool="mdnice编辑器">GAIA 查询系统主要有如下几点弊病：</p> <p data-tool="mdnice编辑器"><strong>D1:</strong>&nbsp;Gremlin 算子数量繁多，并且对同种语义有多种表达。这就导致为了支持丰富的 Gremlin 算子，GAIA 中需要端到端在各个模块中添加对应的算子，并且算子实现之间可能存在冗余的计算逻辑。例如，当我们有查看属性的需求时，Gremlin 中可以通过<code>elementMap()</code>、<code>valueMap()</code>、<code>values()</code>、<code>select().valueMap()</code>、<code>project().valueMap()</code>等表达方式得到类似的结果，示例如下：</p> <div class="cnblogs_Highlighter"> <pre class="brush:python;gutter:true;">gremlin&gt; g.V().elementMap()  ==&gt;[id:1,label:person,name:marko,age:29]  ==&gt;[id:2,label:person,name:vadas,age:27]  gremlin&gt; g.V().valueMap('name','age')  ==&gt;[name:[marko],age:[29]]  ==&gt;[name:[vadas],age:[27]]  gremlin&gt; g.V().as('a').select('a').by(valueMap('name', 'age'))  ==&gt;[name:[marko], age:[29]]  ==&gt;[name:[vadas], age:[27]]  gremlin&gt; g.V().as('a').project('a').by(valueMap('name', 'age'))  ==&gt;[a:[name:[marko], age:[29]]]  ==&gt;[a:[name:[vadas], age:[27]]]</pre> </div> <p data-tool="mdnice编辑器">而为了支持这些类似的表达，GAIA 中需要定义多个冗余算子，并且需要在各个模块中支持，对开发并不友好，可扩展性较差。</p> <p data-tool="mdnice编辑器"><strong>D2:</strong>&nbsp;GAIA 的语言扩展性差。GAIA 是 Gremlin 并行化查询的定制化实现，而现如今也有很多其他常用的图查询语言，例如 Cypher、GSQL 等。如果未来我们需要进一步接入更多的查询语言，则几乎无法通过扩展 GAIA 来实现。</p> <p data-tool="mdnice编辑器"><strong>D3:</strong>: Gremlin 对复杂的 expression 支持不佳。例如，我们想通过以下 Gremlin 查询语句，找到 "a" 的两度邻居中，满足一定 "age" 属性条件的人：</p> <div class="cnblogs_Highlighter"> <pre class="brush:python;gutter:true;">g.V().as("a").out().as("b").out().as("c")  .where("c", P.lt("a").or(P.gt("a").and(P.gt("b")))).by("age")</pre> </div> <p data-tool="mdnice编辑器">像<code>where()</code>&nbsp;中这样复杂的嵌套条件过滤并不直观，对用户使用来说不太友好。</p> <p data-tool="mdnice编辑器"><strong>D4:</strong>&nbsp;GAIA 中没有很好的 Gremlin 语法规范定义，也很难界定当前系统对 Gremlin 算子及算子组合的支持范围，对用户来说并不友好。</p> <h4 data-tool="mdnice编辑器">解决方案</h4> <p data-tool="mdnice编辑器">为了解决以上的问题，我们进一步提出了与查询语言无关、普适性更强的中间表示层<strong>GAIA-IR</strong>（简称<strong>IR</strong>），用来描述通用的图查询语义。我们抽象出的操作算子可以分为两类：关系型操作算子及图相关操作算子。其中，关系型操作算子主要与传统关系型数据库上的操作保持一致，如<code>Projection</code>、<code>Selection</code>、<code>GroupBy</code>、<code>OrderBy</code>&nbsp;等；而图相关操作算子则是图数据上的特有查询，如点查询、邻点（边）查询等等。通过这层查询语言无关的中间表示层，我们可以解决上述 GAIA 中存在的问题：</p> <p data-tool="mdnice编辑器"><strong>A1:</strong>&nbsp;GAIA-IR 层用统一中间表示来实现 Gremlin 算子中类似的表达。例如，我们抽象出<code>project</code>&nbsp;算子，用于统一表示上述 D1 中 Gremlin 各种取属性操作。</p> <p data-tool="mdnice编辑器"><strong>A2:</strong>&nbsp;GAIA-IR 层与查询语言无关，这就方便了 GAIA-IR 后续可以进一步接入更多的语言。将来，我们只需要将不同语言的操作算子翻译到 IR 的统一中间表示层，就可以自然地实现该语言的并行化查询，而不需要再针对每套语言去设计分布式并行化实现。</p> <p data-tool="mdnice编辑器"><strong>A3:</strong>&nbsp;GAIA-IR 还额外提供了丰富的 expression 支持，从而满足用户的需求。例如，对比 D3 中的例子，我们在<code>where()</code>&nbsp;算子中加入 expression 的表达支持会更加直观：</p> <div class="cnblogs_Highlighter"> <pre class="brush:python;gutter:true;">g.V().as("a").out().as("b").out().as("c")  .where(expr("@c.age &lt; @a.age || (@c.age &gt; @a.age &amp;&amp; @c.age &gt; @b.age)"))</pre> </div> <p data-tool="mdnice编辑器"><strong>A4:</strong>&nbsp;GAIA-IR 中引入了 Antlr 工具，支持 Gremlin 语法检查功能，并且明确了系统对 Gremlin 算子及组合的支持范围，对用户使用更为友好。</p> <h3 data-tool="mdnice编辑器">IR整体设计</h3> <p data-tool="mdnice编辑器">接下来，我们介绍 GAIA-IR 的整体设计。</p> <h4 data-tool="mdnice编辑器">概念介绍</h4> <p data-tool="mdnice编辑器">首先，我们介绍 IR 中的一些基本概念。IR 抽象了图数据上的基本计算，从而提供了一套统一的、简洁的、语言无关的中间表示层。</p> <p data-tool="mdnice编辑器"><strong>操作算子（IR Operator）：</strong>目前，我们将操作算子（<strong>Graph-Relational Algebra</strong>）抽象为两类，即关系型操作和图相关操作。</p> <ul class="list-paddingleft-1" data-tool="mdnice编辑器"> <li>关系型操作包含了：<code>Projection</code>、<code>Selection</code>、<code>Join</code>、<code>Groupby</code>、<code>Orderby</code>、<code>Dedup</code>、<code>Limit</code>&nbsp;等。这与传统关系型数据库上的操作保持一致。</li> <li>图相关操作包含了：<strong>GetV</strong>、<strong>E</strong>(dge)-<strong>Join</strong>、<strong>P</strong>(ath)-<strong>Join</strong>，分别表示图上的取点属性操作、取邻点（边）操作、以及路径操作。</li> </ul> <p data-tool="mdnice编辑器">通过以上两类算子抽象，我们既可以表达传统的关系型运算，又可以支持图上特有的查询操作。同时，该抽象算子集合并不受查询语言的限制，由此可以很容易地拓展到其他语言。</p> <p data-tool="mdnice编辑器"><strong>数据结构（GRecord）：</strong>我们定义了数据结构 GRecord，用来表示每个 IR Operator 的输入输出。GRecord 是一个多列的结构，每列有自己的别名（Alias）和值（Value）：</p> <ul class="list-paddingleft-1" data-tool="mdnice编辑器"> <li>别名（Alias）：类似于SQL中的<code>As</code>别名。特别的，为了适配 Gremlin，我们额外提供了一个 Unique Alias -- "HEAD"，作为匿名别名，特指上一个算子的输出，即当前算子的输入。</li> <li>值（Value）：值的类型分为两种，简单类型 CommonObject（包括 int/string/intArray/stringArray 等）以及图数据类型 GraphObject（包括 Vertex、Edge 以及 Path）。</li> </ul> <h4 data-tool="mdnice编辑器">Gremlin查询翻译示例</h4> <p data-tool="mdnice编辑器">在 Gremlin 查询中，我们将其翻译成 GRecord 上的一系列 IR Operator 操作，从而支持 Gremlin 的查询语义。例如，在查询<code>g.V().as('a').select('a').by(valueMap('name', 'age'))</code>&nbsp;中，<code>g.V().as('a')</code>&nbsp;会产生如下的中间结果，别名叫做 "a"，数据类型为 Vertex 类型：</p> <div style="text-align: left"> <table style="height: 77px; width: 395px"> <thead> <tr> <th style="text-align: left">R1</th> <th style="text-align: left">Vertex { name:[marko], age:[29] }, Alias: "a"</th> </tr> </thead> <tbody> <tr> <td style="text-align: left">GR2</td> <td>Vertex { name:[vadas], age:[27] }, Alias: "a"</td> </tr> </tbody> </table> </div> <p>而我们会将<code>select('a').by(valueMap('name', 'age'))</code>&nbsp;翻译为<code>Project("{a.name,a.age}")</code>，以上述的 GR1、GR2 作为<code>Project</code>&nbsp;的输入，我们可以得到输出 GR1'、GR2'，即我们所需要的点属性：</p> <table> <thead> <tr> <th>GR1'</th> <th>CommonObject {a.name:[marko], a.age:[29] }</th> </tr> </thead> <tbody> <tr> <td>GR2'</td> <td>CommonObject { a.name:[vadas], a.age:[27] }</td> </tr> </tbody> </table> <p data-tool="mdnice编辑器">类似的，对于 Gremlin 查询<code>g.V().valueMap('name','age')</code>，我们只需将 GR1、GR2 的 Alias 变为匿名的 "HEAD"，并将<code>valueMap('name','age')</code>&nbsp;翻译为<code>Project("{HEAD.name,HEAD.age}")</code>，便可以得到同样的结果。由此，我们就能够将同一语义、不同表达的 Gremlin 算子，翻译成统一的中间表示。更甚，对于其他语言，例如 SQL 中的取属性操作，我们也可以很直观的翻译成 IR 中的<code>Project</code>&nbsp;算子。由此可见，IR 是抽象出了一套更为简洁通用、且与查询语言无关的中间表示层。</p> <h4 data-tool="mdnice编辑器">系统架构</h4> <p data-tool="mdnice编辑器">接下来，我们给出 GAIA-IR 目前对 Gremlin 的并行化计算架构，如下图所示。</p> <p data-tool="mdnice编辑器"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3d56090f85a23b0eee10fa9ed3412f83.jpg" alt="GAIA-IR: GraphScope 上的并行化图查询引擎"></p> <p data-tool="mdnice编辑器">总体来说，我们兼容了官方的 Gremlin Console 以及 Gremlin SDK 的查询方式。在用户提交 Gremlin Query 后：</p> <ol class="list-paddingleft-1" data-tool="mdnice编辑器"> <li>IR Compiler 负责对 Query 进行语法检查。对于合法 Query，IR Compiler 通过 IR Library API 对查询语法树进行编译，转换成由 IR Operator 组成的 Logical Plan，并进一步调用 IR Library API 生成 Physical Plan，再将 Physical Plan 分发到分布式的 Dataflow 计算框架。</li> <li>Dataflow 框架会在服务拉起阶段预先拉起图数据分区，建立执行计算的线程池。在接收到 IR Compiler 分发过来的物理执行计划后，IR Runtime 负责解析 Physical Plan，并构建引擎可执行的 Execution Plan。同时对于每个 IR Operator，IR Runtime 负责生成其对应的引擎可理解的 UDF，从而实现具体 IR Operator 的计算语义。完成计算后，IR Runtime 将结果返回给 IR Compiler，由 IR Compiler 进一步解析并返回给客户端。</li> </ol> <h3 data-tool="mdnice编辑器">如何使用 IR</h3> <p data-tool="mdnice编辑器">在介绍完 GAIA-IR 的整体设计后，我们介绍如何使用 GAIA-IR 引擎进行查询。</p> <p data-tool="mdnice编辑器"><strong>服务部署：</strong>在 GraphScope<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/zhuuu16/articles/16139013.html"  target="_blank" rel="nofollow">之前的文章</a>中，我们介绍了如何部署 GraphScope。GAIA-IR 作为 GraphScope 中 GIE 的重要实现，整体的拉起方式与 GraphScope 保持一致。我们以 Helm 部署 GraphScope 为例，只需要在安装过程中，指定引擎选项为 GAIA，便可以顺利拉起 GAIA-IR，安装命令示例如下：</p> <div class="cnblogs_Highlighter"> <pre class="brush:python;gutter:true;">helm repo add graphscope https://graphscope.oss-cn-beijing.aliyuncs.com/charts/ helm install [RELEASE_NAME] --set executor=gaia graphscope/graphscope-store</pre> </div> <p data-tool="mdnice编辑器">更多详细的部署操作可以参考官方文档<sup>[7]</sup>。</p> <p data-tool="mdnice编辑器"><strong>Gremlin 查询：</strong>在成功拉起服务后，我们可以通过 Gremlin Server host 和 port 来进行查询。以 Gremlin Console 查询为例，在服务顺利拉起并且导入数据（具体数据导入步骤可参考官方文档<sup>[8]</sup>）之后，我们便可以通过配置 Gremlin Console 来进行查询。示例如下：</p> <ol class="list-paddingleft-1" data-tool="mdnice编辑器"> <li>首先我们修改 Gremlin Console 的<code>conf/remote.yaml</code>&nbsp;配置文件，修改对应的 host 和 port;</li> <li>打开 Gremlin Console，给定<code>remote.yaml</code>&nbsp;的配置，便可以开始查询：</li> </ol> <div class="cnblogs_Highlighter"> <pre class="brush:python;gutter:true;">gremlin&gt; :remote connect tinkerpop.server conf/remote.yaml ==&gt;Configured localhost/127.0.0.1:8182 gremlin&gt; :remote console ==&gt;All scripts will now be sent to Gremlin Server - [localhost/127.0.0.1:8182] - type ':remote console' to return to local mode gremlin&gt; g.V().valueMap('name','age')  ==&gt;[name:[marko],age:[29]]  ==&gt;[name:[vadas],age:[27]]</pre> </div> <h3 data-tool="mdnice编辑器">结语</h3> <p data-tool="mdnice编辑器">本文简述了 GAIA-IR 的设计初衷和总体架构，以及如何使用 GAIA-IR 引擎进行查询。在&nbsp;GAIA-IR 的目录<sup>[9]</sup>可以找到 GitHub 上的当前发布版本。GAIA-IR 作为 GraphScope 的图查询引擎，提供高效的 Gremlin 并行化查询实现。同时，在 IR 的统一中间表示上，我们也会引入更多的等价变换、优化实现，支持例如 Pattern Match 等重要场景。在后续的文章中，我们也会介绍更多的技术细节。我们也将持续完善 GAIA-IR 的实现，同时非常欢迎与期待社区的反馈和贡献。</p> <h3 data-tool="mdnice编辑器">参考资料</h3> <p data-tool="mdnice编辑器">[1]Gremlin:<em>http://tinkerpop.apache.org/</em></p> <p data-tool="mdnice编辑器">[2]Neo4j:<em>https://neo4j.com/</em></p> <p data-tool="mdnice编辑器">[3]OrientDB:<em>https://www.orientdb.org/</em></p> <p data-tool="mdnice编辑器">[4]JanusGraph:<em>https://janusgraph.org/</em></p> <p data-tool="mdnice编辑器">[5]Microsoft&nbsp;Cosmos&nbsp;DB:<em>https://azure.microsoft.com/en-us/services/cosmos-db/</em></p> <p data-tool="mdnice编辑器">[6]Amazon&nbsp;Neptune:<em>https://aws.amazon.com/neptune/</em></p> <p data-tool="mdnice编辑器">[7]官方文档:<em>https://graphscope.io/docs/persistent_graph_store.html</em></p> <p data-tool="mdnice编辑器">[8]官方文档:<em>https://graphscope.io/docs/persistent_graph_store.html</em></p> <p data-tool="mdnice编辑器">[9]GAIA-IR 的目录:<em>https://github.com/alibaba/GraphScope/tree/main/research/query_service/ir</em></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-83375.htm">宠物狗粮网店名字怎么起（宠物狗粮厂）</a></p>
+                                        <p>下一个：<a href="/news/article-84088.htm">动物防疫***收费吗多少钱一针（小动物打疫苗多少钱）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-73076.htm" title="动物医院的宗旨和目标（动物医院部门）">动物医院的宗旨和目标（动物医院部门）</a></li>
+                        <li class="py-2"><a href="/news/article-70433.htm" title="Mac安装Kubernetes-minikube专治各种坑">Mac安装Kubernetes-minikube专治各种坑</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-node-share-links.htm" title="2月15日→18.5M/S|2025年最新免费节点Open Clash Node订阅链接地址">2月15日→18.5M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-69793.htm" title="Visual Studio快捷键汇总_实用技巧_">Visual Studio快捷键汇总_实用技巧_</a></li>
+                        <li class="py-2"><a href="/news/article-62893.htm" title="宠物医院好评文案100字 宠物店优质点评100字">宠物医院好评文案100字 宠物店优质点评100字</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-free-high-speed-nodes.htm" title="3月4日→19.6M/S|2025年最新免费节点Open Clash Node订阅链接地址">3月4日→19.6M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-81276.htm" title="猫到底该不该打疫苗针（猫应该打疫苗吗）">猫到底该不该打疫苗针（猫应该打疫苗吗）</a></li>
+                        <li class="py-2"><a href="/news/article-71767.htm" title="springboot RestTemplate,访问https实现SSL请求">springboot RestTemplate,访问https实现SSL请求</a></li>
+                        <li class="py-2"><a href="/news/article-50605.htm" title="山东联美弹簧有限公司招聘（山东联美弹簧有限公司招聘电话号码）">山东联美弹簧有限公司招聘（山东联美弹簧有限公司招聘电话号码）</a></li>
+                        <li class="py-2"><a href="/news/article-79191.htm" title="哪里批发家纺最便宜（哪里批发家纺质量好价格便宜）">哪里批发家纺最便宜（哪里批发家纺质量好价格便宜）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
