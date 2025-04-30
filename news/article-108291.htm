@@ -1,0 +1,292 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://openclashnode.github.io/news/article-108291.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>ES 文档与索引介绍</title>
+        <meta name="description" content="在之前的文章中，介绍了 ES 整体的架构和内容，这篇主要针对 ES 最小的存储单位 - 文档以及由文档组成的索引进行详细介绍。 会涉及到如下的内容：  文档的 CURD 操作。 Dynamic Map" />
+        <link rel="icon" href="/assets/website/img/openclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open Clash Node免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://openclashnode.github.io/news/article-108291.htm" />
+    <meta property="og:site_name" content="Open Clash Node免费机场订阅节点官网" />
+    <meta property="og:title" content="ES 文档与索引介绍" />
+    <meta property="og:image" content="https://openclashnode.github.io/uploads/20241025/1251ee4e442f8f9fd1bbd479af70eb29.webp" />
+        <meta property="og:release_date" content="2025-04-30T09:34:56" />
+    <meta property="og:updated_time" content="2025-04-30T09:34:56" />
+        <meta property="og:description" content="在之前的文章中，介绍了 ES 整体的架构和内容，这篇主要针对 ES 最小的存储单位 - 文档以及由文档组成的索引进行详细介绍。 会涉及到如下的内容：  文档的 CURD 操作。 Dynamic Map" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="ES 文档与索引介绍">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/preloader.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/custom-animation.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/themify-icons.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/meanmenu.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/progresscircle.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/icofont.min.css">
+    <link rel="stylesheet" href="/assets/website/css/openclashnode/main.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SF51PNP7TM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SF51PNP7TM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- header area start  -->
+    <header>
+        <div class="transparent-header transparent-header-2 header-sticky sticky-3">
+            <div class="container">
+                <div class="header__inner white-bg">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-8 col-sm-8">
+                            <div class="header__left d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <div class="header__action-2 mr-40">
+                                    <ul>
+                                        <li>
+                                            <a class="side-toggle" href="javascript:void(0)">
+                                                <i class="pe-7s-keypad"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="logo-1 px-2">
+                                    <a href="/">
+                                                                        <span>Open Clash Node</span>
+                                                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-8 d-none d-lg-block">
+                            <div class="main-menu main-menu-2 pl-20">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                                                                <li><a href="/">首页</a></li>
+                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- side toggle start  -->
+    <div class="fix">
+        <div class="side-info">
+            <div class="side-info-content">
+                <div class="offset-widget offset-logo mb-30 pb-20">
+                    <div class="row align-items-center">
+
+                    </div>
+                </div>
+                <div class="mobile-menu d-lg-none"></div>
+                
+                <div class="side-map mt-20 mb-30 d-none d-lg-block">
+                </div>
+                <div class="contact-infos mt-30 mb-30">
+                    <ul class="footer__social offset-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+    <main>
+        <!-- page title area start  -->
+        <div class="page-title-area d-flex align-items-center p-relative">
+            <nav class="breadcrumb-menu" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">首页</a></li>
+                    <li class="breadcrumb-item"><a href="/news/">新闻资讯</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">正文</li>
+                </ol>
+            </nav>
+            <div class="container">
+                <div class="row align-items-center pt-60">
+                    <div class="col-md-7 wow slideInLeft">
+                        <div class="page-title-content">
+                            <h1>ES 文档与索引介绍</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5 wow slideInRight">
+                        <div class="page-title-img f-right d-none d-sm-block">
+                            <img src="/assets/website/img/openclashnode/slider/cargo-image-sm.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <!-- about area start  -->
+        <section class="about__area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<p>在之前的文章中，介绍了 ES 整体的架构和内容，这篇主要针对 ES 最小的存储单位 - 文档以及由文档组成的索引进行详细介绍。</p> <p>会涉及到如下的内容：</p> <ol> <li>文档的 CURD 操作。</li> <li>Dynamic Mapping 和显示 Mapping 的区别</li> <li>常见 Mapping 类型与常见参数介绍</li> <li>Index Template 和 Dynamic Template</li> </ol> <h2 id="对文档进行操作">对文档进行操作</h2> <h3 id="单个文档-crud">单个文档 CRUD</h3> <p>和常见的数据库类似，ES 也支持 CURD 操作：</p> <p>下面展示了对单个 ES 文档的操作：</p> <table> <thead> <tr> <th>操作名称</th> <th>URL</th> <th>解释</th> </tr> </thead> <tbody> <tr> <td>Index</td> <td><img decoding="async" src="https://img2022.cnblogs.com/blog/1861307/202204/1861307-20220415094752058-2069665508.png" alt="ES 文档与索引介绍"></td> <td>创建或者更新索引中的文档。在指定 id 的情况下，如果 id 存在，则会更新。如果不指定，则会创建。</td> </tr> <tr> <td>Get</td> <td><img decoding="async" src="https://img2022.cnblogs.com/blog/1861307/202204/1861307-20220415094753171-240782846.png" alt="ES 文档与索引介绍"></td> <td>查询某个文档。</td> </tr> <tr> <td>Delete</td> <td>DELETE /<index>/_doc/&lt;_id&gt;</index></td> <td>删除某个指定的文档。</td> </tr> <tr> <td>Update</td> <td>POST /<index>/_update/&lt;_id&gt;</index></td> <td>更新某个文档中的内容，可以理解成 Patch 的更新。如果想完全替换文档，请使用 index.</td> </tr> </tbody> </table> <p>下面是实际操作文档的例子, 打开 kibana 的开发者工具：</p> <p>先来创建一个文档：</p> <p>ES 在创建文档时，会有两种方式 index 和 create。index 与 create 不同在于，在指定 id 的情况下，如果 id 存在，index 会覆盖，同时版本号+1，而 create 会报错不让创建。</p> <p>这里手动指定 id 为10，使用 index 方法，创建了一个文档，注意版本号为 1。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3e42cf2e5b7b6b373c6af0ca9e186918.jpg" alt="ES 文档与索引介绍"></p> <p>注意再次发送同样的情况，可以看到正常执行，版本号变成 2了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/89a5948bb7df732d8f6396beab8c9fb6.jpg" alt="ES 文档与索引介绍"></p> <p>但是使用 create 方法：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/42324759fc6e72acd55cdd4b70421be0.jpg" alt="ES 文档与索引介绍"></p> <p>这里报错，显示文档已经存在。</p> <p>需要注意的 ES 这里的更新并不是正常理解的更新，而是先把老文档删掉，然后创建一个新文档出来。</p> <p>接着对文档进行更新：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/517272532d71bab4e67718a75f533047.jpg" alt="ES 文档与索引介绍"></p> <p>可以看到这里只更新 user 字段，这种更新和之前 index 那种更新不同，属于部分更新，将增加的内容 merge 进原始文档。</p> <p>对文档进行读取，这里由于之前更新了三次，所以 version = 3：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/cf17aa8ba9ea9f75ebb21cb601dcba84.jpg" alt="ES 文档与索引介绍"></p> <p>删除文档就很好理解了，但有一点需要注意，删除文档时并不会立马释放空间，而是将文档标记位 deleted 状态，后台进程会在合适的时候清理这些标记位已经删除的文档。</p> <h3 id="批量文档操作">批量文档操作</h3> <p>批量写入</p> <p>相较于当个文档的操作，大批量的操作对于 ES 来说，是更为常见的场景。ES 也提供了批量 API，该 API 支持在一次 API请求中包含 4 种类型, 并且 Response 中会针对每一条操作返回一个对应的结果。</p> <pre><code>POST _bulk { "index" : { "_index" : "test", "_id" : "1" } } { "field1" : "value1" } { "delete" : { "_index" : "test", "_id" : "2" } } { "create" : { "_index" : "test", "_id" : "3" } } { "field1" : "value3" } { "update" : {"_id" : "1", "_index" : "test"} } { "doc" : {"field2" : "value2"} }</code></pre> <p>批量读取</p> <p>可以同时传入多个文档 id，进行读取，多个文档可以属于不同的索引。</p> <pre><code>GET /_mget {   "docs": [     {       "_index": "my-index-000001",       "_id": "1"     },     {       "_index": "my-index-000001",       "_id": "2"     }   ] }</code></pre> <h2 id="索引---mapping">索引 - Mapping</h2> <p>索引是多个文档的集合，体现了逻辑空间的概念。对于每个索引来说都可以设置 Mapping 和 Setting 两部分。</p> <p>其中 Mapping 定义了文档包含字段的类型与名称，以及如倒排索引，分词的一些设置。Setting 定义了如何将数据分布保存在不同的节点上。</p> <h3 id="数据类型">数据类型</h3> <p>ES 中的数据类型分为三种：</p> <ul> <li>简单类型</li> <li>复杂类型 <ul> <li>对象类型</li> <li>嵌套类型</li> </ul> </li> <li>特殊类型 <ul> <li>地理位置等</li> </ul> </li> </ul> <p>下图中显示了 ES 中常见的简单数据类型以及和 SQL 对应的关系。</p> <table> <thead> <tr> <th><strong>Elasticsearch type</strong></th> <th><strong>Elasticsearch SQL type</strong></th> <th><strong>SQL type</strong></th> <th><strong>SQL precision</strong></th> </tr> </thead> <tbody> <tr> <td><strong>Core types</strong></td> <td></td> <td></td> <td></td> </tr> <tr> <td><code>null</code></td> <td><code>null</code></td> <td>NULL</td> <td>0</td> </tr> <tr> <td><code>boolean</code></td> <td><code>boolean</code></td> <td>BOOLEAN</td> <td>1</td> </tr> <tr> <td><code>byte</code></td> <td><code>byte</code></td> <td>TINYINT</td> <td>3</td> </tr> <tr> <td><code>short</code></td> <td><code>short</code></td> <td>SMALLINT</td> <td>5</td> </tr> <tr> <td><code>integer</code></td> <td><code>integer</code></td> <td>INTEGER</td> <td>10</td> </tr> <tr> <td><code>long</code></td> <td><code>long</code></td> <td>BIGINT</td> <td>19</td> </tr> <tr> <td><code>double</code></td> <td><code>double</code></td> <td>DOUBLE</td> <td>15</td> </tr> <tr> <td><code>float</code></td> <td><code>float</code></td> <td>REAL</td> <td>7</td> </tr> <tr> <td><code>half_float</code></td> <td><code>half_float</code></td> <td>FLOAT</td> <td>3</td> </tr> <tr> <td><code>scaled_float</code></td> <td><code>scaled_float</code></td> <td>DOUBLE</td> <td>15</td> </tr> <tr> <td>keyword type family</td> <td><code>keyword</code></td> <td>VARCHAR</td> <td>32,766</td> </tr> <tr> <td><code>text</code></td> <td><code>text</code></td> <td>VARCHAR</td> <td>2,147,483,647</td> </tr> <tr> <td><code>binary</code></td> <td><code>binary</code></td> <td>VARBINARY</td> <td>2,147,483,647</td> </tr> <tr> <td><code>date</code></td> <td><code>datetime</code></td> <td>TIMESTAMP</td> <td>29</td> </tr> <tr> <td><code>ip</code></td> <td><code>ip</code></td> <td>VARCHAR</td> <td>39</td> </tr> </tbody> </table> <h3 id="dynamic-mapping">Dynamic Mapping</h3> <p>我们知道，Mapping 类似于数据库 Scheme 的定义，但回想之前对文档 CURD 的操作时，我们并未手动设置 Mapping，但可以自动创建文档，原因就在于利用了 Dynamic Mapping 的特性。就是即使索引不存在时，也可以手动创建索引，并根据文档信息自动推算出对应的 Mapping 关系。</p> <p>比如之前创建的文档，如下就是生成的 Mapping 关系，ES 自动将 company 和 user 推断为 text 字段。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/1159f3e7e5b65fa348195508ea45f5d7.jpg" alt="ES 文档与索引介绍"></p> <p>当 Dynamic Mapping 也有自己的缺点：就是推算不准确，比如上面的例子，company 和 user 的字段为 keyword 类型更为合适，以至于搜索时出现一些问题。</p> <p>dynamic Mapping 可以通过<code>dynamic</code> 字段进行控制, 其值为 true，false，strict 三种类型。</p> <p>对于已经创建的索引，在修改 Mapping 分为两种情况：</p> <ul> <li>增加新的字段： <ul> <li>dynamic 为 true，新字段写入后，Mapping 也会被更新</li> <li>dynamic 为 false，字段可以写入到 _source, 但 Mapping 不会被更新，自然也不会被索引</li> <li>dynamic 为 strict，不允许写入</li> </ul> </li> <li>修改已经存在字段的类型： <ul> <li>不允许修改，因为 Lucene 生成的倒排索引，不允许被修改。</li> <li>除非重新生成索引。</li> </ul> </li> </ul> <h3 id="显示指定-mapping">显示指定 Mapping</h3> <p>与 Dynamic Mapping 不同，显示指定 Mapping 可以允许我们手动指定 Mapping 结构。</p> <p>编写 Mapping 有两种方式：</p> <ul> <li>可以参考doc</li> <li>利用 dynamic 自动创建功能，查询后，自己再编辑成想要的结构。</li> </ul> <p>看一个简单的例子：</p> <pre><code>PUT user  {   "user" : {     "mappings" : {       "properties" : {         "company" : {           "type" : "keyword"           "null_value": "NULL"           }         },         "name" : {           "type" : "keyword"，           "index_options": "offsets"         },         "id_card" : {           "type" : "keyword",           "index": false # 表示该字段不需要被索引，不用被搜索到         }       }   } }</code></pre> <p>"null_value"：表示对 NULL 值可以进行搜索。</p> <p>"index": false 表示该字段不需要被索引，不用被搜索到</p> <p>"index_options": "offsets" 表示对倒排索引的结构进行设置：</p> <ul> <li>docs ：表示记录 doc id</li> <li>freqs ：表示记录 doc id 和 term frequencies</li> <li>position ：表示记录 doc id 和 term frequencies 和 term position（Text 类型默认记录为 position）</li> <li>offsets:  表示记录 doc id 和 term frequencies 和 term position 以及 character offset.</li> </ul> <p>关于倒排可以查看之前写的这篇文章。</p> <h3 id="index-template-和-dynamic-template">Index Template 和 Dynamic Template</h3> <h4 id="index-template">Index Template</h4> <p>考虑到数据不断增长的情况的，就需要按照一定的规则，将数据分散在不同的 Index 中。但每次都需要为每个 Index 设置 Mapping 和 Setting 关系。</p> <p>这时 Index Template 就可以很好满足这个需求。</p> <p>在 Index Template 中，可以通过设置一个通配名称，当创建的索引的名称，满足该条件时，就会使用模板的规则。</p> <p>Note：</p> <ul> <li>模板只会在创建新索引时生效，修改模板不会影响已经创建的索引。</li> <li>可以设置多个模板，通过 "order" 参数，控制那个模板的规则生效。</li> </ul> <p>下面这个例子就是为告警建立的一个 template，当创建的名字以 alarm 开头时，就会使用该索引。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/21f577a806e9ac5ff6456dceb7f3577f.jpg" alt="ES 文档与索引介绍"></p> <h4 id="dynamic-template">Dynamic Template</h4> <p>在上面 Dynamic Mapping 的介绍中知道，ES 对于没有设置 Mapping 字段的内容，会自己推算一个类型，但这就可能造成推算类型不准确的情况。</p> <p>这时就可以用 Dynamic Template 来解决，通过规范插入的字段的名称，来指定他的类型：</p> <ul> <li>比如可以 is 开头的字段，都设置成 boolean</li> <li>long_ 开头的字段，设置成 long</li> <li>所有字符串类型，设置成 keyword</li> </ul> <p>Dynamic Template 直接作用在索引上, 看下面这个例子。</p> <pre><code>PUT my-index-000001 {   "mappings": {     "dynamic_templates": [       {         "longs_as_strings": {           "match_mapping_type": "string",           "match":   "long_*",           "unmatch": "*_text",           "mapping": {             "type": "long"           }         }       }     ]   } }  PUT my-index-000001/_doc/1 {   "long_num": "5",    "long_text": "foo"  }</code></pre> <p>当匹配到以 long 开头的字符串时并且不包含以 _text 结尾，会将其设置成 long 类。</p> <h2 id="总结">总结</h2> <p>本篇文章中，主要是对 ES 文档和索引的设置进行了说明。</p> <p>ES 文档支持 CURD 操作，但需要知道 Index 和 create 的区别在于，对于指定 id 情况下的处理方式不同。同时为了适应大数据量的读取和写入，可以用 bulk api.</p> <p>对于 ES 索引来说，在创建时，支持两种方式来指定 Setting 和 Mapping 的关系。一种 Dynamic Mapping，这种方式不需要手动设置 Index 格式，会根据文档自动的创建，但缺点在于推断的类型不不准确。而显示 Mapping，可以手动规定 index 的格式。</p> <p>考虑到数据不断增长的情况，需要将数据拆分到不同的 index 上，可以通过 IndexTemplate 实现。</p> <p>对于 Dynamic Mapping，推断不准确的情况，可以通过 Dynamic Template 手动规定创建的类型。</p> <h2 id="参考">参考</h2> <p>https://www.elastic.co/guide/en/elasticsearch/reference/7.16/docs.html</p> <p>https://www.elastic.co/guide/en/elasticsearch/reference/7.1/mapping-params.html</p> <p>https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-templates.html</p> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-107448.htm">宠物回收平台有哪些好的简单介绍</a></p>
+                                        <p>下一个：<a href="/news/article-108292.htm">华畜兽药怎么样（华畜兽药是真的吗）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-73743.htm" title="从哪儿领养宠物（在哪领养宠物）">从哪儿领养宠物（在哪领养宠物）</a></li>
+                        <li class="py-2"><a href="/news/article-94428.htm" title="小狗小猫身上的跳蚤怎么去除（小狗小猫身上有跳蚤怎么办）">小狗小猫身上的跳蚤怎么去除（小狗小猫身上有跳蚤怎么办）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-25-node-share.htm" title="3月25日→20.5M/S|2025年最新免费节点Open Clash Node订阅链接地址">3月25日→20.5M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-81277.htm" title="上海宠物救助站官网（上海宠物救助中心电话24小时）">上海宠物救助站官网（上海宠物救助中心电话24小时）</a></li>
+                        <li class="py-2"><a href="/news/article-82656.htm" title="宠物医院收费价目表2023最新图片（宠物医院费用价格表）">宠物医院收费价目表2023最新图片（宠物医院费用价格表）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-23-free-node-subscribe-links.htm" title="3月23日→18.5M/S|2025年最新免费节点Open Clash Node订阅链接地址">3月23日→18.5M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-97281.htm" title="数据结构与算法知识点总结（3）树、图与并查集">数据结构与算法知识点总结（3）树、图与并查集</a></li>
+                        <li class="py-2"><a href="/news/article-73742.htm" title="自己给宠物打疫苗需要注意什么问题（自己给宠物打疫苗可以吗）">自己给宠物打疫苗需要注意什么问题（自己给宠物打疫苗可以吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-19-free-subscribe-node.htm" title="3月19日→20.9M/S|2025年最新免费节点Open Clash Node订阅链接地址">3月19日→20.9M/S|2025年最新免费节点Open Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-98737.htm" title="济南美联众合动物医院应聘条件 济南美联众合动物医院应聘条件是什么">济南美联众合动物医院应聘条件 济南美联众合动物医院应聘条件是什么</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about area end -->
+    </main>
+        <!-- footer area start  -->
+    <footer>
+        <div class="copyright__area copyright-bg pt-35">
+            <div class="container">
+                <div class="row wow slideInUp">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="copyright__text mb-35">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p>
+                                <a href="/">Open Clash Node免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <ul class="copyright__tos mb-30 text-end">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Careers </a></li>
+                            <li><a href="#">Get A Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/openclashnode/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.scrollUp.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/waypoint.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/progresscircle.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/openclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
