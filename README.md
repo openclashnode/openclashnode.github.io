@@ -1,4 +1,4 @@
-# 11月11日→18.1M/S|2025年最新免费节点Open Clash Node订阅链接地址  更新时间 2025-11-11 09:12:53
+# 11月19日→18.6M/S|2025年最新免费节点Open Clash Node订阅链接地址  更新时间 2025-11-19 08:12:40
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://openclashnode.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://openclashnode.github.io/uploads/2025/11/0-20251111.yaml
-- https://openclashnode.github.io/uploads/2025/11/1-20251111.yaml
-- https://openclashnode.github.io/uploads/2025/11/2-20251111.yaml
-- https://openclashnode.github.io/uploads/2025/11/3-20251111.yaml
-- https://openclashnode.github.io/uploads/2025/11/4-20251111.yaml
+- https://openclashnode.github.io/uploads/2025/11/0-20251119.yaml
+- https://openclashnode.github.io/uploads/2025/11/1-20251119.yaml
+- https://openclashnode.github.io/uploads/2025/11/2-20251119.yaml
+- https://openclashnode.github.io/uploads/2025/11/3-20251119.yaml
+- https://openclashnode.github.io/uploads/2025/11/4-20251119.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://openclashnode.github.io/uploads/2025/11/0-20251111.txt
-- https://openclashnode.github.io/uploads/2025/11/1-20251111.txt
-- https://openclashnode.github.io/uploads/2025/11/2-20251111.txt
-- https://openclashnode.github.io/uploads/2025/11/3-20251111.txt
-- https://openclashnode.github.io/uploads/2025/11/4-20251111.txt
+- https://openclashnode.github.io/uploads/2025/11/0-20251119.txt
+- https://openclashnode.github.io/uploads/2025/11/1-20251119.txt
+- https://openclashnode.github.io/uploads/2025/11/2-20251119.txt
+- https://openclashnode.github.io/uploads/2025/11/3-20251119.txt
+- https://openclashnode.github.io/uploads/2025/11/4-20251119.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://openclashnode.github.io/uploads/2025/11/20251111.json
+- https://openclashnode.github.io/uploads/2025/11/20251119.json
 
 ## 更多Clash节点订阅 ：
 
