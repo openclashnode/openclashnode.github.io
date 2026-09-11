@@ -330,16 +330,6 @@ A4: 需丰富内容生态，提升内容质量，优化社区管理，增强跨�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的协议和混淆如何影响连接稳定性？</h5></div>
-    <div class="panel-body">
-        不同协议和混淆方式对抗 DPI 和封锁能力不同。合理选择可隐藏真实流量特征，减少被封锁风险，提高连接稳定性和访问速度，确保节点长期可用。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何设置不同用户的带宽限制？</h5></div>
-    <div class="panel-body">
-        管理员可为每个用户设置独立的带宽上限和流量配额。超过配额后可自动阻断或降速，确保服务器资源合理分配，避免单个用户占用过多带宽而影响其他用户体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 如何实现域名精确分流？</h5></div>
     <div class="panel-body">
         Sing-box 支持按域名匹配流量，将不同应用流量分配到指定节点。结合策略组使用，可自动选择最优节点，提高访问速度和网络稳定性，实现精确流量管理。<hr />    </div>
@@ -350,19 +340,19 @@ A4: 需丰富内容生态，提升内容质量，优化社区管理，增强跨�
         用户可以在 Clash 策略组中设置节点优先级，结合规则文件，自动选择延迟低、稳定性高的节点处理流量。优化网页浏览、视频播放和游戏访问速度，提高整体网络效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash Premium 与普通版本有何不同？</h5></div>
-    <div class="panel-body">
-        Clash Premium 是 Clash 的增强版，增加了 TUN 模式、脚本功能、流量统计与规则订阅等高级特性。它更适合有复杂分流需求的用户，尤其是需要对系统级代理进行全局控制的场景。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的全局代理与规则代理有何不同？</h5></div>
     <div class="panel-body">
         全局代理将所有流量都通过节点转发，而规则代理只针对指定 IP、端口或应用。全局代理适合游戏和全局科学上网，规则代理适合优化带宽和分流特定流量。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 还能在现代网络环境下正常使用吗？</h5></div>
+    <div class="panel-heading"><h5>SSR 的协议和混淆如何影响连接稳定性？</h5></div>
     <div class="panel-body">
-        虽然 SSR 的项目已经停止维护，但部分服务器依然提供 SSR 节点。只要服务器配置得当，SSR 在一些地区仍然可以稳定使用。不过，它的安全性和兼容性不如 V2Ray 或 Trojan 等现代协议。<hr />    </div>
+        不同协议和混淆方式对抗 DPI 和封锁能力不同。合理选择可隐藏真实流量特征，减少被封锁风险，提高连接稳定性和访问速度，确保节点长期可用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何提高访问速度？</h5></div>
+    <div class="panel-body">
+        Matsuri 定期测速节点延迟，结合策略组自动选择延迟最低节点处理流量。用户无需手动切换节点即可保持高速访问，提高网页浏览、视频播放和游戏体验的稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekoray 节点订阅更新不成功怎么办？</h5></div>
@@ -370,14 +360,24 @@ A4: 需丰富内容生态，提升内容质量，优化社区管理，增强跨�
         检查订阅 URL 是否有效并确保网络通畅。可手动刷新或重新添加订阅链接，保证节点列表最新。结合策略组使用，确保稳定科学上网体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 多路复用对即时通讯的优势是什么？</h5></div>
+    <div class="panel-heading"><h5>Clash Premium 与普通版本有何不同？</h5></div>
     <div class="panel-body">
-        多路复用可让多个短连接共享同一通道，减少握手次数和加密开销，提高吞吐量和连接稳定性。适合即时通讯应用，保证消息快速传输和稳定接收。<hr />    </div>
+        Clash Premium 是 Clash 的增强版，增加了 TUN 模式、脚本功能、流量统计与规则订阅等高级特性。它更适合有复杂分流需求的用户，尤其是需要对系统级代理进行全局控制的场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何提高访问速度？</h5></div>
+    <div class="panel-heading"><h5>SSR 还能在现代网络环境下正常使用吗？</h5></div>
     <div class="panel-body">
-        Matsuri 定期测速节点延迟，结合策略组自动选择延迟最低节点处理流量。用户无需手动切换节点即可保持高速访问，提高网页浏览、视频播放和游戏体验的稳定性。    </div>
+        虽然 SSR 的项目已经停止维护，但部分服务器依然提供 SSR 节点。只要服务器配置得当，SSR 在一些地区仍然可以稳定使用。不过，它的安全性和兼容性不如 V2Ray 或 Trojan 等现代协议。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何设置不同用户的带宽限制？</h5></div>
+    <div class="panel-body">
+        管理员可为每个用户设置独立的带宽上限和流量配额。超过配额后可自动阻断或降速，确保服务器资源合理分配，避免单个用户占用过多带宽而影响其他用户体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 多路复用对即时通讯的优势是什么？</h5></div>
+    <div class="panel-body">
+        多路复用可让多个短连接共享同一通道，减少握手次数和加密开销，提高吞吐量和连接稳定性。适合即时通讯应用，保证消息快速传输和稳定接收。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -425,16 +425,16 @@ A4: 需丰富内容生态，提升内容质量，优化社区管理，增强跨�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-7-25-node-share-links.htm" title="7月25日→21.9M/S|2025年最新免费节点Open Clash Node订阅链接地址">7月25日→21.9M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-4-node-share.htm" title="8月4日→21.2M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月4日→21.2M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-28-free-node-subscribe.htm" title="7月28日→22.2M/S|2025年最新免费节点Open Clash Node订阅链接地址">7月28日→22.2M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-8-9.htm" title="8月9日→19.3M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月9日→19.3M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-22-free-node-subscribe.htm" title="8月22日→19.7M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月22日→19.7M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-30-free-node-subscribe.htm" title="7月30日→21.9M/S|2025年最新免费节点Open Clash Node订阅链接地址">7月30日→21.9M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-10-free-node-subscribe.htm" title="8月10日→22.6M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月10日→22.6M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-17.htm" title="8月17日→18.7M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月17日→18.7M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-24-free-node-subscribe.htm" title="7月24日→20.9M/S|2025年最新免费节点Open Clash Node订阅链接地址">7月24日→20.9M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-1.htm" title="8月1日→20.9M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月1日→20.9M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-4-free-node-subscribe.htm" title="9月4日→18.8M/S|2025年最新免费节点Open Clash Node订阅链接地址">9月4日→18.8M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-28-node-share.htm" title="8月28日→18M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月28日→18M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-6-free-node-subscribe.htm" title="8月6日→22.7M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月6日→22.7M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-15.htm" title="8月15日→18.9M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月15日→18.9M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-14-free-subscribe-node.htm" title="8月14日→20.6M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月14日→20.6M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-31.htm" title="8月31日→18.2M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月31日→18.2M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-16-free-node-subscribe.htm" title="8月16日→22M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月16日→22M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-1.htm" title="9月1日→20.7M/S|2025年最新免费节点Open Clash Node订阅链接地址">9月1日→20.7M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-30-node-share.htm" title="8月30日→21.5M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月30日→21.5M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-11.htm" title="8月11日→21.8M/S|2025年最新免费节点Open Clash Node订阅链接地址">8月11日→21.8M/S|2025年最新免费节点Open Clash Node订阅链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -446,10 +446,10 @@ A4: 需丰富内容生态，提升内容质量，优化社区管理，增强跨�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                     </ul>
     </div>
